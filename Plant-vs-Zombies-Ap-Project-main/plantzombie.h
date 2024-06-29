@@ -6,9 +6,6 @@
 #include <QSizePolicy>
 #include<QTimer>
 #include<sun.h>
-
-#include <iostream>
-#include <random>
 #include <QGraphicsSceneMouseEvent>
 #include<brain.h>
 #include <QLabel>
@@ -29,10 +26,6 @@ private slots:
     void handleSunClick();
     void spawnBrain();
     void handleBrainClick();
-protected:
-    //void add_brain();
-   // void add_number_brain();
-    //void add_brain();
 
 private:
     Ui::plantzombie *ui;
@@ -42,7 +35,6 @@ private:
     int sunStorage;
     QGraphicsView *view;
     QGraphicsPixmapItem *f ;
-    //QGraphicsPixmapItem *brainItem ;
 
     QTimer *timer;
     int brainStorge;
