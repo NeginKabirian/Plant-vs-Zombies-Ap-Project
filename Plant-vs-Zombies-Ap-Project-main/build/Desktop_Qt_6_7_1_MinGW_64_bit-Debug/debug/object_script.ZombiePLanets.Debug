@@ -22,5 +22,3 @@ debug/moc_brain.o
 debug/moc_mainwindow.o
 debug/moc_plantbase.o
 debug/moc_plantzombie.o
-debug/moc_sun.o
-debug/moc_zombiebase.o

@@ -5,7 +5,7 @@
 #include <QGraphicsPixmapItem>
 
 class PlantBase : public QObject, public QGraphicsPixmapItem {
-    Q_OBJECT
+    Q_OBJECT;
 public:
     PlantBase(int,int,int,int);
     virtual ~PlantBase() = default;

@@ -22,5 +22,3 @@ release/moc_brain.o
 release/moc_mainwindow.o
 release/moc_plantbase.o
 release/moc_plantzombie.o
-release/moc_sun.o
-release/moc_zombiebase.o
