@@ -1,0 +1,10 @@
+debug/main.o
+debug/mainwindow.o
+debug/peashooter.o
+debug/plantzombie.o
+debug/sun.o
+debug/qrc_field.o
+debug/moc_clicbrain.o
+debug/moc_mainwindow.o
+debug/moc_plantzombie.o
+debug/moc_sun.o

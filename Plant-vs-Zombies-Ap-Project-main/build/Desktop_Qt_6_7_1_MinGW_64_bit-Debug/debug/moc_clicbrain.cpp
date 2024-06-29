@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "C:/Users/ZBook Fury/Downloads/Plant-vs-Zombies-Ap-Project-brain (2)/Plant-vs-Zombies-Ap-Project-main/Plant-vs-Zombies-Ap-Project-main/clicbrain.h"
+#include "../../../clicbrain.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

@@ -2,7 +2,11 @@
     <qresource prefix="/image">
         <file>field.png</file>
         <file>sun.png</file>
+<<<<<<< HEAD
         <file>pea shooter.jpg</file>
         <file>peashooter transparent.png</file>
+=======
+        <file>Brain.png</file>
+>>>>>>> 1c3c3160710ed284ad84fc3360d7fab6454b88ed
     </qresource>
 </RCC>
