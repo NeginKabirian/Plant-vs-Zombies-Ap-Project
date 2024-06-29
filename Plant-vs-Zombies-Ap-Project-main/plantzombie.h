@@ -13,6 +13,9 @@
 #include<brain.h>
 #include <QLabel>
 
+#include <rects.h>
+#include <QMap>
+#include <QPointF>
 namespace Ui {
 class plantzombie;
 }
@@ -47,6 +50,8 @@ private:
     QTimer *timer;
     int brainStorge;
     QLabel *label1;
+    QMap<ClickableRectItem*,QPointF> rectmap;
+
 };
 
 #endif // PLANTZOMBIE_H

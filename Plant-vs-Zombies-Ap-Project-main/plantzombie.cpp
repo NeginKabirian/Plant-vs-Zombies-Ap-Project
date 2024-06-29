@@ -6,7 +6,7 @@
 #include<QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include<QRandomGenerator>
-
+#include <QRectF>
 plantzombie::plantzombie(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::plantzombie)
@@ -15,43 +15,38 @@ plantzombie::plantzombie(QWidget *parent) :
     s = new QGraphicsScene(this);
     f = new QGraphicsPixmapItem(QPixmap(field1));
     view = new QGraphicsView(s,this);
-    view->setSceneRect(0, 0, 1100, 522);
-    view->resize(1100,522);
+    view->setSceneRect(-130, -130, 1350, 662);
+    view->resize(1350,700);
     f->setScale(1.0);
     view->setRenderHint(QPainter::Antialiasing);
     sunStorage = 0;
+
     s->addItem(f);
+    QRectF boundingRect=f->boundingRect();
+    qreal tlx=boundingRect.topLeft().x();
+    qreal tly=boundingRect.topLeft().y();
+    qreal trx=boundingRect.topRight().x();
+    qreal trry=boundingRect.topRight().y();
+    qreal blx=boundingRect.bottomLeft().x();
+    qreal bly=boundingRect.bottomLeft().y();
+    qreal brx=boundingRect.bottomRight().x();
+    qreal bry=boundingRect.bottomRight().y();
+    qDebug()<<tlx<<tly;
+    qDebug()<<trx<<trry;
+    qDebug()<<blx<<bly;
+    qDebug()<<brx<<bry;
+    QGraphicsRectItem *n=new QGraphicsRectItem(0,0,1,1);
+    s->addItem(n);
+    n->setPos(1040,462);
 
-
-    //QGraphicsRectItem *rect_brain=new QGraphicsRectItem(0,0,100,40);
-
-    /*rect_brain->setBrush(QBrush(QColor(139,69,19)));
-    rect_brain->setPos(980,0);
-    brainItem->setScale(0.23);
-    brainshow->setScale(0.23);
-    brainItem->setPos(980,0);
-    number_brain=0;*/
-    //QLabel *label1=new QLabel(this);
-    //s->addItem(rect_brain);
-    //s->addItem(brainItem);
-    //qDebug()<<"b";
-    //label1->setText(QString::number(10));
-    //->move(1150,0);
-    //label1->show();
-
-
-    /*f->setPos(0,0);
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &plantzombie::add_brain);
-    timer->setSingleShot(true);
-    timer->start(5000);
-    qDebug()<<"c";*/
     sunspawnTimer = new QTimer(this);
     connect(sunspawnTimer, &QTimer::timeout, this, &plantzombie::spawnSun);
     sunspawnTimer->start(5000); // spawn a sun every 5 seconds
     brainspawnTimer = new QTimer(this);
     connect(brainspawnTimer, &QTimer::timeout, this, &plantzombie::spawnBrain);
     brainspawnTimer->start(5000); // spawn a sun every 5 seconds
+
+
     view->setScene(s);
     view->show();
 

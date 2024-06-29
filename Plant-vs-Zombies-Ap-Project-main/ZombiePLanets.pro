@@ -21,6 +21,7 @@ HEADERS += \
     mainwindow.h \
     peashooter.h \
     plantzombie.h \
+    rects.h \
     sun.h
 
 FORMS += \
