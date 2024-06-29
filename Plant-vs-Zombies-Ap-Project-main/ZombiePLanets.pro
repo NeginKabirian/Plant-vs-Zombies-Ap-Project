@@ -15,6 +15,7 @@ SOURCES += \
     sun.cpp
 
 HEADERS += \
+    clicbrain.h \
     mainwindow.h \
     plantzombie.h \
     sun.h

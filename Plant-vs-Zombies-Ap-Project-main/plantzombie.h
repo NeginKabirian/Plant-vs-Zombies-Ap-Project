@@ -6,6 +6,11 @@
 #include <QSizePolicy>
 #include<QTimer>
 #include<sun.h>
+#include <iostream>
+#include <random>
+#include <QGraphicsSceneMouseEvent>
+#include <clicbrain.h>
+#include <QLabel>
 namespace Ui {
 class plantzombie;
 }
@@ -21,6 +26,11 @@ private slots:
     void spawnSun();
     void handleSunClick();
 
+protected:
+    //void add_brain();
+    void add_number_brain();
+    void add_brain();
+
 private:
     Ui::plantzombie *ui;
     QTimer *spawnTimer;
@@ -28,6 +38,11 @@ private:
     int sunStorage;
     QGraphicsView *view;
     QGraphicsPixmapItem *f ;
+    QGraphicsPixmapItem *brainItem ;
+    BrainPixmapItem *brainshow ;
+    QTimer *timer;
+    int number_brain;
+    QLabel *label1;
 };
 
 #endif // PLANTZOMBIE_H
