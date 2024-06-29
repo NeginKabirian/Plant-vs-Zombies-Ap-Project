@@ -40,19 +40,16 @@ HEADERS += \
     peashooter.h \
     plantbase.h \
     plantzombie.h \
-
-    plummine.h\
-    purplehairzombie.h\
-    regularzambie.h\
-    sun.h\
-    tallzombie.h\
-    two_peashooter.h\
-    walnut.h\
-    zombiebase.h\
-
-    rects.h\
-    sun.h\
-
+    plummine.h \
+    purplehairzombie.h \
+    regularzambie.h \
+    sun.h \
+    tallzombie.h \
+    two_peashooter.h \
+    walnut.h \
+    zombiebase.h \
+    rects.h \
+    sun.h
 
 FORMS += \
     mainwindow.ui \
@@ -65,3 +62,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     image.qrc
+

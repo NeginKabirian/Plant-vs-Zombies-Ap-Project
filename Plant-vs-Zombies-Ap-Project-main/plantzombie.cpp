@@ -22,38 +22,21 @@ plantzombie::plantzombie(QWidget *parent) :
     sunStorage = 0;
 
     s->addItem(f);
-<<<<<<< HEAD
-=======
-    QRectF boundingRect=f->boundingRect();
-    qreal tlx=boundingRect.topLeft().x();
-    qreal tly=boundingRect.topLeft().y();
-    qreal trx=boundingRect.topRight().x();
-    qreal trry=boundingRect.topRight().y();
-    qreal blx=boundingRect.bottomLeft().x();
-    qreal bly=boundingRect.bottomLeft().y();
-    qreal brx=boundingRect.bottomRight().x();
-    qreal bry=boundingRect.bottomRight().y();
-    qDebug()<<tlx<<tly;
-    qDebug()<<trx<<trry;
-    qDebug()<<blx<<bly;
-    qDebug()<<brx<<bry;
-    QGraphicsRectItem *n=new QGraphicsRectItem(0,0,1,1);
-    s->addItem(n);
-    n->setPos(1040,462);
 
->>>>>>> ba4db7cf0d4ce4860fb9fbd5899c72153b61a39a
+
+
     sunspawnTimer = new QTimer(this);
     connect(sunspawnTimer, &QTimer::timeout, this, &plantzombie::spawnSun);
     sunspawnTimer->start(5000); // spawn a sun every 5 seconds
     brainspawnTimer = new QTimer(this);
     connect(brainspawnTimer, &QTimer::timeout, this, &plantzombie::spawnBrain);
-<<<<<<< HEAD
+
     brainspawnTimer->start(5000); // spawn a ghazal every 5 seconds
-=======
+
     brainspawnTimer->start(5000); // spawn a sun every 5 seconds
 
 
->>>>>>> ba4db7cf0d4ce4860fb9fbd5899c72153b61a39a
+
     view->setScene(s);
     view->show();
 
