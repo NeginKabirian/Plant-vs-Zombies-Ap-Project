@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    peashooter.cpp \
     plantzombie.cpp \
     sun.cpp
 
 HEADERS += \
     mainwindow.h \
+    peashooter.h \
     plantzombie.h \
     sun.h
 

@@ -2,5 +2,7 @@
     <qresource prefix="/image">
         <file>field.png</file>
         <file>sun.png</file>
+        <file>pea shooter.jpg</file>
+        <file>peashooter transparent.png</file>
     </qresource>
 </RCC>

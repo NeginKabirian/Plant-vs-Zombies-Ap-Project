@@ -6,6 +6,7 @@
 #include <QSizePolicy>
 #include<QTimer>
 #include<sun.h>
+//#include<peashooter.h>
 namespace Ui {
 class plantzombie;
 }
@@ -28,6 +29,7 @@ private:
     int sunStorage;
     QGraphicsView *view;
     QGraphicsPixmapItem *f ;
+    //PeaShooter* peashooter;
 };
 
 #endif // PLANTZOMBIE_H

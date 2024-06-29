@@ -16,4 +16,5 @@ void Sun::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 }
 void Sun::disappear() {
     delete this;
+     //this->deleteLater();
 }
