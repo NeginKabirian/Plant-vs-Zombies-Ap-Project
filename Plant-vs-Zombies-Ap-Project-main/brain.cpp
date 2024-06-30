@@ -13,11 +13,8 @@ Brain::Brain(){
     disappearTimer->start(2000);
 }
 void Brain::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-    emit clicked();
-    //delete this; // remove the sun
     this->deleteLater();
 }
 void Brain::disappear() {
-    //delete this;
     this->deleteLater();
 }

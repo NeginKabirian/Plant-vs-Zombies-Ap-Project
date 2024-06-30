@@ -22,12 +22,20 @@ plantzombie::plantzombie(QWidget *parent) :
     sunStorage = 0;
     s->addItem(f);
 
+
+
+
+
     sunspawnTimer = new QTimer(this);
     connect(sunspawnTimer, &QTimer::timeout, this, &plantzombie::spawnSun);
     sunspawnTimer->start(5000); // spawn a sun every 5 seconds
     brainspawnTimer = new QTimer(this);
     connect(brainspawnTimer, &QTimer::timeout, this, &plantzombie::spawnBrain);
+
+    brainspawnTimer->start(5000); // spawn a ghazal every 5 seconds
+
     brainspawnTimer->start(5000); // spawn a sun every 5 seconds
+
 
 
     view->setScene(s);
@@ -44,15 +52,11 @@ void plantzombie::spawnSun() {
     sun->setScale(0.1);
     s->addItem(sun);
     sun->setPos(QRandomGenerator::global()->bounded(400)+100, QRandomGenerator::global()->bounded(350)+25);
-    //qDebug()<<sun->pos();
     connect(sun, &Sun::clicked, this, &plantzombie::handleSunClick);
-    //qDebug()<<"shoo"<<peashooter->pos();
 }
 
 void plantzombie::handleSunClick() {
     sunStorage += 25;
-    //qDebug()<<sunStorage;
-
 }
 
 void plantzombie::spawnBrain()
@@ -63,7 +67,6 @@ void plantzombie::spawnBrain()
     brain->setPos(QRandomGenerator::global()->bounded(400)+600, QRandomGenerator::global()->bounded(350)+25);
     qDebug()<<brain->pos();
     connect(brain, &Brain::clicked, this, &plantzombie::handleBrainClick);
-    //qDebug()<<"shoo"<<peashooter->pos();
 }
 
 void plantzombie::handleBrainClick()

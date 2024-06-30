@@ -29,13 +29,13 @@ public:
     {
         if (plantzombie->objectName().isEmpty())
             plantzombie->setObjectName("plantzombie");
-        plantzombie->resize(1113, 520);
+        plantzombie->resize(1350, 722);
         centralwidget = new QWidget(plantzombie);
         centralwidget->setObjectName("centralwidget");
         plantzombie->setCentralWidget(centralwidget);
         menubar = new QMenuBar(plantzombie);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1113, 22));
+        menubar->setGeometry(QRect(0, 0, 1350, 22));
         plantzombie->setMenuBar(menubar);
         statusbar = new QStatusBar(plantzombie);
         statusbar->setObjectName("statusbar");
