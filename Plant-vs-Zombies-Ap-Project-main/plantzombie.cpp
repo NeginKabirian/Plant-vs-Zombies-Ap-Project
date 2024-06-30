@@ -20,25 +20,18 @@ plantzombie::plantzombie(QWidget *parent) :
     f->setScale(1.0);
     view->setRenderHint(QPainter::Antialiasing);
     sunStorage = 0;
-
     s->addItem(f);
-    QRectF boundingRect=f->boundingRect();
-    qreal tlx=boundingRect.topLeft().x();
-    qreal tly=boundingRect.topLeft().y();
-    qreal trx=boundingRect.topRight().x();
-    qreal trry=boundingRect.topRight().y();
-    qreal blx=boundingRect.bottomLeft().x();
-    qreal bly=boundingRect.bottomLeft().y();
-    qreal brx=boundingRect.bottomRight().x();
-    qreal bry=boundingRect.bottomRight().y();
-    qDebug()<<tlx<<tly;
-    qDebug()<<trx<<trry;
-    qDebug()<<blx<<bly;
-    qDebug()<<brx<<bry;
-    QGraphicsRectItem *n=new QGraphicsRectItem(0,0,1,1);
-    s->addItem(n);
-    n->setPos(1040,462);
-
+    //int width=922;
+    //int Height=416;
+    //int rectWidth = width / 12;
+    //int rectHeight = Height / 6;
+    // (int row = 0; row < 12; ++row) {
+            //for (int col = 0; col < 6; ++col){
+                //int x = (col * rectWidth)+118;
+                //int y = (row * rectHeight)+46;
+                //QString r="rectItem"+QString::number(col)+QString::number(row);
+            //}
+    //}
     sunspawnTimer = new QTimer(this);
     connect(sunspawnTimer, &QTimer::timeout, this, &plantzombie::spawnSun);
     sunspawnTimer->start(5000); // spawn a sun every 5 seconds
