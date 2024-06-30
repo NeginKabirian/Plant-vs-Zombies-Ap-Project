@@ -14,6 +14,8 @@
 #include <QMap>
 #include <QPointF>
 #include <QPair>
+
+#include <QMouseEvent>
 namespace Ui {
 class plantzombie;
 }
@@ -30,6 +32,9 @@ private slots:
     void handleSunClick();
     void spawnBrain();
     void handleBrainClick();
+    //void onCircleButtonClicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::plantzombie *ui;
@@ -43,9 +48,14 @@ private:
     int brainStorge;
 
     QLabel *label1;
-    QMap<QPair<ClickableRectItem*,int>,QPair<QPointF,int>> rectmap;
-
-
+    QMap<int, QPair<QPointF,int>> gridCentersMap;
+    QList<QRectF> gridRects;
+    int currentGridIndex = -1;
+    //bool isDrawingCircle = false;// مث اینجا ساخت بول به نام گیاه و زامبی ها
+protected:
+    void divideImageIntoGrid(int rows, int columns);
+    QMap<int, QPair<QPointF,int>> createGridCentersMap();
+    void mousePressEvent(QMouseEvent *event) override;
 
 };
 
