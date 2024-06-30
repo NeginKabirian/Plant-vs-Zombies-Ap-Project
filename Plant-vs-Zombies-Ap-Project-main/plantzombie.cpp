@@ -14,11 +14,12 @@ plantzombie::plantzombie(QWidget *parent) :
     ui->setupUi(this);
     s = new QGraphicsScene(this);
     f = new QGraphicsPixmapItem(QPixmap(field1));
-    view = new QGraphicsView(s,this);
-    view->setSceneRect(-130, -130, 1350, 662);
-    view->resize(1350,700);
+    ui->graphicsView->setScene(s);
+    //view = new QGraphicsView(s,this);
+    //view->setSceneRect(-130, -130, 1350, 662);
+    //view->resize(1350,700);
     f->setScale(1.0);
-    view->setRenderHint(QPainter::Antialiasing);
+    //view->setRenderHint(QPainter::Antialiasing);
     sunStorage = 0;
     s->addItem(f);
 
@@ -38,8 +39,8 @@ plantzombie::plantzombie(QWidget *parent) :
 
 
 
-    view->setScene(s);
-    view->show();
+    //view->setScene(s);
+    //view->show();
 
 }
 

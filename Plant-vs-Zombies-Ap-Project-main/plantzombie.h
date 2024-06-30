@@ -37,7 +37,7 @@ private:
     QTimer *brainspawnTimer;
     QGraphicsScene *s;
     int sunStorage;
-    QGraphicsView *view;
+    //QGraphicsView *view;
     QGraphicsPixmapItem *f ;
 
     int brainStorge;
