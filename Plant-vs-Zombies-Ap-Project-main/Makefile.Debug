@@ -185,8 +185,20 @@ compiler_rcc_clean:
 debug/qrc_image.cpp: image.qrc \
 		C:/Qt/6.7.1/mingw_64/bin/rcc.exe \
 		Brain.png \
+		plum\ mine_transparent.png \
+		jalapino_transparent.png \
+		purple\ hair\ zombie_transparent.png \
+		regular\ zombie_transparent.png \
 		sun.png \
-		field.png
+		walnut_transparent.png \
+		Bucket\ head\ zombie_trasparent.png \
+		tall\ zombie_transparent.png \
+		field.png \
+		peashooter\ transparent.png \
+		leaf\ hair\ zombie_transparent.png \
+		two_peashooter_transparent.png \
+		boomrang_transparent.png \
+		astronaut\ zombie_transparent.png
 	C:\Qt\6.7.1\mingw_64\bin\rcc.exe -name image --no-zstd image.qrc -o debug\qrc_image.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
@@ -895,11 +907,28 @@ debug/moc_plantzombie.cpp: plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qpicture.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qtextdocument.h \
+		peashooter.h \
+		plantBase.h \
+		two_peashooter.h \
+		plantbase.h \
+		walnut.h \
+		plummine.h \
+		jalapieno.h \
+		boomerang.h \
+		regularzambie.h \
+		zombiebase.h \
+		bucketheadzombie.h \
+		leafheadzombie.h \
+		tallzombie.h \
+		astronautzombie.h \
+		purplehairzombie.h \
 		rects.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsRectItem \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QDebug \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QMap \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QPointF \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPair \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		debug/moc_predefs.h \
 		C:/Qt/6.7.1/mingw_64/bin/moc.exe
 	C:\Qt\6.7.1\mingw_64\bin\moc.exe $(DEFINES) --include "F:/Ap plant/Plant-vs-Zombies-Ap-Project-main/Plant-vs-Zombies-Ap-Project/Plant-vs-Zombies-Ap-Project-main/debug/moc_predefs.h" -IC:/Qt/6.7.1/mingw_64/mkspecs/win32-g++ -I"F:/Ap plant/Plant-vs-Zombies-Ap-Project-main/Plant-vs-Zombies-Ap-Project/Plant-vs-Zombies-Ap-Project-main" -IC:/Qt/6.7.1/mingw_64/include -IC:/Qt/6.7.1/mingw_64/include/QtWidgets -IC:/Qt/6.7.1/mingw_64/include/QtGui -IC:/Qt/6.7.1/mingw_64/include/QtCore -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include plantzombie.h -o debug\moc_plantzombie.cpp
@@ -2445,11 +2474,28 @@ debug/main.o: main.cpp mainwindow.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qpicture.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qtextdocument.h \
+		peashooter.h \
+		plantBase.h \
+		two_peashooter.h \
+		plantbase.h \
+		walnut.h \
+		plummine.h \
+		jalapieno.h \
+		boomerang.h \
+		regularzambie.h \
+		zombiebase.h \
+		bucketheadzombie.h \
+		leafheadzombie.h \
+		tallzombie.h \
+		astronautzombie.h \
+		purplehairzombie.h \
 		rects.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsRectItem \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QDebug \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QMap \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPointF
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPointF \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPair \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o main.cpp
 
 debug/mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -3151,14 +3197,30 @@ debug/plantzombie.o: plantzombie.cpp plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qpicture.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qtextdocument.h \
+		peashooter.h \
+		plantBase.h \
+		two_peashooter.h \
+		plantbase.h \
+		walnut.h \
+		plummine.h \
+		jalapieno.h \
+		boomerang.h \
+		regularzambie.h \
+		zombiebase.h \
+		bucketheadzombie.h \
+		leafheadzombie.h \
+		tallzombie.h \
+		astronautzombie.h \
+		purplehairzombie.h \
 		rects.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsRectItem \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QDebug \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QMap \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QPointF \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPair \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		ui_plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.7.1/mingw_64/include/QtGui/QIcon \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qapplication.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QMenuBar \

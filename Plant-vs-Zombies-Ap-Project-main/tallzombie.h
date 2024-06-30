@@ -6,7 +6,7 @@
 class TallZombie : public ZombieBase
 {
 public:
-    explicit TallZombie(QObject *parent = nullptr);
+    //explicit TallZombie(QObject *parent = nullptr);
     TallZombie();
 };
 

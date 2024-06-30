@@ -6,7 +6,7 @@
 class LeafHeadZombie : public ZombieBase
 {
 public:
-    explicit LeafHeadZombie(QObject *parent = nullptr);
+    //explicit LeafHeadZombie(QObject *parent = nullptr);
     LeafHeadZombie();
 };
 

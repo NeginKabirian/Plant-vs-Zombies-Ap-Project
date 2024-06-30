@@ -6,7 +6,7 @@
 class AstronautZombie : public ZombieBase
 {
 public:
-    explicit AstronautZombie(QObject *parent = nullptr);
+    //explicit AstronautZombie(QObject *parent = nullptr);
     AstronautZombie();
 private:
     const double MovmentDelaytwo = 0.5;

@@ -7,8 +7,8 @@ class ZombieBase : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    explicit ZombieBase(QObject *parent = nullptr);
-    ZombieBase(int,int,int,int,int);
+    //explicit ZombieBase(QObject *parent = nullptr);
+    ZombieBase(int,double,int,double,int);
 protected:
     int Health;
     const double MovmentDelay;

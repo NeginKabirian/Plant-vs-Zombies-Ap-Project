@@ -20,7 +20,7 @@ plantzombie::plantzombie(QWidget *parent) :
     //view = new QGraphicsView(s,this);
     //view->setSceneRect(-130, -130, 1350, 662);
     //view->resize(1350,700);
-    f->setScale(2.5);
+    f->setScale(1);
     //view->setRenderHint(QPainter::Antialiasing);
     sunStorage = 0;
     s->addItem(f);
@@ -34,7 +34,7 @@ plantzombie::plantzombie(QWidget *parent) :
     brainspawnTimer = new QTimer(this);
     connect(brainspawnTimer, &QTimer::timeout, this, &plantzombie::spawnBrain);
 
-    brainspawnTimer->start(5000); // spawn a ghazal every 5 seconds
+    //brainspawnTimer->start(5000); // spawn a ghazal every 5 seconds
 
     brainspawnTimer->start(5000); // spawn a sun every 5 seconds
 
@@ -48,6 +48,105 @@ plantzombie::plantzombie(QWidget *parent) :
 plantzombie::~plantzombie()
 {
     delete ui;
+}
+
+void plantzombie::insertfieldPA(int rect , QPointF point)
+{
+    Peashooter* pa = new Peashooter;
+    QPair<Peashooter*,int> pair(pa,rect);
+    pa->setPos(point);
+    s->addItem(pa);
+    PA.push_back(pair);
+}
+
+void plantzombie::insertfieldPB(int rect , QPointF point)
+{
+    Two_Peashooter* pb = new Two_Peashooter;
+    QPair<Two_Peashooter*,int> pair(pb,rect);
+    pb->setPos(point);
+    s->addItem(pb);
+    PB.push_back(pair);
+}
+
+void plantzombie::insertfieldPC(int rect , QPointF point)
+{
+    Walnut* pc = new Walnut;
+    QPair<Walnut*,int> pair(pc,rect);
+    pc->setPos(point);
+    s->addItem(pc);
+    PC.push_back(pair);
+}
+void plantzombie::insertfieldPD(int rect , QPointF point)
+{
+    PlumMine* pd = new PlumMine;
+    QPair<PlumMine*,int> pair(pd,rect);
+    pd->setPos(point);
+    s->addItem(pd);
+    PD.push_back(pair);
+}
+void plantzombie::insertfieldPE(int rect, QPointF point)
+{
+    Jalapieno* pe = new Jalapieno;
+    QPair<Jalapieno*,int> pair(pe,rect);
+    pe->setPos(point);
+    s->addItem(pe);
+    PE.push_back(pair);
+}
+void plantzombie::insertfieldPF(int rect, QPointF point)
+{
+    Boomerang* pf = new Boomerang;
+    QPair<Boomerang*,int> pair(pf,rect);
+    pf->setPos(point);
+    s->addItem(pf);
+    PF.push_back(pair);
+}
+void plantzombie::insertfieldZA(int rect, QPointF point)
+{
+    RegularZambie* za = new RegularZambie;
+    QPair<RegularZambie*,int> pair(za,rect);
+    za->setPos(point);
+    s->addItem(za);
+    ZA.push_back(pair);
+}
+void plantzombie::insertfieldZB(int rect, QPointF point)
+{
+    BucketHeadZombie* zb = new BucketHeadZombie;
+    QPair<BucketHeadZombie*,int> pair(zb,rect);
+    zb->setPos(point);
+    s->addItem(zb);
+    ZB.push_back(pair);
+}
+void plantzombie::insertfieldZC(int rect, QPointF point)
+{
+    LeafHeadZombie* zc = new LeafHeadZombie;
+    QPair<LeafHeadZombie*,int> pair(zc,rect);
+    zc->setPos(point);
+    s->addItem(zc);
+    ZC.push_back(pair);
+}
+void plantzombie::insertfieldZD(int rect, QPointF point)
+{
+    TallZombie* zd = new TallZombie;
+    QPair<TallZombie*,int> pair(zd,rect);
+    zd->setPos(point);
+    s->addItem(zd);
+    ZD.push_back(pair);
+}
+void plantzombie::insertfieldZE(int rect, QPointF point)
+{
+    AstronautZombie* ze = new AstronautZombie;
+    QPair<AstronautZombie*,int> pair(ze,rect);
+    ze->setPos(point);
+    s->addItem(ze);
+    ZE.push_back(pair);
+}
+void plantzombie::insertfieldZF(int rect, QPointF point)
+{
+    PurpleHairZombie* zf = new PurpleHairZombie;
+    QPair<PurpleHairZombie*,int> pair(zf,rect);
+    zf->setPos(point);
+    s->addItem(zf);
+    ZF.push_back(pair);
 }
 void plantzombie::spawnSun() {
     Sun *sun = new Sun();

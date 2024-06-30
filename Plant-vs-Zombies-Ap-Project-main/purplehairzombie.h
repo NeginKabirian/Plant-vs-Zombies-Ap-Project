@@ -6,7 +6,7 @@
 class PurpleHairZombie : public ZombieBase
 {
 public:
-    explicit PurpleHairZombie(QObject *parent = nullptr);
+    //explicit PurpleHairZombie(QObject *parent = nullptr);
     PurpleHairZombie();
 };
 

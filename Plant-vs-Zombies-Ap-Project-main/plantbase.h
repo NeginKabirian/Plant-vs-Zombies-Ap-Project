@@ -10,9 +10,9 @@ public:
     PlantBase(int,int,int,int);
     virtual ~PlantBase() = default;
     int getHealth();
-    const int getFirningRate();
-    const int getAttackPower();
-    const int getSun();
+    int getFirningRate();
+    int getAttackPower();
+    int getSun();
 protected:
     int Health;
     const int FiringRate;

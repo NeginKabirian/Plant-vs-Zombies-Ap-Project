@@ -6,7 +6,7 @@
 class RegularZambie : public ZombieBase
 {
 public:
-    explicit RegularZambie(QObject *parent = nullptr);
+    //explicit RegularZambie(QObject *parent = nullptr);
     RegularZambie();
 };
 

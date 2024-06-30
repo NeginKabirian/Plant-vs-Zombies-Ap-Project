@@ -14,6 +14,7 @@
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -24,6 +25,7 @@ class Ui_plantzombie
 public:
     QWidget *centralwidget;
     QGraphicsView *graphicsView;
+    QPushButton *pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -37,6 +39,9 @@ public:
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
         graphicsView->setGeometry(QRect(0, 150, 1100, 530));
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(30, 50, 75, 24));
         plantzombie->setCentralWidget(centralwidget);
         menubar = new QMenuBar(plantzombie);
         menubar->setObjectName("menubar");
@@ -54,6 +59,7 @@ public:
     void retranslateUi(QMainWindow *plantzombie)
     {
         plantzombie->setWindowTitle(QCoreApplication::translate("plantzombie", "MainWindow", nullptr));
+        pushButton->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
     } // retranslateUi
 
 };

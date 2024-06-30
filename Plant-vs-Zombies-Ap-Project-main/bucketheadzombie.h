@@ -6,7 +6,7 @@
 class BucketHeadZombie : public ZombieBase
 {
 public:
-    explicit BucketHeadZombie(QObject *parent = nullptr);
+    //explicit BucketHeadZombie(QObject *parent = nullptr);
     BucketHeadZombie();
 };
 
