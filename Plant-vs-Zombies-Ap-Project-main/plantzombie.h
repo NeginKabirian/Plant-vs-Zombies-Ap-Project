@@ -16,6 +16,7 @@
 #include <rects.h>
 #include <QMap>
 #include <QPointF>
+#include <QPair>
 namespace Ui {
 class plantzombie;
 }
@@ -50,7 +51,7 @@ private:
     QTimer *timer;
     int brainStorge;
     QLabel *label1;
-    QMap<ClickableRectItem*,QPointF> rectmap;
+    QMap<QPair<ClickableRectItem*,int>,QPair<QPointF,int>> rectmap;
 
 };
 

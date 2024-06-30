@@ -21,17 +21,7 @@ plantzombie::plantzombie(QWidget *parent) :
     view->setRenderHint(QPainter::Antialiasing);
     sunStorage = 0;
     s->addItem(f);
-    //int width=922;
-    //int Height=416;
-    //int rectWidth = width / 12;
-    //int rectHeight = Height / 6;
-    // (int row = 0; row < 12; ++row) {
-            //for (int col = 0; col < 6; ++col){
-                //int x = (col * rectWidth)+118;
-                //int y = (row * rectHeight)+46;
-                //QString r="rectItem"+QString::number(col)+QString::number(row);
-            //}
-    //}
+
     sunspawnTimer = new QTimer(this);
     connect(sunspawnTimer, &QTimer::timeout, this, &plantzombie::spawnSun);
     sunspawnTimer->start(5000); // spawn a sun every 5 seconds
