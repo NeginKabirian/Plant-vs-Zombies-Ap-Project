@@ -6,6 +6,6 @@
 
 LeafHeadZombie::LeafHeadZombie() :ZombieBase(800,1,25,1,150){
     setPixmap(QPixmap(":/image/leaf hair zombie_transparent.png"));
-    setScale(0.1);
+    setScale(0.08);
 }
 

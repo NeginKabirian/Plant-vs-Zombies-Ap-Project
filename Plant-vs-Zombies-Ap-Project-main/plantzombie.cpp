@@ -188,24 +188,24 @@ void plantzombie::divideImageIntoGrid(int rows, int columns)
         for (int col = 0; col < columns; ++col) {
             qreal x = col * widthStep+118;
             qreal y = row * heightStep+40;
-            QRectF rect(x, y, widthStep, heightStep);
+            QRectF rect(118+ col * widthStep, 40 + row * heightStep, widthStep, heightStep);
             //QGraphicsRectItem *b=new QGraphicsRectItem(rect);
             //QPen p(Qt::black);
            // b->setPen(p);
             //s->addItem(b);
-            gridRects.append(rect);
+            gridRects.push_back(rect);
          }
 }
 }
 
-QMap<int, QPair<QPointF,int>> plantzombie::createGridCentersMap()
+QMap<int, QPair<QPointF,QString>> plantzombie::createGridCentersMap()
 {
-    QMap<int, QPair<QPointF,int>> centersMap;
+    QMap<int, QPair<QPointF,QString>> centersMap;
     for (int i = 0; i < gridRects.size(); ++i) {
          QPointF center = gridRects[i].center();
 
 
-         QPair<QPointF,int> p(center,0);
+         QPair<QPointF,QString> p(center,"");
          centersMap.insert(i, p);
 
     }
@@ -215,32 +215,250 @@ QMap<int, QPair<QPointF,int>> plantzombie::createGridCentersMap()
 void plantzombie::mousePressEvent(QMouseEvent *event)
 {
     QPointF viewPos=event->pos();
-    QPointF clickedPos =ui->graphicsView->mapToScene(viewPos.toPoint());
+    //QPointF clickedPos =ui->graphicsView->mapToScene(viewPos.toPoint());
+    qDebug()<<"v"<<viewPos;
+    int a=viewPos.y();
+    viewPos.setY(a-150);
+    // یافتن مربع متناظر با کلیک
+    for (int i = 0; i < gridRects.size(); ++i) {
+        if (gridRects[i].contains(viewPos)) {
 
-            // یافتن مربع متناظر با کلیک
-            for (int i = 0; i < gridRects.size(); ++i) {
-                if (gridRects[i].contains(clickedPos)) {
-                    i=i-24;
-                    currentGridIndex = i;
+            qDebug()<<i;
+            qDebug()<<"c"<<gridRects[i].center();
+            qDebug()<<"t"<<gridRects[i].topLeft();
+            //if(i<48){
+                //i=i-24;
+            //}
 
-                    break;
-                }
+            currentGridIndex = i;
+
+            break;
+        }
+    }
+
+    // نمایش دایره یا مستطیل وسط مربع
+    if (event->button() == Qt::LeftButton) {
+        QString str = gridCentersMap.find(currentGridIndex)->second;
+        if(isDrawingPA == true){
+            if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
+                insertfieldPA(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingPA = false;
+                gridCentersMap.find(currentGridIndex)->second="PA";
             }
 
-            // نمایش دایره یا مستطیل وسط مربع
-            if (event->button() == Qt::LeftButton) {
-                //if(isDrawingCircle == true){
-
-                //}
-
-            } else if (event->button() == Qt::RightButton) {
-
+        }else if(isDrawingPB == true){
+            if((currentGridIndex+1)%12<7 && (currentGridIndex+1)%12!=0&&str == ""){
+                insertfieldPB(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingPB = false;
+                gridCentersMap.find(currentGridIndex)->second="PB";
             }
+
+        }else if(isDrawingPC == true){
+            if((currentGridIndex+1)%12<7 && (currentGridIndex+1)%12!=0 && str == ""){
+                insertfieldPC(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingPC = false;
+                gridCentersMap.find(currentGridIndex)->second="PC";
+            }
+
+        }else if(isDrawingPD == true){
+            if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
+                insertfieldPD(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingPD = false;
+                gridCentersMap.find(currentGridIndex)->second="PD";
+            }
+
+        }else if(isDrawingPE == true){
+            if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
+                insertfieldPE(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingPE = false;
+                gridCentersMap.find(currentGridIndex)->second="PE";
+            }
+
+        }else if(isDrawingPF == true){
+            if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
+                insertfieldPF(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingPF = false;
+                gridCentersMap.find(currentGridIndex)->second="PF";
+            }
+
+        }else if(isDrawingZA == true){
+            if((currentGridIndex+1)%12==0 && str == ""){
+                insertfieldZA(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingZA = false;
+                gridCentersMap.find(currentGridIndex)->second="ZA";
+            }
+        }else if(isDrawingZB == true){
+            if((currentGridIndex+1)%12==0 && str == ""){
+                insertfieldZB(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingZB = false;
+                gridCentersMap.find(currentGridIndex)->second="ZB";
+            }
+        }else if(isDrawingZC == true){
+            if((currentGridIndex+1)%12==0 && str == ""){
+                insertfieldZC(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingZC = false;
+                gridCentersMap.find(currentGridIndex)->second="ZC";
+            }
+        }else if(isDrawingZD == true){
+            if((currentGridIndex+1)%12==0 && str == ""){
+                insertfieldZD(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingZD = false;
+                gridCentersMap.find(currentGridIndex)->second="ZD";
+            }
+        }else if(isDrawingZE == true){
+            if((currentGridIndex+1)%12==0 && str == ""){
+                insertfieldZE(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingZE = false;
+                gridCentersMap.find(currentGridIndex)->second="ZE";
+            }
+        }else if(isDrawingZF == true){
+            if((currentGridIndex+1)%12==0 && str == ""){
+                insertfieldZF(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                isDrawingZF = false;
+                gridCentersMap.find(currentGridIndex)->second="ZF";
+            }
+        }
+
+
+
+
+
+
+    } else if (event->button() == Qt::RightButton) {
+
+    }
 }
 
 
-void plantzombie::on_pushButton_clicked()
+
+void plantzombie::onButtonPAClicked()
 {
-    //onCircleButtonClicked();
+    isDrawingPA = true;
+}
+
+void plantzombie::onButtonPBClicked()
+{
+    isDrawingPB = true;
+}
+
+
+void plantzombie::onButtonPCClicked()
+{
+    isDrawingPC= true;
+}
+
+void plantzombie::onButtonPDClicked()
+{
+    isDrawingPD = true;
+}
+
+void plantzombie::onButtonPEClicked()
+{
+    isDrawingPE = true;
+}
+
+void plantzombie::onButtonPFClicked()
+{
+    isDrawingPF = true;
+}
+
+void plantzombie::onButtonZAClicked()
+{
+    isDrawingZA = true;
+}
+
+void plantzombie::onButtonZBClicked()
+{
+    isDrawingZB = true;
+}
+
+void plantzombie::onButtonZCClicked()
+{
+    isDrawingZC = true;
+}
+
+void plantzombie::onButtonZDClicked()
+{
+    isDrawingZD = true;
+}
+
+void plantzombie::onButtonZEClicked()
+{
+    isDrawingZE = true;
+}
+
+void plantzombie::onButtonZFClicked()
+{
+    isDrawingZF = true;
+}
+void plantzombie::on_pushButtonPA_clicked()
+{
+    onButtonPAClicked();
+}
+
+
+void plantzombie::on_pushButtonPB_clicked()
+{
+    onButtonPBClicked();
+}
+
+
+void plantzombie::on_pushButtonPC_clicked()
+{
+    onButtonPCClicked();
+}
+
+
+void plantzombie::on_pushButtonPD_clicked()
+{
+    onButtonPDClicked();
+}
+
+
+void plantzombie::on_pushButtonPE_clicked()
+{
+    onButtonPEClicked();
+}
+
+
+void plantzombie::on_pushButtonPF_clicked()
+{
+    onButtonPFClicked();
+}
+
+
+void plantzombie::on_pushButtonZA_clicked()
+{
+    onButtonZAClicked();
+}
+
+
+void plantzombie::on_pushButtonZB_clicked()
+{
+    onButtonZBClicked();
+}
+
+
+void plantzombie::on_pushButtonZC_clicked()
+{
+    onButtonZCClicked();
+}
+
+
+void plantzombie::on_pushButtonZD_clicked()
+{
+    onButtonZDClicked();
+}
+
+
+void plantzombie::on_pushButtonZE_clicked()
+{
+    onButtonZEClicked();
+}
+
+
+void plantzombie::on_pushButtonZF_clicked()
+{
+    onButtonZFClicked();
 }
 

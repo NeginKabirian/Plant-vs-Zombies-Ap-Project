@@ -7,5 +7,5 @@
 AstronautZombie::AstronautZombie() : ZombieBase(500,1,20,1,200)
 {
     setPixmap(QPixmap(":/image/astronaut zombie_transparent.png"));
-    setScale(0.1);
+    setScale(0.08);
 }

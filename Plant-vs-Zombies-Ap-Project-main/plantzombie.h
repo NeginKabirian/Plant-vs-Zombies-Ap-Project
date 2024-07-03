@@ -56,8 +56,42 @@ private slots:
     void spawnBrain();
     void handleBrainClick();
     //void onCircleButtonClicked();
+    void onButtonPAClicked();
+    void onButtonPBClicked();
+    void onButtonPCClicked();
+    void onButtonPDClicked();
+    void onButtonPEClicked();
+    void onButtonPFClicked();
+    void onButtonZAClicked();
+    void onButtonZBClicked();
+    void onButtonZCClicked();
+    void onButtonZDClicked();
+    void onButtonZEClicked();
+    void onButtonZFClicked();
 
-    void on_pushButton_clicked();
+    void on_pushButtonPA_clicked();
+
+    void on_pushButtonPB_clicked();
+
+    void on_pushButtonPC_clicked();
+
+    void on_pushButtonPD_clicked();
+
+    void on_pushButtonPE_clicked();
+
+    void on_pushButtonPF_clicked();
+
+    void on_pushButtonZA_clicked();
+
+    void on_pushButtonZB_clicked();
+
+    void on_pushButtonZC_clicked();
+
+    void on_pushButtonZD_clicked();
+
+    void on_pushButtonZE_clicked();
+
+    void on_pushButtonZF_clicked();
 
 private:
     Ui::plantzombie *ui;
@@ -71,22 +105,21 @@ private:
     int brainStorge;
 
     QLabel *label1;
-    QMap<int, QPair<QPointF,int>> gridCentersMap;
+    QMap<int, QPair<QPointF,QString>> gridCentersMap;
     QList<QRectF> gridRects;
     int currentGridIndex = -1;
-    //bool isDrawingCircle = false;// مث اینجا ساخت بول به نام گیاه و زامبی ها
-    bool isDrawingCirclePA = false;
-    bool isDrawingCirclePB = false;
-    bool isDrawingCirclePC = false;
-    bool isDrawingCirclePD = false;
-    bool isDrawingCirclePE = false;
-    bool isDrawingCirclePF = false;
-    bool isDrawingCircleZA = false;
-    bool isDrawingCircleZB = false;
-    bool isDrawingCircleZC = false;
-    bool isDrawingCircleZD = false;
-    bool isDrawingCircleZE = false;
-    bool isDrawingCircleZF = false;
+    bool isDrawingPA = false;
+    bool isDrawingPB = false;
+    bool isDrawingPC = false;
+    bool isDrawingPD = false;
+    bool isDrawingPE = false;
+    bool isDrawingPF = false;
+    bool isDrawingZA = false;
+    bool isDrawingZB = false;
+    bool isDrawingZC = false;
+    bool isDrawingZD = false;
+    bool isDrawingZE = false;
+    bool isDrawingZF = false;
     //vector pair<class obj,number rect> rect = -1 default
     QVector<QPair<Peashooter*,int>>PA;
     QVector<QPair<Two_Peashooter*,int>>PB;
@@ -104,7 +137,7 @@ private:
 
 protected:
     void divideImageIntoGrid(int rows, int columns);
-    QMap<int, QPair<QPointF,int>> createGridCentersMap();
+    QMap<int, QPair<QPointF,QString>> createGridCentersMap();
     void mousePressEvent(QMouseEvent *event) override;
 
 };

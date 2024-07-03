@@ -6,6 +6,6 @@
 
 BucketHeadZombie::BucketHeadZombie() : ZombieBase(1950,2,50,1,200){
     setPixmap(QPixmap(":/image/Bucket head zombie_trasparent.png"));
-    setScale(0.1);
+    setScale(0.08);
 }
 

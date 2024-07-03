@@ -7,5 +7,5 @@
 TallZombie::TallZombie() : ZombieBase(500,1,30,1,150)
 {
     setPixmap(QPixmap(":/image/tall zombie_transparent.png"));
-    setScale(0.1);
+    setScale(0.08);
 }

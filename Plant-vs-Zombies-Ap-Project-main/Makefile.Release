@@ -194,6 +194,7 @@ release/qrc_image.cpp: image.qrc \
 		Bucket\ head\ zombie_trasparent.png \
 		tall\ zombie_transparent.png \
 		field.png \
+		boomerang.jpg \
 		peashooter\ transparent.png \
 		leaf\ hair\ zombie_transparent.png \
 		two_peashooter_transparent.png \
@@ -3223,6 +3224,11 @@ release/plantzombie.o: plantzombie.cpp plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QVariant \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QMenuBar \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qmenubar.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qmenu.h \

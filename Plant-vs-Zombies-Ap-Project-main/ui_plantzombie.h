@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -25,7 +26,22 @@ class Ui_plantzombie
 public:
     QWidget *centralwidget;
     QGraphicsView *graphicsView;
-    QPushButton *pushButton;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *pushButtonPA;
+    QPushButton *pushButtonPB;
+    QPushButton *pushButtonPC;
+    QPushButton *pushButtonPD;
+    QPushButton *pushButtonPE;
+    QPushButton *pushButtonPF;
+    QWidget *layoutWidget_2;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *pushButtonZA;
+    QPushButton *pushButtonZB;
+    QPushButton *pushButtonZC;
+    QPushButton *pushButtonZD;
+    QPushButton *pushButtonZE;
+    QPushButton *pushButtonZF;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -39,13 +55,84 @@ public:
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
         graphicsView->setGeometry(QRect(0, 150, 1100, 530));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(30, 50, 75, 24));
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(10, 110, 595, 31));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        pushButtonPA = new QPushButton(layoutWidget);
+        pushButtonPA->setObjectName("pushButtonPA");
+        pushButtonPA->setEnabled(true);
+        pushButtonPA->setAutoDefault(false);
+
+        horizontalLayout->addWidget(pushButtonPA);
+
+        pushButtonPB = new QPushButton(layoutWidget);
+        pushButtonPB->setObjectName("pushButtonPB");
+
+        horizontalLayout->addWidget(pushButtonPB);
+
+        pushButtonPC = new QPushButton(layoutWidget);
+        pushButtonPC->setObjectName("pushButtonPC");
+
+        horizontalLayout->addWidget(pushButtonPC);
+
+        pushButtonPD = new QPushButton(layoutWidget);
+        pushButtonPD->setObjectName("pushButtonPD");
+
+        horizontalLayout->addWidget(pushButtonPD);
+
+        pushButtonPE = new QPushButton(layoutWidget);
+        pushButtonPE->setObjectName("pushButtonPE");
+
+        horizontalLayout->addWidget(pushButtonPE);
+
+        pushButtonPF = new QPushButton(layoutWidget);
+        pushButtonPF->setObjectName("pushButtonPF");
+
+        horizontalLayout->addWidget(pushButtonPF);
+
+        layoutWidget_2 = new QWidget(centralwidget);
+        layoutWidget_2->setObjectName("layoutWidget_2");
+        layoutWidget_2->setGeometry(QRect(620, 110, 595, 31));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget_2);
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        pushButtonZA = new QPushButton(layoutWidget_2);
+        pushButtonZA->setObjectName("pushButtonZA");
+
+        horizontalLayout_2->addWidget(pushButtonZA);
+
+        pushButtonZB = new QPushButton(layoutWidget_2);
+        pushButtonZB->setObjectName("pushButtonZB");
+
+        horizontalLayout_2->addWidget(pushButtonZB);
+
+        pushButtonZC = new QPushButton(layoutWidget_2);
+        pushButtonZC->setObjectName("pushButtonZC");
+
+        horizontalLayout_2->addWidget(pushButtonZC);
+
+        pushButtonZD = new QPushButton(layoutWidget_2);
+        pushButtonZD->setObjectName("pushButtonZD");
+
+        horizontalLayout_2->addWidget(pushButtonZD);
+
+        pushButtonZE = new QPushButton(layoutWidget_2);
+        pushButtonZE->setObjectName("pushButtonZE");
+
+        horizontalLayout_2->addWidget(pushButtonZE);
+
+        pushButtonZF = new QPushButton(layoutWidget_2);
+        pushButtonZF->setObjectName("pushButtonZF");
+
+        horizontalLayout_2->addWidget(pushButtonZF);
+
         plantzombie->setCentralWidget(centralwidget);
         menubar = new QMenuBar(plantzombie);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 2000, 22));
+        menubar->setGeometry(QRect(0, 0, 2000, 26));
         plantzombie->setMenuBar(menubar);
         statusbar = new QStatusBar(plantzombie);
         statusbar->setObjectName("statusbar");
@@ -59,7 +146,18 @@ public:
     void retranslateUi(QMainWindow *plantzombie)
     {
         plantzombie->setWindowTitle(QCoreApplication::translate("plantzombie", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonPA->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonPB->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonPC->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonPD->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonPE->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonPF->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonZA->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonZB->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonZC->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonZD->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonZE->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
+        pushButtonZF->setText(QCoreApplication::translate("plantzombie", "PushButton", nullptr));
     } // retranslateUi
 
 };
