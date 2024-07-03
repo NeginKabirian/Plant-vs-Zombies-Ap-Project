@@ -25,8 +25,9 @@
 #include <QMap>
 #include <QPointF>
 #include <QPair>
-
+#include<QPushButton>
 #include <QMouseEvent>
+#include <QAtomicInt>
 namespace Ui {
 class plantzombie;
 }
@@ -98,10 +99,9 @@ private:
     QTimer *sunspawnTimer;
     QTimer *brainspawnTimer;
     QGraphicsScene *s;
-    int sunStorage;
-    //QGraphicsView *view;
+    //int sunStorage;
     QGraphicsPixmapItem *f ;
-
+    std::atomic<int> sunStorage;
     int brainStorge;
 
     QLabel *label1;
@@ -135,6 +135,7 @@ private:
     QVector<QPair<AstronautZombie*,int>>ZE;
     QVector<QPair<PurpleHairZombie*,int>>ZF;
 
+    void visibleButton();
 protected:
     void divideImageIntoGrid(int rows, int columns);
     QMap<int, QPair<QPointF,QString>> createGridCentersMap();

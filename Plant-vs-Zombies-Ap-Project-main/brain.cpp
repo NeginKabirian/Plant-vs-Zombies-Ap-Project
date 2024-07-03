@@ -13,6 +13,7 @@ Brain::Brain(){
     disappearTimer->start(2000);
 }
 void Brain::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+    emit clicked();
     this->deleteLater();
 }
 void Brain::disappear() {

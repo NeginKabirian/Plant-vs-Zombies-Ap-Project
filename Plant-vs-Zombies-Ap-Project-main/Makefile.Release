@@ -184,22 +184,33 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_image.cpp
 release/qrc_image.cpp: image.qrc \
 		C:/Qt/6.7.1/mingw_64/bin/rcc.exe \
+		walnut.jpg \
+		two_peashooter\ -\ Copy.jpg \
 		Brain.png \
+		walnut.jpg \
+		astronaut\ zombie.jpg \
 		plum\ mine_transparent.png \
 		jalapino_transparent.png \
 		purple\ hair\ zombie_transparent.png \
 		regular\ zombie_transparent.png \
 		sun.png \
+		Bucket\ head\ zombie.jpg \
+		two_peashooter.jpg \
+		tall\ zombie.jpg \
 		walnut_transparent.png \
+		regular\ zombie.jpg \
 		Bucket\ head\ zombie_trasparent.png \
 		tall\ zombie_transparent.png \
 		field.png \
 		boomerang.jpg \
 		peashooter\ transparent.png \
 		leaf\ hair\ zombie_transparent.png \
+		jalapino.jpg \
 		two_peashooter_transparent.png \
 		boomrang_transparent.png \
-		astronaut\ zombie_transparent.png
+		pea\ shooter.jpg \
+		astronaut\ zombie_transparent.png \
+		leaf\ hair\ zombie.jpg
 	C:\Qt\6.7.1\mingw_64\bin\rcc.exe -name image --no-zstd image.qrc -o release\qrc_image.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -929,6 +940,9 @@ release/moc_plantzombie.cpp: plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QMap \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QPointF \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QPair \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		release/moc_predefs.h \
 		C:/Qt/6.7.1/mingw_64/bin/moc.exe
@@ -2496,6 +2510,9 @@ release/main.o: main.cpp mainwindow.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QMap \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QPointF \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QPair \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
 
@@ -2688,16 +2705,7 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qtabwidget.h \
-		ui_mainwindow.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QMenuBar \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qmenu.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QStatusBar \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qstatusbar.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o mainwindow.cpp
 
 release/peashooter.o: peashooter.cpp peashooter.h \
@@ -3219,25 +3227,11 @@ release/plantzombie.o: plantzombie.cpp plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QMap \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QPointF \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QPair \
-		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
-		ui_plantzombie.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QHBoxLayout \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QMenuBar \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qmenu.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QStatusBar \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qstatusbar.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QWidget \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
+		ui_plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsScene \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \

@@ -16,5 +16,18 @@
         <file>peashooter transparent.png</file>
         <file>boomerang.jpg</file>
         <file>boomrang_transparent.png</file>
+        <file>astronaut zombie.jpg</file>
+        <file>Bucket head zombie.jpg</file>
+        <file>leaf hair zombie.jpg</file>
+        <file>jalapino.jpg</file>
+        <file>walnut.jpg</file>
+        <file>two_peashooter.jpg</file>
+        <file>tall zombie.jpg</file>
+        <file>regular zombie.jpg</file>
+        <file>pea shooter.jpg</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>two_peashooter - Copy.jpg</file>
+        <file>walnut.jpg</file>
     </qresource>
 </RCC>

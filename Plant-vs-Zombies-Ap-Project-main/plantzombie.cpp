@@ -8,6 +8,7 @@
 #include<QRandomGenerator>
 #include <QGraphicsView>
 #include <QRectF>
+
 plantzombie::plantzombie(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::plantzombie)
@@ -15,14 +16,10 @@ plantzombie::plantzombie(QWidget *parent) :
     ui->setupUi(this);
     s = new QGraphicsScene(this);
     f = new QGraphicsPixmapItem(QPixmap(field1));
-    //ui->graphicsView->setScene(s);
+
     ui->graphicsView->setScene(s);
-    //view = new QGraphicsView(s,this);
-    //view->setSceneRect(-130, -130, 1350, 662);
-    //view->resize(1350,700);
     f->setScale(1);
-    //view->setRenderHint(QPainter::Antialiasing);
-    sunStorage = 0;
+    sunStorage = 0;brainStorge = 0;
     s->addItem(f);
     divideImageIntoGrid(6, 12);
     gridCentersMap = createGridCentersMap();
@@ -34,17 +31,87 @@ plantzombie::plantzombie(QWidget *parent) :
     brainspawnTimer = new QTimer(this);
     connect(brainspawnTimer, &QTimer::timeout, this, &plantzombie::spawnBrain);
 
-    //brainspawnTimer->start(5000); // spawn a ghazal every 5 seconds
-
-    brainspawnTimer->start(5000); // spawn a sun every 5 seconds
-
-
-
-    //view->setScene(s);
-    //view->show();
+    brainspawnTimer->start(5000); // spawn a sun every 5 secon
+    //ui->pushButtonPA->setStyleSheet("QPushButton { background-color: rgba(0, 0, 255, 100); }");
+    visibleButton();
 
 }
+void plantzombie::visibleButton(){
 
+    if(sunStorage >= 50){
+        ui->pushButtonPA->setVisible(true);
+    }
+    else{
+       ui->pushButtonPA->setVisible(false);
+    }
+
+    if(sunStorage >= 100){
+        ui->pushButtonPB->setVisible(true);
+    }
+    else{
+        ui->pushButtonPB->setVisible(false);
+    }
+    if(sunStorage >= 100){
+        ui->pushButtonPC->setVisible(true);
+    }
+    else{
+        ui->pushButtonPC->setVisible(false);
+    }
+    if(sunStorage >= 175){
+        ui->pushButtonPD->setVisible(true);
+    }
+    else{
+        ui->pushButtonPD->setVisible(false);
+    }
+    if(sunStorage >= 150){
+        ui->pushButtonPE->setVisible(true);
+    }
+    else{
+        ui->pushButtonPE->setVisible(false);
+    }
+    if(sunStorage >= 125){
+        ui->pushButtonPF->setVisible(true);
+    }
+    else{
+        ui->pushButtonPF->setVisible(false);
+    }
+    if(brainStorge >= 100){
+         ui->pushButtonZA->setVisible(true);
+    }
+    else{
+        ui->pushButtonZA->setVisible(false);
+    }
+    if(brainStorge >= 200){
+        ui->pushButtonZB->setVisible(true);
+    }
+    else{
+        ui->pushButtonZB->setVisible(false);
+    }
+    if(brainStorge >= 150){
+        ui->pushButtonZC->setVisible(true);
+    }
+    else{
+        ui->pushButtonZC->setVisible(false);
+    }
+    if(brainStorge >= 150){
+        ui->pushButtonZD->setVisible(true);
+    }
+    else{
+        ui->pushButtonZD->setVisible(false);
+    }
+    if(brainStorge >= 200){
+        ui->pushButtonZE->setVisible(true);
+    }
+    else{
+        ui->pushButtonZE->setVisible(false);
+    }
+    if(brainStorge >= 800){
+        ui->pushButtonZF->setVisible(true);
+    }
+    else{
+        ui->pushButtonZF->setVisible(false);
+    }
+}
 plantzombie::~plantzombie()
 {
     delete ui;
@@ -52,11 +119,15 @@ plantzombie::~plantzombie()
 
 void plantzombie::insertfieldPA(int rect , QPointF point)
 {
+
     Peashooter* pa = new Peashooter;
     QPair<Peashooter*,int> pair(pa,rect);
     pa->setPos(point);
     s->addItem(pa);
     PA.push_back(pair);
+    sunStorage -= 50;
+    ui->label_2->setText(QString::number(sunStorage));
+    visibleButton();
 }
 
 void plantzombie::insertfieldPB(int rect , QPointF point)
@@ -66,6 +137,9 @@ void plantzombie::insertfieldPB(int rect , QPointF point)
     pb->setPos(point);
     s->addItem(pb);
     PB.push_back(pair);
+    sunStorage -= 100;
+    ui->label_2->setText(QString::number(sunStorage));
+    visibleButton();
 }
 
 void plantzombie::insertfieldPC(int rect , QPointF point)
@@ -75,6 +149,9 @@ void plantzombie::insertfieldPC(int rect , QPointF point)
     pc->setPos(point);
     s->addItem(pc);
     PC.push_back(pair);
+    sunStorage -= 100;
+    ui->label_2->setText(QString::number(sunStorage));
+    visibleButton();
 }
 void plantzombie::insertfieldPD(int rect , QPointF point)
 {
@@ -83,6 +160,9 @@ void plantzombie::insertfieldPD(int rect , QPointF point)
     pd->setPos(point);
     s->addItem(pd);
     PD.push_back(pair);
+    sunStorage -= 175;
+    ui->label_2->setText(QString::number(sunStorage));
+    visibleButton();
 }
 void plantzombie::insertfieldPE(int rect, QPointF point)
 {
@@ -91,6 +171,9 @@ void plantzombie::insertfieldPE(int rect, QPointF point)
     pe->setPos(point);
     s->addItem(pe);
     PE.push_back(pair);
+    sunStorage -= 150;
+    ui->label_2->setText(QString::number(sunStorage));
+    visibleButton();
 }
 void plantzombie::insertfieldPF(int rect, QPointF point)
 {
@@ -99,6 +182,9 @@ void plantzombie::insertfieldPF(int rect, QPointF point)
     pf->setPos(point);
     s->addItem(pf);
     PF.push_back(pair);
+    sunStorage -= 125;
+    ui->label_2->setText(QString::number(sunStorage));
+    visibleButton();
 }
 void plantzombie::insertfieldZA(int rect, QPointF point)
 {
@@ -107,6 +193,9 @@ void plantzombie::insertfieldZA(int rect, QPointF point)
     za->setPos(point);
     s->addItem(za);
     ZA.push_back(pair);
+    brainStorge -= 100;
+    ui->Brainlabel->setText(QString::number(brainStorge));
+    visibleButton();
 }
 void plantzombie::insertfieldZB(int rect, QPointF point)
 {
@@ -115,6 +204,9 @@ void plantzombie::insertfieldZB(int rect, QPointF point)
     zb->setPos(point);
     s->addItem(zb);
     ZB.push_back(pair);
+    brainStorge -= 200;
+    ui->Brainlabel->setText(QString::number(brainStorge));
+    visibleButton();
 }
 void plantzombie::insertfieldZC(int rect, QPointF point)
 {
@@ -123,6 +215,9 @@ void plantzombie::insertfieldZC(int rect, QPointF point)
     zc->setPos(point);
     s->addItem(zc);
     ZC.push_back(pair);
+    brainStorge -= 150;
+    ui->Brainlabel->setText(QString::number(brainStorge));
+    visibleButton();
 }
 void plantzombie::insertfieldZD(int rect, QPointF point)
 {
@@ -131,6 +226,9 @@ void plantzombie::insertfieldZD(int rect, QPointF point)
     zd->setPos(point);
     s->addItem(zd);
     ZD.push_back(pair);
+    brainStorge -= 150;
+    ui->Brainlabel->setText(QString::number(brainStorge));
+    visibleButton();
 }
 void plantzombie::insertfieldZE(int rect, QPointF point)
 {
@@ -139,6 +237,9 @@ void plantzombie::insertfieldZE(int rect, QPointF point)
     ze->setPos(point);
     s->addItem(ze);
     ZE.push_back(pair);
+    brainStorge -= 200;
+    ui->Brainlabel->setText(QString::number(brainStorge));
+    visibleButton();
 }
 void plantzombie::insertfieldZF(int rect, QPointF point)
 {
@@ -147,6 +248,9 @@ void plantzombie::insertfieldZF(int rect, QPointF point)
     zf->setPos(point);
     s->addItem(zf);
     ZF.push_back(pair);
+    brainStorge -= 800;
+    ui->Brainlabel->setText(QString::number(brainStorge));
+    visibleButton();
 }
 void plantzombie::spawnSun() {
     Sun *sun = new Sun();
@@ -158,27 +262,24 @@ void plantzombie::spawnSun() {
 
 void plantzombie::handleSunClick() {
     sunStorage += 25;
-}
-
+    visibleButton();
+    ui->label_2->setText(QString::number(sunStorage));
+    }
 void plantzombie::spawnBrain()
 {
     Brain *brain = new Brain();
     brain->setScale(0.25);
     s->addItem(brain);
     brain->setPos(QRandomGenerator::global()->bounded(400)+600, QRandomGenerator::global()->bounded(350)+25);
-    qDebug()<<brain->pos();
     connect(brain, &Brain::clicked, this, &plantzombie::handleBrainClick);
 }
 
 void plantzombie::handleBrainClick()
 {
-    brainStorge +=25;
+    brainStorge += 25;
+    ui->Brainlabel->setText(QString::number(brainStorge));
+    visibleButton();
 }
-
-//void plantzombie::onCircleButtonClicked()
-//{
-    //isDrawingCircle = true;
-//}
 
 void plantzombie::divideImageIntoGrid(int rows, int columns)
 {
@@ -186,8 +287,8 @@ void plantzombie::divideImageIntoGrid(int rows, int columns)
     qreal heightStep = 426/ rows;
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < columns; ++col) {
-            qreal x = col * widthStep+118;
-            qreal y = row * heightStep+40;
+            //qreal x = col * widthStep+118;
+            //qreal y = row * heightStep+40;
             QRectF rect(118+ col * widthStep, 40 + row * heightStep, widthStep, heightStep);
             //QGraphicsRectItem *b=new QGraphicsRectItem(rect);
             //QPen p(Qt::black);
@@ -216,27 +317,16 @@ void plantzombie::mousePressEvent(QMouseEvent *event)
 {
     QPointF viewPos=event->pos();
     //QPointF clickedPos =ui->graphicsView->mapToScene(viewPos.toPoint());
-    qDebug()<<"v"<<viewPos;
     int a=viewPos.y();
     viewPos.setY(a-150);
-    // یافتن مربع متناظر با کلیک
     for (int i = 0; i < gridRects.size(); ++i) {
         if (gridRects[i].contains(viewPos)) {
-
-            qDebug()<<i;
-            qDebug()<<"c"<<gridRects[i].center();
-            qDebug()<<"t"<<gridRects[i].topLeft();
-            //if(i<48){
-                //i=i-24;
-            //}
-
             currentGridIndex = i;
 
             break;
         }
     }
 
-    // نمایش دایره یا مستطیل وسط مربع
     if (event->button() == Qt::LeftButton) {
         QString str = gridCentersMap.find(currentGridIndex)->second;
         if(isDrawingPA == true){
