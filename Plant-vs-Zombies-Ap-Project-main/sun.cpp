@@ -12,7 +12,6 @@ Sun::Sun() {
 }
 void Sun::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     emit clicked();
-    //delete this; // remove the sun
     this->deleteLater();
 }
 void Sun::disappear() {
