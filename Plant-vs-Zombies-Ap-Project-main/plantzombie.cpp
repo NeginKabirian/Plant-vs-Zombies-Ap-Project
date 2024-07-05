@@ -132,7 +132,7 @@ void plantzombie::insertfieldPA(int rect , QPointF point)
     pa->startShooting();
 
 }
-void plantzombie::onShootPea(Peashooter* pa) {
+/*void plantzombie::onShootPea(Peashooter* pa) {
     QGraphicsEllipseItem* pea = new QGraphicsEllipseItem(0, 0, 15, 10);
     pea->setBrush(Qt::green);
     pea->setPos(pa->pos() + QPointF(60,+15));
@@ -165,13 +165,61 @@ void plantzombie::onShootPea(Peashooter* pa) {
         if(ChangePosToRect(pea->pos()) == i && flag == true){
             s->removeItem(pea);
         }
-        else if (pea->pos().x() > 1100) {
+        else if (pea->pos().x() > 1000) {
             s->removeItem(pea);
-            //delete pea;
         }
     }); //firning client message
     moveTimer->start(50);
+}*/
+void plantzombie::onShootPea(Peashooter* pa) {
+    QGraphicsEllipseItem* pea = new QGraphicsEllipseItem(0, 0, 15, 10);
+    pea->setBrush(Qt::green);
+    pea->setPos(pa->pos() + QPointF(62, 17));
+    s->addItem(pea);
+
+    QTimer* moveTimer = new QTimer(this);
+    connect(moveTimer, &QTimer::timeout, this, [this,pa, pea, moveTimer]() {
+        pea->setPos(pea->pos() + QPointF(10, 0));
+
+        if (pea->pos().x() > 1000) {
+            s->removeItem(pea);
+            delete pea;
+            moveTimer->stop();
+            moveTimer->deleteLater();
+            return;
+        }
+
+        int foundSecond = -1;
+        for (const auto& pair : PA) {
+            if (pair.first == pa) {
+                foundSecond = pair.second;
+                break;
+            }
+        }
+
+        if (foundSecond != -1) {
+            int i = foundSecond + 1;
+            for (int j = 0; j < 5 && (i % 12) < 7; ++j, ++i) {
+                if (!gridCentersMap[i].second.isEmpty() && gridCentersMap[i].second[0] == 'Z') {
+                    if (ChangePosToRect(pea->pos()) == i) {
+                        QPointF currentPos = pea->pos();
+                        QPointF zombiePos = gridCentersMap[i].first;
+                        if (currentPos.x() >= zombiePos.x() + 10) {
+                            s->removeItem(pea);
+                            delete pea;
+                            moveTimer->stop();
+                            moveTimer->deleteLater();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    moveTimer->start(50);
 }
+
 void plantzombie::insertfieldPB(int rect , QPointF point)
 {
     Two_Peashooter* pb = new Two_Peashooter;
