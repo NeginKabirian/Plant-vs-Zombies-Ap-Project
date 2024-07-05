@@ -25,6 +25,7 @@
         <file>tall zombie.jpg</file>
         <file>regular zombie.jpg</file>
         <file>pea shooter.jpg</file>
+        <file>pea.jpg</file>
     </qresource>
     <qresource prefix="/">
         <file>two_peashooter - Copy.jpg</file>

@@ -1,0 +1,10 @@
+release/main.o
+release/mainwindow.o
+release/peashooter.o
+release/plantzombie.o
+release/sun.o
+release/qrc_field.o
+release/moc_mainwindow.o
+release/moc_peashooter.o
+release/moc_plantzombie.o
+release/moc_sun.o
