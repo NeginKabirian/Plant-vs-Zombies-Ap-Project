@@ -61,6 +61,13 @@ public:
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
         graphicsView->setGeometry(QRect(0, 150, 1100, 530));
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(graphicsView->sizePolicy().hasHeightForWidth());
+        graphicsView->setSizePolicy(sizePolicy);
+        graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         layoutWidget_2 = new QWidget(centralwidget);
         layoutWidget_2->setObjectName("layoutWidget_2");
         layoutWidget_2->setGeometry(QRect(681, 30, 601, 111));
@@ -69,9 +76,6 @@ public:
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         pushButtonZA = new QPushButton(layoutWidget_2);
         pushButtonZA->setObjectName("pushButtonZA");
-        QSizePolicy sizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(pushButtonZA->sizePolicy().hasHeightForWidth());
         pushButtonZA->setSizePolicy(sizePolicy);
         QIcon icon;
@@ -244,7 +248,7 @@ public:
         Brainlabel = new QLabel(centralwidget);
         Brainlabel->setObjectName("Brainlabel");
         Brainlabel->setEnabled(true);
-        Brainlabel->setGeometry(QRect(840, 690, 131, 31));
+        Brainlabel->setGeometry(QRect(840, 690, 131, 41));
         sizePolicy.setHeightForWidth(Brainlabel->sizePolicy().hasHeightForWidth());
         Brainlabel->setSizePolicy(sizePolicy);
         QFont font1;

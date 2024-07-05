@@ -51,6 +51,8 @@ public:
     void insertfieldZD(int rect = -1,QPointF point = QPointF(0,0));
     void insertfieldZE(int rect = -1,QPointF point = QPointF(0,0));
     void insertfieldZF(int rect = -1,QPointF point = QPointF(0,0));
+
+    int ChangePosToRect(QPointF);
 private slots:
     void spawnSun();
     void handleSunClick();
@@ -94,6 +96,8 @@ private slots:
 
     void on_pushButtonZF_clicked();
 
+    void onShootPea(Peashooter*);
+
 private:
     Ui::plantzombie *ui;
     QTimer *sunspawnTimer;
@@ -134,7 +138,7 @@ private:
     QVector<QPair<TallZombie*,int>>ZD;
     QVector<QPair<AstronautZombie*,int>>ZE;
     QVector<QPair<PurpleHairZombie*,int>>ZF;
-
+    QTimer* moveTimer;
     void visibleButton();
 protected:
     void divideImageIntoGrid(int rows, int columns);
