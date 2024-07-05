@@ -26,9 +26,13 @@
         <file>regular zombie.jpg</file>
         <file>pea shooter.jpg</file>
         <file>pea.jpg</file>
+        <file>pngimg.com - smoke_PNG55243.png</file>
+        <file>blacksmoke.jfif</file>
+        <file>smoke.jfif</file>
     </qresource>
     <qresource prefix="/">
         <file>two_peashooter - Copy.jpg</file>
         <file>walnut.jpg</file>
+        <file>firepng.parspng.com-5.png</file>
     </qresource>
 </RCC>

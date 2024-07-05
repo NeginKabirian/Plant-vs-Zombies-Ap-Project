@@ -40,8 +40,8 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButtonPA;
     QPushButton *pushButtonPB;
-    QPushButton *pushButtonPD;
     QPushButton *pushButtonPC;
+    QPushButton *pushButtonPD;
     QPushButton *pushButtonPE;
     QPushButton *pushButtonPF;
     QLabel *label;
@@ -174,28 +174,28 @@ public:
 
         horizontalLayout->addWidget(pushButtonPB);
 
-        pushButtonPD = new QPushButton(layoutWidget);
-        pushButtonPD->setObjectName("pushButtonPD");
-        sizePolicy.setHeightForWidth(pushButtonPD->sizePolicy().hasHeightForWidth());
-        pushButtonPD->setSizePolicy(sizePolicy);
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/image/walnut.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButtonPD->setIcon(icon8);
-        pushButtonPD->setIconSize(QSize(65, 65));
-        pushButtonPD->setAutoRepeatInterval(302);
-
-        horizontalLayout->addWidget(pushButtonPD);
-
         pushButtonPC = new QPushButton(layoutWidget);
         pushButtonPC->setObjectName("pushButtonPC");
         sizePolicy.setHeightForWidth(pushButtonPC->sizePolicy().hasHeightForWidth());
         pushButtonPC->setSizePolicy(sizePolicy);
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/image/plum mine_transparent.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButtonPC->setIcon(icon9);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/image/walnut.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonPC->setIcon(icon8);
         pushButtonPC->setIconSize(QSize(65, 65));
 
         horizontalLayout->addWidget(pushButtonPC);
+
+        pushButtonPD = new QPushButton(layoutWidget);
+        pushButtonPD->setObjectName("pushButtonPD");
+        sizePolicy.setHeightForWidth(pushButtonPD->sizePolicy().hasHeightForWidth());
+        pushButtonPD->setSizePolicy(sizePolicy);
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/image/plum mine_transparent.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonPD->setIcon(icon9);
+        pushButtonPD->setIconSize(QSize(65, 65));
+        pushButtonPD->setAutoRepeatInterval(302);
+
+        horizontalLayout->addWidget(pushButtonPD);
 
         pushButtonPE = new QPushButton(layoutWidget);
         pushButtonPE->setObjectName("pushButtonPE");
@@ -285,13 +285,13 @@ public:
 #if QT_CONFIG(shortcut)
         pushButtonPB->setShortcut(QCoreApplication::translate("plantzombie", "B", nullptr));
 #endif // QT_CONFIG(shortcut)
-        pushButtonPD->setText(QString());
-#if QT_CONFIG(shortcut)
-        pushButtonPD->setShortcut(QCoreApplication::translate("plantzombie", "C", nullptr));
-#endif // QT_CONFIG(shortcut)
         pushButtonPC->setText(QString());
 #if QT_CONFIG(shortcut)
         pushButtonPC->setShortcut(QCoreApplication::translate("plantzombie", "D", nullptr));
+#endif // QT_CONFIG(shortcut)
+        pushButtonPD->setText(QString());
+#if QT_CONFIG(shortcut)
+        pushButtonPD->setShortcut(QCoreApplication::translate("plantzombie", "C", nullptr));
 #endif // QT_CONFIG(shortcut)
         pushButtonPE->setText(QString());
 #if QT_CONFIG(shortcut)

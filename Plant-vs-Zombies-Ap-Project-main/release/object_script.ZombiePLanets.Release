@@ -18,10 +18,15 @@ release/two_peashooter.o
 release/walnut.o
 release/zombiebase.o
 release/qrc_image.o
+release/moc_boomerang.o
 release/moc_brain.o
+release/moc_jalapieno.o
 release/moc_mainwindow.o
 release/moc_peashooter.o
 release/moc_plantbase.o
 release/moc_plantzombie.o
+release/moc_plummine.o
 release/moc_sun.o
+release/moc_two_peashooter.o
+release/moc_walnut.o
 release/moc_zombiebase.o

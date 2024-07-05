@@ -258,7 +258,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonPD">
+      <widget class="QPushButton" name="pushButtonPC">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -279,15 +279,12 @@
         </size>
        </property>
        <property name="shortcut">
-        <string>C</string>
-       </property>
-       <property name="autoRepeatInterval">
-        <number>302</number>
+        <string>D</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonPC">
+      <widget class="QPushButton" name="pushButtonPD">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -308,7 +305,10 @@
         </size>
        </property>
        <property name="shortcut">
-        <string>D</string>
+        <string>C</string>
+       </property>
+       <property name="autoRepeatInterval">
+        <number>302</number>
        </property>
       </widget>
      </item>

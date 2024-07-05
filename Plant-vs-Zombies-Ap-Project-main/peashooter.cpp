@@ -6,8 +6,20 @@ Peashooter::Peashooter() : PlantBase(200,1,15,50){
     shootingTimer = new QTimer(this);
     connect(shootingTimer, &QTimer::timeout, this, &Peashooter::shootPea);
 }
-
 void Peashooter::startShooting() {
-    shootingTimer->start(1000);
+    if (!shooting) {
+        shooting = true;
+        shootingTimer->start(1000);
+    }
 }
 
+void Peashooter::stopShooting() {
+    if (shooting) {
+        shooting = false;
+        shootingTimer->stop();
+    }
+}
+
+bool Peashooter::isShooting() const {
+    return shooting;
+}

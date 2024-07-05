@@ -116,6 +116,18 @@ plantzombie::~plantzombie()
 {
     delete ui;
 }
+bool plantzombie::isZombieInFront(int rect)
+{
+    qDebug()<<rect;
+    for (int i = rect % 6  ; i < 12 ; ++i ) {
+        qDebug()<<"i"<<rect + i + 1<<i;
+        qDebug()<<gridCentersMap[rect + i + 1].second;
+        if (!gridCentersMap[rect + i + 1].second.isEmpty() && gridCentersMap[rect + i + 1].second[0] == 'Z') {
+            return true;
+        }
+    }
+    return false;
+}
 void plantzombie::insertfieldPA(int rect , QPointF point)
 {
 
@@ -128,57 +140,55 @@ void plantzombie::insertfieldPA(int rect , QPointF point)
     sunStorage -= 50;
     ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
-    connect(pa, &Peashooter::shootPea, this, [=]() { onShootPea(pa); });
-    pa->startShooting();
+    QTimer* checkTimer = new QTimer(this);
+    connect(checkTimer, &QTimer::timeout, this, [=]() {
+        if (isZombieInFront(rect)) {
+            if (!pa->isShooting()) {
+                connect(pa, &Peashooter::shootPea, this, [=]() { onShootPea(pa, point); });
+                pa->startShooting();
+            }
+        } else {
+            if (pa->isShooting()) {
+                disconnect(pa, &Peashooter::shootPea, this, nullptr);
+                pa->stopShooting();
+            }
+        }
+    });
+    checkTimer->start(500);
 
 }
-/*void plantzombie::onShootPea(Peashooter* pa) {
-    QGraphicsEllipseItem* pea = new QGraphicsEllipseItem(0, 0, 15, 10);
-    pea->setBrush(Qt::green);
-    pea->setPos(pa->pos() + QPointF(60,+15));
-    s->addItem(pea);
 
-    moveTimer = new QTimer(this);
-    int foundSecond = -1;
+void plantzombie::onShootPea(PlantBase* pa , QPointF point) {    //polimorphism :)
+    QPropertyAnimation* animation = new QPropertyAnimation(pa, "pos");
+    bool boomrang = false;
+    animation->setDuration(1000);
+    animation->setStartValue(point);
+    animation->setKeyValueAt(0.7, point + QPointF(0, -2.2));
+    animation->setEndValue(point);
+    animation->setLoopCount(-1);
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
+    QGraphicsEllipseItem* pea = nullptr;
 
-
-    for (const auto& pair : PA) {
-        if (pair.first == pa) {
-            foundSecond = pair.second;
-            break;
-        }
+    if (dynamic_cast<Peashooter*>(pa)) {
+        pea = new QGraphicsEllipseItem(0, 0, 15, 10);
+        pea->setBrush(Qt::green);
+    } else if (dynamic_cast<Two_Peashooter*>(pa)) {
+        pea = new QGraphicsEllipseItem(0, 0, 20, 15);
+        pea->setBrush(QColor(0, 100, 0));
     }
-    QString zombie;
-    bool flag = false;
-    int i = 0, j = 0;
-    for(i = foundSecond + 1 , j = 0 ; i%12 <7  && j < 5 ; ++j ,++i){
-        if(gridCentersMap[i].second == ""){  continue;}
-    if(gridCentersMap[i].second[0] == 'Z' ){
-            zombie = gridCentersMap[i].second;
-            flag = true;
-            qDebug()<<zombie;
-            break;
-        }
+    else{
+        pea = new QGraphicsEllipseItem(0, 0, 25, 20);
+        pea->setBrush(Qt::red);
+        boomrang = true;
     }
-    connect(moveTimer, &QTimer::timeout, [this,flag,pea,i]() {
-        pea->setPos(pea->pos() + QPointF(10, 0));
-        if(ChangePosToRect(pea->pos()) == i && flag == true){
-            s->removeItem(pea);
-        }
-        else if (pea->pos().x() > 1000) {
-            s->removeItem(pea);
-        }
-    }); //firning client message
-    moveTimer->start(50);
-}*/
-void plantzombie::onShootPea(Peashooter* pa) {
-    QGraphicsEllipseItem* pea = new QGraphicsEllipseItem(0, 0, 15, 10);
-    pea->setBrush(Qt::green);
+
+    if (pea == nullptr) return;
+
     pea->setPos(pa->pos() + QPointF(62, 17));
     s->addItem(pea);
 
     QTimer* moveTimer = new QTimer(this);
-    connect(moveTimer, &QTimer::timeout, this, [this,pa, pea, moveTimer]() {
+    connect(moveTimer, &QTimer::timeout, this, [this,pa,pea, moveTimer,boomrang]() {
         pea->setPos(pea->pos() + QPointF(10, 0));
 
         if (pea->pos().x() > 1000) {
@@ -186,6 +196,9 @@ void plantzombie::onShootPea(Peashooter* pa) {
             delete pea;
             moveTimer->stop();
             moveTimer->deleteLater();
+            return;
+        }
+        if(boomrang){
             return;
         }
 
@@ -204,7 +217,7 @@ void plantzombie::onShootPea(Peashooter* pa) {
                     if (ChangePosToRect(pea->pos()) == i) {
                         QPointF currentPos = pea->pos();
                         QPointF zombiePos = gridCentersMap[i].first;
-                        if (currentPos.x() >= zombiePos.x() + 10) {
+                        if (currentPos.x() >= zombiePos.x() + 7) {
                             s->removeItem(pea);
                             delete pea;
                             moveTimer->stop();
@@ -231,11 +244,30 @@ void plantzombie::insertfieldPB(int rect , QPointF point)
     sunStorage -= 100;
     ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
+
+    connect(pb, &Two_Peashooter::shootPea, this, [=]() { onShootPea(pb , point); });
+    pb->startShooting();
+    QTimer* checkTimer = new QTimer(this);
+    connect(checkTimer, &QTimer::timeout, this, [=]() {
+        if (isZombieInFront(rect)) {
+            if (!pb->isShooting()) {
+                connect(pb, &Two_Peashooter::shootPea, this, [=]() { onShootPea(pb, point); });
+                pb->startShooting();
+            }
+        } else {
+            if (pb->isShooting()) {
+                disconnect(pb, &Two_Peashooter::shootPea, this, nullptr);
+                pb->stopShooting();
+            }
+        }
+    });
+    checkTimer->start(500);
 }
 
 void plantzombie::insertfieldPC(int rect , QPointF point)
 {
     Walnut* pc = new Walnut;
+    pc->move(isZombieInFront(rect));
     QPair<Walnut*,int> pair(pc,rect);
     gridCentersMap[rect].second = "PC";
     pc->setPos(point);
@@ -247,7 +279,7 @@ void plantzombie::insertfieldPC(int rect , QPointF point)
 }
 void plantzombie::insertfieldPD(int rect , QPointF point)
 {
-    PlumMine* pd = new PlumMine;
+    PlumMine* pd = new PlumMine(s);
     QPair<PlumMine*,int> pair(pd,rect);
     gridCentersMap[rect].second = "PD";
     pd->setPos(point);
@@ -256,10 +288,15 @@ void plantzombie::insertfieldPD(int rect , QPointF point)
     sunStorage -= 175;
     ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
+    connect(pd,&PlumMine::plumminefunction,this,&plantzombie::plumminefunction);
+    QTimer::singleShot(1000,pd,SLOT(explode()));
+}
+void plantzombie::plumminefunction(){
+
 }
 void plantzombie::insertfieldPE(int rect, QPointF point)
 {
-    Jalapieno* pe = new Jalapieno;
+    Jalapieno* pe = new Jalapieno(s);
     QPair<Jalapieno*,int> pair(pe,rect);
     gridCentersMap[rect].second = "PE";
     pe->setPos(point);
@@ -268,6 +305,22 @@ void plantzombie::insertfieldPE(int rect, QPointF point)
     sunStorage -= 150;
     ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
+    connect(pe, &Jalapieno::burnRow, this, &plantzombie::burnRow);
+    QTimer::singleShot(1000, pe, SLOT(ignite()));
+}
+
+void plantzombie::burnRow(int row)
+{
+    /*int startX = 0;
+    int endX = 1000;
+    int y = row * 71;
+
+   // client server
+     * for (QGraphicsItem* item : s->items(QRectF(startX, y, endX - startX, cellHeight))) {
+        if (Zombie* zombie = dynamic_cast<Zombie*>(item)) {
+            zombie->decreaseHealth(50); // مثال: کاهش جان به مقدار 50
+        }
+    }*/
 }
 void plantzombie::insertfieldPF(int rect, QPointF point)
 {
@@ -280,12 +333,28 @@ void plantzombie::insertfieldPF(int rect, QPointF point)
     sunStorage -= 125;
     ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
+    QTimer* checkTimer = new QTimer(this);
+    connect(checkTimer, &QTimer::timeout, this, [=]() {
+        if (isZombieInFront(rect)) {
+            if (!pf->isShooting()) {
+                connect(pf, &Boomerang::shootPea, this, [=]() { onShootPea(pf, point); });
+                pf->startShooting();
+            }
+        } else {
+            if (pf->isShooting()) {
+                disconnect(pf, &Boomerang::shootPea, this, nullptr);
+                pf->stopShooting();
+            }
+        }
+    });
+    checkTimer->start(500);
 }
 void plantzombie::insertfieldZA(int rect, QPointF point)
 {
     RegularZambie* za = new RegularZambie;
     QPair<RegularZambie*,int> pair(za,rect);
     gridCentersMap[rect].second = "ZA";
+    qDebug()<<"hew"<<rect;
     za->setPos(point);
     s->addItem(za);
     ZA.push_back(pair);
@@ -397,6 +466,7 @@ void plantzombie::divideImageIntoGrid(int rows, int columns)
 {
     qreal widthStep = 932/ columns;
     qreal heightStep = 426/ rows;
+    qDebug()<<heightStep;
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < columns; ++col) {
             //qreal x = col * widthStep+118;

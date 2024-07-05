@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QGraphicsPixmapItem>
-
+#include<QTimer>
 class PlantBase : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT;
 public:

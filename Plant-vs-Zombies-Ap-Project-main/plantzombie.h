@@ -28,6 +28,8 @@
 #include<QPushButton>
 #include <QMouseEvent>
 #include <QAtomicInt>
+#include<plantbase.h>
+#include<QPropertyAnimation>
 namespace Ui {
 class plantzombie;
 }
@@ -96,7 +98,9 @@ private slots:
 
     void on_pushButtonZF_clicked();
 
-    void onShootPea(Peashooter*);
+    void onShootPea(PlantBase* , QPointF);
+    void burnRow(int row);
+    void plumminefunction();
 
 private:
     Ui::plantzombie *ui;
@@ -140,6 +144,7 @@ private:
     QVector<QPair<PurpleHairZombie*,int>>ZF;
     QTimer* moveTimer;
     void visibleButton();
+    bool isZombieInFront(int);
 protected:
     void divideImageIntoGrid(int rows, int columns);
     QMap<int, QPair<QPointF,QString>> createGridCentersMap();
