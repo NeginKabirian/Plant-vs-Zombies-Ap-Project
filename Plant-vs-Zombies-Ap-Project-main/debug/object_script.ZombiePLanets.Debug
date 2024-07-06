@@ -1,8 +1,8 @@
+debug/Client.o
 debug/astronautzombie.o
 debug/boomerang.o
 debug/brain.o
 debug/bucketheadzombie.o
-debug/client.o
 debug/jalapieno.o
 debug/leafheadzombie.o
 debug/main.o
@@ -19,9 +19,9 @@ debug/two_peashooter.o
 debug/walnut.o
 debug/zombiebase.o
 debug/qrc_image.o
+debug/moc_Client.o
 debug/moc_boomerang.o
 debug/moc_brain.o
-debug/moc_client.o
 debug/moc_jalapieno.o
 debug/moc_mainwindow.o
 debug/moc_peashooter.o

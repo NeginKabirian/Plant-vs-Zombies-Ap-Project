@@ -23,23 +23,36 @@ plantzombie::plantzombie(QWidget *parent) :
     sunspawnTimer = new QTimer(this);
     connect(sunspawnTimer, &QTimer::timeout, this, &plantzombie::spawnSun);
     sunspawnTimer->start(5000); // spawn a sun every 5 seconds
+
     brainspawnTimer = new QTimer(this);
     connect(brainspawnTimer, &QTimer::timeout, this, &plantzombie::spawnBrain);
-
     brainspawnTimer->start(5000); // spawn a sun every 5 secon
+
+
+
     //ui->pushButtonPA->setStyleSheet("QPushButton { background-color: rgba(0, 0, 255, 100); }");
     visibleButton();
+    if(Zombie==true){
+        //  ui->label_3->setText("zombie");
+    }else if(plant==true){
+       // ui->label_3->setText("plant");
+    }
 
 }
 void plantzombie::visibleButton(){
+    ui->pushButtonPA->setVisible(false);ui->pushButtonPB->setVisible(false);ui->pushButtonPC->setVisible(false);
+    ui->pushButtonPD->setVisible(false);ui->pushButtonPE->setVisible(false);ui->pushButtonPF->setVisible(false);
+    ui->pushButtonZA->setVisible(false);ui->pushButtonZB->setVisible(false);ui->pushButtonZC->setVisible(false);
+    ui->pushButtonZD->setVisible(false);ui->pushButtonZE->setVisible(false);ui->pushButtonZF->setVisible(false);
     if(plant == true){
+        ui->Brainlabel->setVisible(false);
+        ui->brainlabel->setVisible(false);
         if(sunStorage >= 50){
             ui->pushButtonPA->setVisible(true);
         }
         else{
             ui->pushButtonPA->setVisible(false);
         }
-
         if(sunStorage >= 100){
             ui->pushButtonPB->setVisible(true);
         }
@@ -72,6 +85,8 @@ void plantzombie::visibleButton(){
         }
     }
     else{
+        ui->label->setVisible(false);
+        ui->label_2->setVisible(false);
         if(brainStorge >= 100){
             ui->pushButtonZA->setVisible(true);
         }
@@ -136,8 +151,6 @@ void plantzombie::insertfieldPA(int rect , QPointF point)
     pa->setPos(point);
     s->addItem(pa);
     PA.push_back(pair);
-    sunStorage -= 50;
-    ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
     QTimer* checkTimer = new QTimer(this);
     connect(checkTimer, &QTimer::timeout, this, [=]() {
@@ -157,6 +170,8 @@ void plantzombie::insertfieldPA(int rect , QPointF point)
     checkTimer->start(500);
     pa->startShooting();
     if(plant==true){
+        sunStorage -= 50;
+        ui->label_2->setText(QString::number(sunStorage));
         int x=point.x();
         int y=point.y();
         emit SInsertPA(rect,x,y);
@@ -268,10 +283,10 @@ void plantzombie::insertfieldPB(int rect , QPointF point)
     pb->setPos(point);
     s->addItem(pb);
     PB.push_back(pair);
-    sunStorage -= 100;
-    ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
     if(plant==true){
+        sunStorage -= 100;
+        ui->label_2->setText(QString::number(sunStorage));
         int x=point.x();
         int y=point.y();
         emit SInsertPB(rect,x,y);
@@ -306,10 +321,10 @@ void plantzombie::insertfieldPC(int rect , QPointF point)
     pc->setPos(point);
     s->addItem(pc);
     PC.push_back(pair);
-    sunStorage -= 100;
-    ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
     if(plant==true){
+        sunStorage -= 100;
+        ui->label_2->setText(QString::number(sunStorage));
         int x=point.x();
         int y=point.y();
         emit SInsertPC(rect,x,y);
@@ -325,10 +340,10 @@ void plantzombie::insertfieldPD(int rect , QPointF point)
     pd->setPos(point);
     s->addItem(pd);
     PD.push_back(pair);
-    sunStorage -= 175;
-    ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
     if(plant==true){
+        sunStorage -= 175;
+        ui->label_2->setText(QString::number(sunStorage));
         int x=point.x();
         int y=point.y();
         emit SInsertPD(rect,x,y);
@@ -408,10 +423,10 @@ void plantzombie::insertfieldPE(int rect, QPointF point)
     pe->setPos(point);
     s->addItem(pe);
     PE.push_back(pair);
-    sunStorage -= 150;
-    ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
     if(plant==true){
+        sunStorage -= 150;
+        ui->label_2->setText(QString::number(sunStorage));
         int x=point.x();
         int y=point.y();
         emit SInsertPE(rect,x,y);
@@ -438,10 +453,10 @@ void plantzombie::insertfieldPF(int rect, QPointF point)
     pf->setPos(point);
     s->addItem(pf);
     PF.push_back(pair);
-    sunStorage -= 125;
-    ui->label_2->setText(QString::number(sunStorage));
     visibleButton();
     if(plant==true){
+        sunStorage -= 125;
+        ui->label_2->setText(QString::number(sunStorage));
         int x=point.x();
         int y=point.y();
         emit SInsertPF(rect,x,y);
@@ -472,10 +487,10 @@ void plantzombie::insertfieldZA(int rect, QPointF point)
     za->setPos(point);
     s->addItem(za);
     ZA.push_back(pair);
-    brainStorge -= 100;
-    ui->Brainlabel->setText(QString::number(brainStorge));
     visibleButton();
     if(Zombie==true){
+        brainStorge -= 100;
+        ui->Brainlabel->setText(QString::number(brainStorge));
         int x=point.x();
         int y=point.y();
         emit SInsertZA(rect,x,y);
@@ -491,10 +506,10 @@ void plantzombie::insertfieldZB(int rect, QPointF point)
     zb->setPos(point);
     s->addItem(zb);
     ZB.push_back(pair);
-    brainStorge -= 200;
-    ui->Brainlabel->setText(QString::number(brainStorge));
     visibleButton();
     if(Zombie==true){
+        brainStorge -= 200;
+        ui->Brainlabel->setText(QString::number(brainStorge));
         int x=point.x();
         int y=point.y();
         emit SInsertZB(rect,x,y);
@@ -510,10 +525,10 @@ void plantzombie::insertfieldZC(int rect, QPointF point)
     zc->setPos(point);
     s->addItem(zc);
     ZC.push_back(pair);
-    brainStorge -= 150;
-    ui->Brainlabel->setText(QString::number(brainStorge));
     visibleButton();
     if(Zombie==true){
+        brainStorge -= 150;
+        ui->Brainlabel->setText(QString::number(brainStorge));
         int x=point.x();
         int y=point.y();
         emit SInsertZC(rect,x,y);
@@ -529,10 +544,10 @@ void plantzombie::insertfieldZD(int rect, QPointF point)
     zd->setPos(point);
     s->addItem(zd);
     ZD.push_back(pair);
-    brainStorge -= 150;
-    ui->Brainlabel->setText(QString::number(brainStorge));
     visibleButton();
     if(Zombie==true){
+        brainStorge -= 150;
+        ui->Brainlabel->setText(QString::number(brainStorge));
         int x=point.x();
         int y=point.y();
         emit SInsertZD(rect,x,y);
@@ -548,10 +563,10 @@ void plantzombie::insertfieldZE(int rect, QPointF point)
     ze->setPos(point);
     s->addItem(ze);
     ZE.push_back(pair);
-    brainStorge -= 200;
-    ui->Brainlabel->setText(QString::number(brainStorge));
     visibleButton();
     if(Zombie==true){
+        brainStorge -= 200;
+        ui->Brainlabel->setText(QString::number(brainStorge));
         int x=point.x();
         int y=point.y();
         emit SInsertZE(rect,x,y);
@@ -567,10 +582,10 @@ void plantzombie::insertfieldZF(int rect, QPointF point)
     zf->setPos(point);
     s->addItem(zf);
     ZF.push_back(pair);
-    brainStorge -= 800;
-    ui->Brainlabel->setText(QString::number(brainStorge));
     visibleButton();
     if(Zombie==true){
+        brainStorge -= 800;
+        ui->Brainlabel->setText(QString::number(brainStorge));
         int x=point.x();
         int y=point.y();
         emit SInsertZF(rect,x,y);
@@ -748,12 +763,6 @@ void plantzombie::mousePressEvent(QMouseEvent *event)
                 gridCentersMap.find(currentGridIndex)->second="ZF";
             }
         }
-
-
-
-
-
-
     } else if (event->button() == Qt::RightButton) {
 
     }

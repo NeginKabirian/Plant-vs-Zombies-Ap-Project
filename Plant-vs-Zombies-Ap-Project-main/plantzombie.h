@@ -1,4 +1,4 @@
-#ifndef PLANTZOMBIE_H
+  #ifndef PLANTZOMBIE_H
 #define PLANTZOMBIE_H
 
 #include <QMainWindow>
@@ -173,7 +173,6 @@ signals:
     void SInsertZD(int rect,int x,int y);
     void SInsertZE(int rect,int x,int y);
     void SInsertZF(int rect,int x,int y);
-
 };
 
 #endif // PLANTZOMBIE_H
