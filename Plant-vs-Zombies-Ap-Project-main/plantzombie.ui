@@ -58,7 +58,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/regular zombie.jpg</normaloff>:/image/regular zombie.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -81,7 +81,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/Bucket head zombie.jpg</normaloff>:/image/Bucket head zombie.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -104,7 +104,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/leaf hair zombie.jpg</normaloff>:/image/leaf hair zombie.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -127,7 +127,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/tall zombie.jpg</normaloff>:/image/tall zombie.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -150,7 +150,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/astronaut zombie.jpg</normaloff>:/image/astronaut zombie.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -173,7 +173,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/purple hair zombie_transparent.png</normaloff>:/image/purple hair zombie_transparent.png</iconset>
        </property>
        <property name="iconSize">
@@ -211,7 +211,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/pea shooter.jpg</normaloff>:/image/pea shooter.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -243,7 +243,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/two_peashooter.jpg</normaloff>:/image/two_peashooter.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -269,7 +269,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/walnut.jpg</normaloff>:/image/walnut.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -298,7 +298,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/plum mine_transparent.png</normaloff>:/image/plum mine_transparent.png</iconset>
        </property>
        <property name="iconSize">
@@ -324,7 +324,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/jalapino.jpg</normaloff>:/image/jalapino.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -350,7 +350,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="image.qrc">
          <normaloff>:/image/boomrang_transparent.png</normaloff>:/image/boomrang_transparent.png</iconset>
        </property>
        <property name="iconSize">
@@ -382,7 +382,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/image/sun.png</pixmap>
+     <pixmap resource="image.qrc">:/image/sun.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -437,7 +437,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/image/Brain.png</pixmap>
+     <pixmap resource="image.qrc">:/image/Brain.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -475,6 +475,26 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>0</y>
+      <width>281</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -488,6 +508,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections/>
 </ui>
