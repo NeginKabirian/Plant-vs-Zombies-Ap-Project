@@ -19,7 +19,6 @@ void Peashooter::stopShooting() {
         shootingTimer->stop();
     }
 }
-
 bool Peashooter::isShooting() const {
     return shooting;
 }

@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT       += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -13,6 +13,7 @@ SOURCES += \
     boomerang.cpp \
     brain.cpp \
     bucketheadzombie.cpp \
+    client.cpp \
     jalapieno.cpp \
     leafheadzombie.cpp \
     main.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     boomerang.h \
     brain.h \
     bucketheadzombie.h \
+    client.h \
     jalapieno.h \
     leafheadzombie.h \
     mainwindow.h \

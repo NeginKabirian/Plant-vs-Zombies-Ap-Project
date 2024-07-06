@@ -221,7 +221,7 @@ public:
 
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(80, 690, 63, 41));
+        label->setGeometry(QRect(1140, 170, 63, 41));
         sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy);
         label->setPixmap(QPixmap(QString::fromUtf8(":/image/sun.png")));
@@ -229,7 +229,7 @@ public:
         label->setMargin(-4);
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(160, 690, 71, 41));
+        label_2->setGeometry(QRect(1230, 180, 71, 41));
         QFont font;
         font.setFamilies({QString::fromUtf8("Segoe UI Black")});
         font.setPointSize(35);
@@ -240,7 +240,7 @@ public:
         brainlabel = new QLabel(centralwidget);
         brainlabel->setObjectName("brainlabel");
         brainlabel->setEnabled(true);
-        brainlabel->setGeometry(QRect(760, 690, 63, 31));
+        brainlabel->setGeometry(QRect(1140, 450, 63, 31));
         sizePolicy.setHeightForWidth(brainlabel->sizePolicy().hasHeightForWidth());
         brainlabel->setSizePolicy(sizePolicy);
         brainlabel->setPixmap(QPixmap(QString::fromUtf8(":/image/Brain.png")));
@@ -248,7 +248,7 @@ public:
         Brainlabel = new QLabel(centralwidget);
         Brainlabel->setObjectName("Brainlabel");
         Brainlabel->setEnabled(true);
-        Brainlabel->setGeometry(QRect(840, 690, 131, 41));
+        Brainlabel->setGeometry(QRect(1250, 450, 131, 41));
         sizePolicy.setHeightForWidth(Brainlabel->sizePolicy().hasHeightForWidth());
         Brainlabel->setSizePolicy(sizePolicy);
         QFont font1;

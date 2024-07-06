@@ -10,6 +10,7 @@ public:
     PlantBase(int,int,int,int);
     virtual ~PlantBase() = default;
     int getHealth();
+    virtual void setHealth(int);
     int getFirningRate();
     int getAttackPower();
     int getSun();

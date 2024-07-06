@@ -8,3 +8,18 @@ ZombieBase::ZombieBase(int _Health, double _MovmentDelay, int _AttackPower, doub
 {
 
 }
+
+void ZombieBase::setHealth(int _Health)
+{
+    Health = _Health;
+}
+
+int ZombieBase::getHealth()
+{
+    return Health;
+}
+
+double ZombieBase::getAttackPower()
+{
+    return AttackPower;
+}

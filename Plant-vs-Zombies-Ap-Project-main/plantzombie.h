@@ -30,6 +30,12 @@
 #include <QAtomicInt>
 #include<plantbase.h>
 #include<QPropertyAnimation>
+#include <QDebug>
+#include<QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include<QRandomGenerator>
+#include <QGraphicsView>
+#include <QRectF>
 namespace Ui {
 class plantzombie;
 }
@@ -39,6 +45,8 @@ class plantzombie : public QMainWindow
     Q_OBJECT
 
 public:
+    bool Zombie=false;
+    bool plant=false;
     explicit plantzombie(QWidget *parent = nullptr);
     ~plantzombie();
     void insertfieldPA(int rect = -1 ,QPointF point = QPointF(0,0)); //12
@@ -97,10 +105,11 @@ private slots:
     void on_pushButtonZE_clicked();
 
     void on_pushButtonZF_clicked();
-
+    //slot for plant
     void onShootPea(PlantBase* , QPointF);
-    void burnRow(int row);
-    void plumminefunction();
+    void burnRow(int rect , PlantBase*);
+    void plumminefunction(int rect , PlantBase*);
+    void plantattack(PlantBase* , int);
 
 private:
     Ui::plantzombie *ui;
@@ -114,6 +123,8 @@ private:
 
     QLabel *label1;
     QMap<int, QPair<QPointF,QString>> gridCentersMap;
+    QMap<int, QPair<QPointF,PlantBase*>> plantMap;
+    QMap<int, QPair<QPointF,ZombieBase*>> zombieMap;
     QList<QRectF> gridRects;
     int currentGridIndex = -1;
     bool isDrawingPA = false;
@@ -149,6 +160,19 @@ protected:
     void divideImageIntoGrid(int rows, int columns);
     QMap<int, QPair<QPointF,QString>> createGridCentersMap();
     void mousePressEvent(QMouseEvent *event) override;
+signals:
+    void SInsertPA(int rect,int x,int y);
+    void SInsertPB(int rect,int x,int y);
+    void SInsertPC(int rect,int x,int y);
+    void SInsertPD(int rect,int x,int y);
+    void SInsertPE(int rect,int x,int y);
+    void SInsertPF(int rect,int x,int y);
+    void SInsertZA(int rect,int x,int y);
+    void SInsertZB(int rect,int x,int y);
+    void SInsertZC(int rect,int x,int y);
+    void SInsertZD(int rect,int x,int y);
+    void SInsertZE(int rect,int x,int y);
+    void SInsertZF(int rect,int x,int y);
 
 };
 

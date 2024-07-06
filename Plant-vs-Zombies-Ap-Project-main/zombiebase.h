@@ -9,6 +9,9 @@ class ZombieBase : public QObject , public QGraphicsPixmapItem
 public:
     //explicit ZombieBase(QObject *parent = nullptr);
     ZombieBase(int,double,int,double,int);
+    virtual void setHealth(int);
+    virtual int getHealth();
+    virtual double getAttackPower();
 protected:
     int Health;
     const double MovmentDelay;

@@ -2,6 +2,7 @@ release/astronautzombie.o
 release/boomerang.o
 release/brain.o
 release/bucketheadzombie.o
+release/client.o
 release/jalapieno.o
 release/leafheadzombie.o
 release/main.o
@@ -20,6 +21,7 @@ release/zombiebase.o
 release/qrc_image.o
 release/moc_boomerang.o
 release/moc_brain.o
+release/moc_client.o
 release/moc_jalapieno.o
 release/moc_mainwindow.o
 release/moc_peashooter.o
