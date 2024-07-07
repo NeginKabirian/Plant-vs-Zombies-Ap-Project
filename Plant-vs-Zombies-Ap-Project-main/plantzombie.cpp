@@ -32,11 +32,11 @@ plantzombie::plantzombie(QWidget *parent) :
 
     //ui->pushButtonPA->setStyleSheet("QPushButton { background-color: rgba(0, 0, 255, 100); }");
     visibleButton();
-    if(Zombie==true){
-        //  ui->label_3->setText("zombie");
+    /*if(Zombie==true){
+        ui->labe->setText("zombie");
     }else if(plant==true){
-       // ui->label_3->setText("plant");
-    }
+       ui->->setText("plant");
+    }*/
 
 }
 void plantzombie::visibleButton(){
@@ -44,9 +44,11 @@ void plantzombie::visibleButton(){
     ui->pushButtonPD->setVisible(false);ui->pushButtonPE->setVisible(false);ui->pushButtonPF->setVisible(false);
     ui->pushButtonZA->setVisible(false);ui->pushButtonZB->setVisible(false);ui->pushButtonZC->setVisible(false);
     ui->pushButtonZD->setVisible(false);ui->pushButtonZE->setVisible(false);ui->pushButtonZF->setVisible(false);
+    ui->Brainlabel->setVisible(false); ui->label->setVisible(false);
+    ui->label_2->setVisible(false);ui->brainlabel->setVisible(false);
     if(plant == true){
-        ui->Brainlabel->setVisible(false);
-        ui->brainlabel->setVisible(false);
+        ui->label->setVisible(true);
+        ui->label_2->setVisible(true);
         if(sunStorage >= 50){
             ui->pushButtonPA->setVisible(true);
         }
@@ -85,8 +87,8 @@ void plantzombie::visibleButton(){
         }
     }
     else{
-        ui->label->setVisible(false);
-        ui->label_2->setVisible(false);
+        ui->Brainlabel->setVisible(true);
+        ui->brainlabel->setVisible(true);
         if(brainStorge >= 100){
             ui->pushButtonZA->setVisible(true);
         }
