@@ -5,8 +5,19 @@
 
 class Boomerang : public PlantBase
 {
+    Q_OBJECT
+    Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 public:
     Boomerang();
+    void startShooting();
+    void stopShooting();
+    bool isShooting() const;
+signals:
+    void shootPea();
+
+private:
+    QTimer *shootingTimer;
+    bool shooting;
 };
 
 #endif // BOOMERANG_H

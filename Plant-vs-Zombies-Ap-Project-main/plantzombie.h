@@ -28,6 +28,14 @@
 #include<QPushButton>
 #include <QMouseEvent>
 #include <QAtomicInt>
+#include<plantbase.h>
+#include<QPropertyAnimation>
+#include <QDebug>
+#include<QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include<QRandomGenerator>
+#include <QGraphicsView>
+#include <QRectF>
 namespace Ui {
 class plantzombie;
 }
@@ -97,8 +105,11 @@ private slots:
     void on_pushButtonZE_clicked();
 
     void on_pushButtonZF_clicked();
-
-    void onShootPea(Peashooter*);
+    //slot for plant
+    void onShootPea(PlantBase* , QPointF);
+    void burnRow(int rect , PlantBase*);
+    void plumminefunction(int rect , PlantBase*);
+    void plantattack(PlantBase* , int);
 
 private:
     Ui::plantzombie *ui;
@@ -112,6 +123,8 @@ private:
 
     QLabel *label1;
     QMap<int, QPair<QPointF,QString>> gridCentersMap;
+    QMap<int, QPair<QPointF,PlantBase*>> plantMap;
+    QMap<int, QPair<QPointF,ZombieBase*>> zombieMap;
     QList<QRectF> gridRects;
     int currentGridIndex = -1;
     bool isDrawingPA = false;
@@ -142,6 +155,7 @@ private:
     QVector<QPair<PurpleHairZombie*,int>>ZF;
     QTimer* moveTimer;
     void visibleButton();
+    bool isZombieInFront(int);
 protected:
     void divideImageIntoGrid(int rows, int columns);
     QMap<int, QPair<QPointF,QString>> createGridCentersMap();

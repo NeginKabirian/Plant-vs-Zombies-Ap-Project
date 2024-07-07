@@ -5,3 +5,20 @@ PlantBase::PlantBase(int _Health,int _FirningRate,int _AttackPower,int _sun)
 
 }
 
+int PlantBase::getHealth()
+{
+    return Health;
+}
+
+void PlantBase::setHealth(int _Health)
+{
+    Health = _Health;
+}
+
+int PlantBase::getAttackPower()
+{
+    return AttackPower;
+}
+
+
+
