@@ -61,7 +61,8 @@ public:
     void insertfieldZD(int rect = -1,QPointF point = QPointF(0,0));
     void insertfieldZE(int rect = -1,QPointF point = QPointF(0,0));
     void insertfieldZF(int rect = -1,QPointF point = QPointF(0,0));
-
+    void visibleButton();
+    //void visibleButton();
     int ChangePosToRect(QPointF);
 private slots:
     void spawnSun();
@@ -154,7 +155,7 @@ private:
     QVector<QPair<AstronautZombie*,int>>ZE;
     QVector<QPair<PurpleHairZombie*,int>>ZF;
     QTimer* moveTimer;
-    void visibleButton();
+
     bool isZombieInFront(int);
 protected:
     void divideImageIntoGrid(int rows, int columns);

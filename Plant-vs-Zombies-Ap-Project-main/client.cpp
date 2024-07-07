@@ -104,8 +104,10 @@ void Client::onReadyRead()
     QString message = QString::fromUtf8(data);
     if(message=="zombie"){
        m_game->Zombie=true;
+       m_game->visibleButton();
     }else if(message=="plant"){
        m_game->plant=true;
+       m_game->visibleButton();
     }else{
     QStringList parts = message.split(',');
     if (parts.size() == 4 && parts[0] == "addPA") {
