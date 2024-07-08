@@ -378,23 +378,47 @@ void plantzombie::plumminefunction(int rect , PlantBase* pd){
 void plantzombie::plantattack(PlantBase *p , int rect) //server
 {
     if(dynamic_cast<Peashooter*>(p)){
-        qDebug()<<"before"<<zombieMap[rect].second->getHealth();
-        zombieMap[rect].second->setHealth(zombieMap[rect].second->getHealth() - p->getAttackPower());
-        qDebug()<<"after"<<zombieMap[rect].second->getHealth();
+        if(zombieMap[rect].second->getHealth()>0){
+            qDebug()<<"before"<<zombieMap[rect].second->getHealth();
+            zombieMap[rect].second->setHealth(zombieMap[rect].second->getHealth() - p->getAttackPower());
+            qDebug()<<"after"<<zombieMap[rect].second->getHealth();
+        }
+        else{
+            s->removeItem(zombieMap[rect].second);
+            gridCentersMap[rect].second = "";
+            zombieMap.remove(rect);
+        }
+
     }
     else
         if(dynamic_cast<Two_Peashooter*>(p)){
-        qDebug()<<"before"<<zombieMap[rect].second->getHealth();
-        zombieMap[rect].second->setHealth(zombieMap[rect].second->getHealth() - p->getAttackPower());
-         qDebug()<<"after"<<zombieMap[rect].second->getHealth();
+        if(zombieMap[rect].second->getHealth()>0){
+            qDebug()<<"before"<<zombieMap[rect].second->getHealth();
+            zombieMap[rect].second->setHealth(zombieMap[rect].second->getHealth() - p->getAttackPower());
+            qDebug()<<"after"<<zombieMap[rect].second->getHealth();
+        }
+        else{
+            s->removeItem(zombieMap[rect].second);
+            gridCentersMap[rect].second = "";
+            zombieMap.remove(rect);
+        }
+
     }
     else
         if(dynamic_cast<Boomerang*>(p)){
         for (int i = 1 ; i < 12 - rect % 12  ; ++i ){
             if (zombieMap[rect+i].second && dynamic_cast<ZombieBase*>(zombieMap[rect+i].second)) {
-                qDebug()<<"before"<<zombieMap[rect+i].second->getHealth();
-                zombieMap[rect+i].second->setHealth(zombieMap[rect+i].second->getHealth() - p->getAttackPower());
-                qDebug()<<"after"<<zombieMap[rect+i].second->getHealth();
+                if(zombieMap[rect].second->getHealth()>0){
+                    qDebug()<<"before"<<zombieMap[rect+i].second->getHealth();
+                    zombieMap[rect+i].second->setHealth(zombieMap[rect+i].second->getHealth() - p->getAttackPower());
+                    qDebug()<<"after"<<zombieMap[rect+i].second->getHealth();
+                }
+                else{
+                     s->removeItem(zombieMap[rect].second);
+                    gridCentersMap[rect].second = "";
+                    zombieMap.remove(rect);
+                }
+
             }
     }
     }
@@ -413,24 +437,37 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
 
             if (dx <= 2 * 71 && dy <= 2 * 71) {
                 ZombieBase* zombie = it.value().second;
-                zombie->setHealth(zombie->getHealth() - p->getAttackPower());
+                if(zombieMap[rect].second->getHealth()>0){
+                    zombie->setHealth(zombie->getHealth() - p->getAttackPower());
+                }
+                else{
+                    s->removeItem(zombieMap[rect].second);
+                    gridCentersMap[rect].second = "";
+                    zombieMap.remove(rect);
+                }
             }
         }
     }
     else if(dynamic_cast<Jalapieno*>(p)){
         int row = rect / 12 + 1 , newrect = (row - 1)*12 + 1;
         for(int i = newrect ; i < newrect + 11 ; ++i){
-            //qDebug()<<"i"<<i;
             if(zombieMap[i].second && dynamic_cast<ZombieBase*>(zombieMap[i].second)){
-                qDebug()<<"before"<<zombieMap[i].second->getHealth();
-                zombieMap[i].second->setHealth(zombieMap[i].second->getHealth() - p->getAttackPower());
-                qDebug()<<"after"<<zombieMap[i].second->getHealth();
+                if(zombieMap[rect].second->getHealth()>0){
+                    qDebug()<<"before"<<zombieMap[i].second->getHealth();
+                    zombieMap[i].second->setHealth(zombieMap[i].second->getHealth() - p->getAttackPower());
+                    qDebug()<<"after"<<zombieMap[i].second->getHealth();
+                }
+                else{
+                    s->removeItem(zombieMap[rect].second);
+                    gridCentersMap[rect].second = "";
+                    zombieMap.remove(rect);
+                }
             }
         }
     }
 }
 
-void plantzombie::onCheckHealth()
+void plantzombie::onCheckHealth() //delete
 {
 
    /*for (auto it = plantMap.begin(); it != plantMap.end(); ) {

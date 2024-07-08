@@ -47,8 +47,6 @@ class plantzombie : public QMainWindow
 public:
     bool Zombie=true;
     bool plant=true;
-    bool death;
-    bool shoot;
     explicit plantzombie(QWidget *parent = nullptr);
     ~plantzombie();
     void insertfieldPA(int rect = -1 ,QPointF point = QPointF(0,0)); //12
@@ -144,6 +142,7 @@ private:
     bool isDrawingZE = false;
     bool isDrawingZF = false;
     //vector pair<class obj,number rect> rect = -1 default
+    //delete vector
     QVector<QPair<Peashooter*,int>>PA;
     QVector<QPair<Two_Peashooter*,int>>PB;
     QVector<QPair<Walnut*,int>>PC;

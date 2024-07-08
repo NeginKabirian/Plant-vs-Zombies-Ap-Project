@@ -8,10 +8,14 @@
 {}//*/
 int RegularZambie::ChangePosToRect(QPointF point)
 {
-    //point += QPointF(0,150);
     int current;
+    /*if(currentRect<12){
+        return current + 1;
+    }*/
+    qDebug()<<gridRects.size();
     for(int i = 0; i < gridRects.size();++i){
         if(gridRects[i].contains(point)){
+             qDebug()<<i;
             current = i;
             return current + 13;
         }
@@ -38,7 +42,7 @@ RegularZambie::RegularZambie(QGraphicsScene *scene, QMap<int, QPair<QPointF, Pla
 }
 
 void RegularZambie::moveForward(){
-    //qDebug()<<currentRect<<"rect"<<ChangePosToRect(this->pos());
+    qDebug()<<currentRect<<"rect"<<ChangePosToRect(this->pos());
     int rect = ChangePosToRect(this->pos());
 
         setPos(x() -41, y());
@@ -60,13 +64,18 @@ void RegularZambie::moveForward(){
 
 void RegularZambie::attackZombie()
 {
+    bool stop = false;
     setPos(x() - 71, y());
-
+    if(this->getHealth() < 0){
+        attackTimer->stop();
+        moveTimer->start(1000);
+        return;
+    }
     if (plantMap.contains(currentRect - 1)) {
         PlantBase* targetPlant = dynamic_cast<PlantBase*>(plantMap[currentRect - 1].second);
         if (targetPlant) {
-            qDebug() << currentRect - 1 << gridcenterMap[currentRect - 1].second << this->AttackPower << targetPlant->getHealth();
-            if (targetPlant->getHealth() > 0) {
+            //qDebug() << currentRect - 1 << gridcenterMap[currentRect - 1].second << this->AttackPower << targetPlant->getHealth();
+            if (targetPlant->getHealth() > 0 && !stop) {
                 targetPlant->setHealth(targetPlant->getHealth() - this->AttackPower);
             }
             else{
@@ -88,6 +97,8 @@ void RegularZambie::attackZombie()
                 //qDebug() <<"hey" <<gridcenterMap[targetPlant.key()].second;
                 gridcenterMap[currentRect - 1].second = "";
                 plantMap.remove(currentRect - 1);
+                attackTimer->stop();
+                stop  = true;
             }
         }
     }
@@ -95,6 +106,8 @@ void RegularZambie::attackZombie()
     if (!dynamic_cast<PlantBase*>(plantMap[currentRect - 1].second)) {
         attackTimer->stop();
         moveTimer->start(1000);
+        stop  = true;
+        return;
     }
 
     setPos(x() + 71, y());
