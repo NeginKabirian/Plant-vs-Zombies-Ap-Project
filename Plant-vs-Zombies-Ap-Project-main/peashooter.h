@@ -13,11 +13,11 @@ public:
     void startShooting();
     void stopShooting();
     bool isShooting() const;
+    QTimer *shootingTimer;
 signals:
     void shootPea();
 
 private:
-    QTimer *shootingTimer;
     bool shooting;
 };
 

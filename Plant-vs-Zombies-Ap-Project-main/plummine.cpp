@@ -9,15 +9,15 @@ void PlumMine::explode()
     QGraphicsPixmapItem* smoke = new QGraphicsPixmapItem(QPixmap(":/image/pngimg.com - smoke_PNG55243.png"));
     smoke->setScale(0.2);
     smoke->setOffset(-71 / 2, -71 / 2);
-    smoke->setPos(pos() + QPointF(-200,-200));
+    smoke->setPos(pos() + QPointF(-200, -200));
     scene->addItem(smoke);
 
-    scene->removeItem(this);
-    //delete this;
-
-    QTimer::singleShot(2000, [=]() {
-        scene->removeItem(smoke);
-        delete smoke;
+    QTimer::singleShot(2000, [smoke]() {
+        smoke->scene()->removeItem(smoke);
     });
+
+    scene->removeItem(this);
+    this->deleteLater();
+
     emit plumminefunction();
 }

@@ -45,8 +45,10 @@ class plantzombie : public QMainWindow
     Q_OBJECT
 
 public:
-    bool Zombie=false;
-    bool plant=false;
+    bool Zombie=true;
+    bool plant=true;
+    bool death;
+    bool shoot;
     explicit plantzombie(QWidget *parent = nullptr);
     ~plantzombie();
     void insertfieldPA(int rect = -1 ,QPointF point = QPointF(0,0)); //12
@@ -111,6 +113,7 @@ private slots:
     void burnRow(int rect , PlantBase*);
     void plumminefunction(int rect , PlantBase*);
     void plantattack(PlantBase* , int);
+    void onCheckHealth();
 
 private:
     Ui::plantzombie *ui;
@@ -155,7 +158,7 @@ private:
     QVector<QPair<AstronautZombie*,int>>ZE;
     QVector<QPair<PurpleHairZombie*,int>>ZF;
     QTimer* moveTimer;
-
+    //QTimer* gameTimer;
     bool isZombieInFront(int);
 protected:
     void divideImageIntoGrid(int rows, int columns);
