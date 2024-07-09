@@ -15,19 +15,25 @@ SOURCES += \
     boomerang.cpp \
     brain.cpp \
     bucketheadzombie.cpp \
+    forgetpass.cpp \
     jalapieno.cpp \
     leafheadzombie.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp \
+    mainwindow2.cpp \
+    myexception.cpp \
     peashooter.cpp \
     plantbase.cpp \
     plantzombie.cpp \
     plummine.cpp \
     purplehairzombie.cpp \
     regularzambie.cpp \
+    signup.cpp \
     sun.cpp \
     tallzombie.cpp \
     two_peashooter.cpp \
+    waitstart.cpp \
     walnut.cpp \
     zombiebase.cpp
 
@@ -37,26 +43,37 @@ HEADERS += \
     boomerang.h \
     brain.h \
     bucketheadzombie.h \
+    forgetpass.h \
     jalapieno.h \
     leafheadzombie.h \
+    login.h \
     mainwindow.h \
+    mainwindow2.h \
+    myexception.h \
     peashooter.h \
     plantbase.h \
     plantzombie.h \
     plummine.h \
     purplehairzombie.h \
     regularzambie.h \
+    signup.h \
     sun.h \
     tallzombie.h \
     two_peashooter.h \
+    waitstart.h \
     walnut.h \
     zombiebase.h \
     rects.h \
     sun.h
 
 FORMS += \
+    forgetpass.ui \
+    login.ui \
     mainwindow.ui \
-    plantzombie.ui
+    mainwindow2.ui \
+    plantzombie.ui \
+    signup.ui \
+    waitstart.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
