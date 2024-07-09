@@ -21,7 +21,7 @@ void Jalapieno::ignite()
 
         QTimer::singleShot(500, [fire]() {
             fire->scene()->removeItem(fire);
-            delete fire;
+            //delete fire;
         });
     }
     emit burnRow(row);
