@@ -303,6 +303,45 @@ release/moc_serverzp.cpp: ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QList \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QVector \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/qvector.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QCoreApplication \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qpointer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QFile \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfile.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonDocument \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsondocument.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/quuid.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonArray \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonarray.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QDebug \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QCryptographicHash \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcryptographichash.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/QMainWindow \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qmainwindow.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -337,8 +376,6 @@ release/moc_serverzp.cpp: ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qbitmap.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qkeysequence.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qevent.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qpointer.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qurl.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qeventpoint.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qvector2d.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qvectornd.h \
@@ -349,7 +386,6 @@ release/moc_serverzp.cpp: ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QSize \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QSizeF \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/QTransform \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qicon.h \
 		release/moc_predefs.h \
@@ -471,6 +507,45 @@ release/main.o: ../serverPZ/main.cpp ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QList \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QVector \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/qvector.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QCoreApplication \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qpointer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QFile \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfile.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonDocument \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsondocument.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/quuid.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonArray \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonarray.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QDebug \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QCryptographicHash \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcryptographichash.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/QMainWindow \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qmainwindow.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -505,8 +580,6 @@ release/main.o: ../serverPZ/main.cpp ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qbitmap.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qkeysequence.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qevent.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qpointer.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qurl.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qeventpoint.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qvector2d.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qvectornd.h \
@@ -517,29 +590,12 @@ release/main.o: ../serverPZ/main.cpp ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QSize \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QSizeF \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/QTransform \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qicon.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qeventloop.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qfuture.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qmutex.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qresultstore.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qthreadpool.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qthread.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qelapsedtimer.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qrunnable.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qexception.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qpromise.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qguiapplication.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qguiapplication_platform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\serverPZ\main.cpp
 
@@ -729,6 +785,45 @@ release/serverzp.o: ../serverPZ/serverzp.cpp ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QList \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QVector \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/qvector.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QCoreApplication \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qpointer.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QFile \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfile.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonDocument \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsondocument.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/quuid.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonArray \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonarray.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QJsonObject \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QDebug \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QCryptographicHash \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/qcryptographichash.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/QMainWindow \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qmainwindow.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -763,8 +858,6 @@ release/serverzp.o: ../serverPZ/serverzp.cpp ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qbitmap.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qkeysequence.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qevent.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qpointer.h \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qurl.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qeventpoint.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qvector2d.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qvectornd.h \
@@ -775,7 +868,6 @@ release/serverzp.o: ../serverPZ/serverzp.cpp ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QSize \
 		C:/Qt/6.2.4/mingw_64/include/QtCore/QSizeF \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/QTransform \
-		C:/Qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qicon.h \
 		ui_serverzp.h

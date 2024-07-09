@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "C:/Users/ZBook Fury/Desktop/ghazal/waitstart.h"
+#include "../../../waitstart.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>

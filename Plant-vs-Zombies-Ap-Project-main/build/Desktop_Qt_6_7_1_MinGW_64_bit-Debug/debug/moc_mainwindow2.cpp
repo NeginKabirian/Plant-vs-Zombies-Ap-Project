@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "C:/Users/ZBook Fury/Desktop/ghazal/mainwindow2.h"
+#include "../../../mainwindow2.h"
 #include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 

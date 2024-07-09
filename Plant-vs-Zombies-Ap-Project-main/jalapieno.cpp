@@ -14,7 +14,7 @@ void Jalapieno::ignite()
     //delete this;
 
     for (int i = 0; i < 1000 / 71 - 1 ; ++i) {
-        QGraphicsPixmapItem* fire = new QGraphicsPixmapItem(QPixmap(":/firepng.parspng.com-5.png"));
+        QGraphicsPixmapItem* fire = new QGraphicsPixmapItem(QPixmap(":/image/firepng.parspng.com-5.png"));
         fire->setScale(0.08);
         fire->setPos((i + 2) * 71 , row * 71 + 50);
         scene->addItem(fire);

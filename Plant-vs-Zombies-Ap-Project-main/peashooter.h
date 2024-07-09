@@ -14,9 +14,9 @@ public:
     void stopShooting();
     bool isShooting() const;
     QTimer *shootingTimer;
+    bool remove = false;
 signals:
     void shootPea();
-
 private:
     bool shooting;
 };

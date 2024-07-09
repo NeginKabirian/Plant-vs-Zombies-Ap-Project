@@ -14,7 +14,7 @@ plantzombie::plantzombie(QWidget *parent) :
 
     ui->graphicsView->setScene(s);
     f->setScale(1);
-    sunStorage = 0;brainStorge = 0;
+    sunStorage =1000;brainStorge = 1000;
     s->addItem(f);
     divideImageIntoGrid(6, 12);
     gridCentersMap = createGridCentersMap();
@@ -151,7 +151,7 @@ bool plantzombie::isZombieInFront(int rect)
     return false;
 }
 
-void plantzombie::insertfieldPA(int rect , QPointF point)
+/*void plantzombie::insertfieldPA(int rect , QPointF point)
 {
     Peashooter* pb = new Peashooter;
     QPair<Peashooter*,int> pair(pb,rect);
@@ -263,12 +263,159 @@ void plantzombie::onShootPea(PlantBase* pa , QPointF point) {    //polimorphism 
             for (int i = 1 ; i < 12 - rect % 12  ; ++i ){
                 //qDebug()<<"rect+i"<<rect+i;
                 if (zombieMap[rect+i].second && dynamic_cast<ZombieBase*>(zombieMap[rect+i].second)) {
-                    qDebug()<<"nooo"<<ChangePosToRect(pea->pos())<<"i"<<i;
+                   // qDebug()<<"nooo"<<ChangePosToRect(pea->pos())<<"i"<<i;
                     if (ChangePosToRect(pea->pos()) == rect + i) {
-                        qDebug()<<"shet";
+                       // qDebug()<<"shet";
                         QPointF currentPos = pea->pos();
                         QPointF zombiePos = zombieMap[i].first;
                         plantattack(pa,rect+i); //i zombie rect
+                        if (currentPos.x() >= zombiePos.x() + 7) {
+                            s->removeItem(pea);
+                            delete pea;
+                            moveTimer->stop();
+                            moveTimer->deleteLater();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    moveTimer->start(50);
+}*/
+void plantzombie::insertfieldPA(int rect, QPointF point)
+{
+    Peashooter* pb = new Peashooter;
+    QPair<Peashooter*, int> pair(pb, rect);
+    gridCentersMap[rect].second = "PB";
+    gridCentersMap[rect].first = point;
+    plantMap[rect].second = pb;    //p
+    plantMap[rect].first = point; //p
+    pb->setPos(point);
+    s->addItem(pb);
+    PA.push_back(pair);
+    if (plant == true) {
+        sunStorage -= 50;
+        visibleButton();
+        ui->label_2->setText(QString::number(sunStorage));
+        int x = point.x();
+        int y = point.y();
+        emit SInsertPB(rect, x, y);
+    }
+    connect(pb, &Peashooter::shootPea, this, [=]() { onShootPea(pb, point); });
+    pb->startShooting();
+    QTimer* checkTimer = new QTimer(this);
+    connect(checkTimer, &QTimer::timeout, this, [=]() {
+        if (isZombieInFront(rect)) {
+            if (!pb->isShooting()) {
+                connect(pb, &Peashooter::shootPea, this, [=]() { onShootPea(pb, point);
+                });
+                pb->startShooting();
+            }
+        } else {
+            if (pb->isShooting()) {
+                qDebug() << "ooof";
+                disconnect(pb, &Peashooter::shootPea, this, nullptr);
+                pb->stopShooting();
+            }
+        }
+    });
+    checkTimer->start(500);
+}
+
+void plantzombie::onShootPea(PlantBase* pa, QPointF point) {
+    QPropertyAnimation* animation = new QPropertyAnimation(pa, "pos");
+    bool boomrang = false;
+    animation->setDuration(1000);
+    animation->setStartValue(point);
+    animation->setKeyValueAt(0.7, point + QPointF(0, -2.2));
+    animation->setEndValue(point);
+    animation->setLoopCount(-1);
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
+    QGraphicsItem *pea(pa);
+    if (dynamic_cast<Peashooter*>(pa)) {
+        QGraphicsEllipseItem* ellipseItem = new QGraphicsEllipseItem(0, 0, 15, 10);
+        ellipseItem->setBrush(Qt::green);
+        pea = ellipseItem;
+        if(dynamic_cast<Peashooter*>(pa)->remove){
+            return;
+        }
+        else{
+            s->addItem(pea);
+        }
+    } else if (dynamic_cast<Two_Peashooter*>(pa)) {
+        QGraphicsEllipseItem* ellipseItem = new QGraphicsEllipseItem(0, 0, 20, 15);
+        ellipseItem->setBrush(QColor(0, 100, 0));
+        pea = ellipseItem;
+        if(dynamic_cast<Two_Peashooter*>(pa)->remove){
+            return;
+        }
+        else{
+            s->addItem(pea);
+        }
+    } else {
+        QPolygonF triangle;
+        triangle << QPointF(-5, -10) << QPointF(5, -10) << QPointF(0, 10);
+
+        QGraphicsPolygonItem* polygonItem = new QGraphicsPolygonItem(triangle);
+
+        QPen pen(Qt::black);
+        pen.setWidth(3);
+        polygonItem->setPen(pen);
+
+        QBrush brush(Qt::green);
+        polygonItem->setBrush(brush);
+
+        polygonItem->setRotation(-85);
+        pea = polygonItem;
+        boomrang = true;
+        if(dynamic_cast<Boomerang*>(pa)->remove){
+            return;
+        }
+        else{
+            s->addItem(pea);
+        }
+    }
+
+    if (pea == nullptr) return;
+
+    pea->setPos(pa->pos() + QPointF(62, 17));
+
+
+    QTimer* moveTimer = new QTimer(this);
+    connect(moveTimer, &QTimer::timeout, this, [this, pa, pea, moveTimer, boomrang]() {
+        pea->setPos(pea->pos() + QPointF(8.8, 0.2));
+        if (pea->pos().x() > 1000) {
+            qDebug() << "ooh";
+            s->removeItem(pea);
+            delete pea;
+            moveTimer->stop();
+            moveTimer->deleteLater();
+            return;
+        }
+        int rect = -1;
+        for (auto it = plantMap.constBegin(); it != plantMap.constEnd(); ++it) {
+            if (it.value().second == pa) {
+                rect = it.key();
+                break;
+            }
+        }
+        if (isZombieInFront(rect) && boomrang) {
+            plantattack(pa, rect);
+            qDebug() << "yes";
+        }
+        if (boomrang) {
+            moveTimer->start(50);
+            return;
+        }
+        if (rect != -1) {
+            for (int i = 1; i < 12 - rect % 12; ++i) {
+                int targetRect = rect + i;
+                if (zombieMap.contains(targetRect) && zombieMap[targetRect].second && dynamic_cast<ZombieBase*>(zombieMap[targetRect].second)) {
+                    if (ChangePosToRect(pea->pos()) == targetRect) {
+                        QPointF currentPos = pea->pos();
+                        QPointF zombiePos = zombieMap[targetRect].first;
+                        plantattack(pa, targetRect); //i zombie rect
                         if (currentPos.x() >= zombiePos.x() + 7) {
                             s->removeItem(pea);
                             delete pea;
@@ -372,16 +519,17 @@ void plantzombie::plumminefunction(int rect , PlantBase* pd){
     plantattack(pd,rect);
     plantMap.remove(rect);
     gridCentersMap[rect].second = "";
+    //qDebug()<<"rect"<<rect;
     pd->deleteLater();
 }
 
-void plantzombie::plantattack(PlantBase *p , int rect) //server
+/*void plantzombie::plantattack(PlantBase *p , int rect) //server
 {
-    if(dynamic_cast<Peashooter*>(p)){
+    /*if(dynamic_cast<Peashooter*>(p)){
         if(zombieMap[rect].second->getHealth()>0){
-            qDebug()<<"before"<<zombieMap[rect].second->getHealth();
+            //qDebug()<<"before"<<zombieMap[rect].second->getHealth();
             zombieMap[rect].second->setHealth(zombieMap[rect].second->getHealth() - p->getAttackPower());
-            qDebug()<<"after"<<zombieMap[rect].second->getHealth();
+            //qDebug()<<"after"<<zombieMap[rect].second->getHealth();
         }
         else{
             s->removeItem(zombieMap[rect].second);
@@ -393,9 +541,9 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
     else
         if(dynamic_cast<Two_Peashooter*>(p)){
         if(zombieMap[rect].second->getHealth()>0){
-            qDebug()<<"before"<<zombieMap[rect].second->getHealth();
+            //qDebug()<<"before"<<zombieMap[rect].second->getHealth();
             zombieMap[rect].second->setHealth(zombieMap[rect].second->getHealth() - p->getAttackPower());
-            qDebug()<<"after"<<zombieMap[rect].second->getHealth();
+            //qDebug()<<"after"<<zombieMap[rect].second->getHealth();
         }
         else{
             s->removeItem(zombieMap[rect].second);
@@ -408,15 +556,15 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
         if(dynamic_cast<Boomerang*>(p)){
         for (int i = 1 ; i < 12 - rect % 12  ; ++i ){
             if (zombieMap[rect+i].second && dynamic_cast<ZombieBase*>(zombieMap[rect+i].second)) {
-                if(zombieMap[rect].second->getHealth()>0){
+                if(zombieMap[rect+i].second->getHealth()>0){
                     qDebug()<<"before"<<zombieMap[rect+i].second->getHealth();
                     zombieMap[rect+i].second->setHealth(zombieMap[rect+i].second->getHealth() - p->getAttackPower());
                     qDebug()<<"after"<<zombieMap[rect+i].second->getHealth();
                 }
                 else{
-                     s->removeItem(zombieMap[rect].second);
-                    gridCentersMap[rect].second = "";
-                    zombieMap.remove(rect);
+                     s->removeItem(zombieMap[rect+i].second);
+                    gridCentersMap[rect+i].second = "";
+                    zombieMap.remove(rect+i);
                 }
 
             }
@@ -452,16 +600,92 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
         int row = rect / 12 + 1 , newrect = (row - 1)*12 + 1;
         for(int i = newrect ; i < newrect + 11 ; ++i){
             if(zombieMap[i].second && dynamic_cast<ZombieBase*>(zombieMap[i].second)){
-                if(zombieMap[rect].second->getHealth()>0){
+                if(zombieMap[i].second->getHealth()>0){
                     qDebug()<<"before"<<zombieMap[i].second->getHealth();
                     zombieMap[i].second->setHealth(zombieMap[i].second->getHealth() - p->getAttackPower());
                     qDebug()<<"after"<<zombieMap[i].second->getHealth();
                 }
                 else{
-                    s->removeItem(zombieMap[rect].second);
-                    gridCentersMap[rect].second = "";
-                    zombieMap.remove(rect);
+                    s->removeItem(zombieMap[i].second);
+                    gridCentersMap[i].second = "";
+                    zombieMap.remove(i);
                 }
+            }
+        }
+    }
+
+}*/
+void plantzombie::plantattack(PlantBase *p , int rect) //server
+{
+    if (auto peashooter = dynamic_cast<Peashooter*>(p)) {
+        if (zombieMap.contains(rect) && zombieMap[rect].second->getHealth() > 0) {
+            zombieMap[rect].second->setHealth(zombieMap[rect].second->getHealth() - p->getAttackPower());
+        }else if(zombieMap.contains(rect) && zombieMap[rect].second->getHealth()<0){
+            s->removeItem(zombieMap[rect].second);
+            gridCentersMap[rect].second = "";
+            zombieMap.remove(rect);
+        }
+    } else if (auto twoPeashooter = dynamic_cast<Two_Peashooter*>(p)) {
+        if (zombieMap.contains(rect) && zombieMap[rect].second->getHealth() > 0) {
+            zombieMap[rect].second->setHealth(zombieMap[rect].second->getHealth() - p->getAttackPower());
+        } else if(zombieMap.contains(rect) && zombieMap[rect].second->getHealth()<0) {
+            s->removeItem(zombieMap[rect].second);
+            gridCentersMap[rect].second = "";
+            zombieMap.remove(rect);
+        }
+    } else if (auto boomerang = dynamic_cast<Boomerang*>(p)) {
+        for (int i = 1; i < 12 - rect % 12; ++i) {
+            int targetRect = rect + i;
+            if (zombieMap.contains(targetRect) && zombieMap[targetRect].second && zombieMap[targetRect].second->getHealth() > 0) {
+                zombieMap[targetRect].second->setHealth(zombieMap[targetRect].second->getHealth() - p->getAttackPower());
+            }else if (zombieMap.contains(targetRect) && zombieMap[targetRect].second->getHealth() < 0) {
+                s->removeItem(zombieMap[targetRect].second);
+                gridCentersMap[targetRect].second = "";
+                zombieMap.remove(targetRect);
+            }
+        }
+    }else if (auto plumMine = dynamic_cast<PlumMine*>(p)) {
+        if (!plantMap.contains(rect)) {
+            return;
+        }
+        QPointF plantPosition = gridCentersMap[rect].first;
+        qDebug()<<"plantPosition"<<gridCentersMap[rect].first;
+        for (auto it = zombieMap.constBegin(); it != zombieMap.constEnd(); ++it) {
+            QPointF zombiePosition = gridCentersMap[it.key()].first;
+            qDebug()<<"zombiePosition"<<zombiePosition;
+            int dx = abs(plantPosition.x() - zombiePosition.x());
+            int dy = abs(plantPosition.y() - zombiePosition.y());
+            qDebug()<<"dx"<<dx<<"dy"<<dy;
+            if (dx <= 2 * 71 && dy <= 2 * 71) {
+                int key = it.key();
+                if (zombieMap.contains(key)&&zombieMap[key].second->getHealth() > 0) {
+                    qDebug()<<"before" <<zombieMap[key].second->getHealth();
+                    zombieMap[key].second->setHealth(zombieMap[key].second->getHealth() - p->getAttackPower());
+                    qDebug()<<"after" <<zombieMap[key].second->getHealth()<<"key"<<key;
+                    qDebug()<<"after" <<gridCentersMap[key].second;
+                } if( zombieMap.contains(key) && zombieMap[key].second && zombieMap[key].second->getHealth() < 0) {
+                    s->removeItem(zombieMap[key].second);
+                    gridCentersMap[key].second = "";
+                    zombieMap.remove(key);
+                    qDebug()<<"plum";
+                }
+            }
+        }
+    }
+    else if (auto jalapieno = dynamic_cast<Jalapieno*>(p)) {
+        int row = rect / 12;
+        int newrect = row * 12;
+
+        for (int i = newrect; i < newrect + 12; ++i) {
+            if (zombieMap.contains(i) && zombieMap[i].second && zombieMap[i].second->getHealth() > 0) {
+                qDebug()<<"before" <<zombieMap[i].second->getHealth();
+                zombieMap[i].second->setHealth(zombieMap[i].second->getHealth() - p->getAttackPower());
+                qDebug()<<"after" <<zombieMap[i].second->getHealth();
+            } if (zombieMap.contains(i) && zombieMap.contains(i) && zombieMap[i].second && zombieMap[i].second->getHealth() < 0) {
+                qDebug()<<"hey"<<gridCentersMap[i].second;
+                s->removeItem(zombieMap[i].second);
+                gridCentersMap[i].second = "";
+                zombieMap.remove(i);
             }
         }
     }
@@ -588,6 +812,7 @@ void plantzombie::insertfieldZA(int rect, QPointF point)
         int y=point.y();
         emit SInsertZA(rect,x,y);
     }
+
 }
 void plantzombie::insertfieldZB(int rect, QPointF point)
 {
@@ -702,6 +927,7 @@ int plantzombie::ChangePosToRect(QPointF point)
 }
 void plantzombie::spawnSun() {
     if(plant==true){
+
         Sun *sun = new Sun();
         sun->setScale(0.1);
         s->addItem(sun);
@@ -737,7 +963,6 @@ void plantzombie::divideImageIntoGrid(int rows, int columns)
 {
     qreal widthStep = 932/ columns;
     qreal heightStep = 426/ rows;
-    qDebug()<<heightStep;
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < columns; ++col) {
             //qreal x = col * widthStep+118;
@@ -779,84 +1004,86 @@ void plantzombie::mousePressEvent(QMouseEvent *event)
             break;
         }
     }
-
+    QPointF pointpixmap;
+    pointpixmap.setX(gridRects[currentGridIndex].topLeft().x()-1);
+    pointpixmap.setY(gridRects[currentGridIndex].topLeft().y()+1);
     if (event->button() == Qt::LeftButton) {
         QString str = gridCentersMap.find(currentGridIndex)->second;
         if(isDrawingPA == true){
             if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPA(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldPA(currentGridIndex,pointpixmap);
                 isDrawingPA = false;
                 gridCentersMap.find(currentGridIndex)->second="PA";
             }
 
         }else if(isDrawingPB == true){
             if((currentGridIndex+1)%12<7 && (currentGridIndex+1)%12!=0&&str == ""){
-                insertfieldPB(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldPB(currentGridIndex,pointpixmap);
                 isDrawingPB = false;
                 gridCentersMap.find(currentGridIndex)->second="PB";
             }
 
         }else if(isDrawingPC == true){
             if((currentGridIndex+1)%12<7 && (currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPC(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldPC(currentGridIndex,pointpixmap);
                 isDrawingPC = false;
                 gridCentersMap.find(currentGridIndex)->second="PC";
             }
 
         }else if(isDrawingPD == true){
             if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPD(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldPD(currentGridIndex,pointpixmap);
                 isDrawingPD = false;
                 gridCentersMap.find(currentGridIndex)->second="PD";
             }
 
         }else if(isDrawingPE == true){
             if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPE(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldPE(currentGridIndex,pointpixmap);
                 isDrawingPE = false;
                 gridCentersMap.find(currentGridIndex)->second="PE";
             }
 
         }else if(isDrawingPF == true){
             if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPF(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldPF(currentGridIndex,pointpixmap);
                 isDrawingPF = false;
                 gridCentersMap.find(currentGridIndex)->second="PF";
             }
 
         }else if(isDrawingZA == true){
             if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZA(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldZA(currentGridIndex,pointpixmap);
                 isDrawingZA = false;
                 gridCentersMap.find(currentGridIndex)->second="ZA";
             }
         }else if(isDrawingZB == true){
             if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZB(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldZB(currentGridIndex,pointpixmap);
                 isDrawingZB = false;
                 gridCentersMap.find(currentGridIndex)->second="ZB";
             }
         }else if(isDrawingZC == true){
             if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZC(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldZC(currentGridIndex,pointpixmap);
                 isDrawingZC = false;
                 gridCentersMap.find(currentGridIndex)->second="ZC";
             }
         }else if(isDrawingZD == true){
             if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZD(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldZD(currentGridIndex,pointpixmap);
                 isDrawingZD = false;
                 gridCentersMap.find(currentGridIndex)->second="ZD";
             }
         }else if(isDrawingZE == true){
             if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZE(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldZE(currentGridIndex,pointpixmap);
                 isDrawingZE = false;
                 gridCentersMap.find(currentGridIndex)->second="ZE";
             }
         }else if(isDrawingZF == true){
             if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZF(currentGridIndex,gridRects[currentGridIndex].topLeft());
+                insertfieldZF(currentGridIndex,pointpixmap);
                 isDrawingZF = false;
                 gridCentersMap.find(currentGridIndex)->second="ZF";
             }

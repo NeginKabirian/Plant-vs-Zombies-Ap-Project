@@ -12,6 +12,7 @@ public:
     void startShooting();
     void stopShooting();
     bool isShooting() const;
+    bool remove = false;
 signals:
     void shootPea();
 
