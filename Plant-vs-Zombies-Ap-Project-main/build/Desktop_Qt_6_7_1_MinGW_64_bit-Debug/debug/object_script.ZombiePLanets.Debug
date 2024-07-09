@@ -20,10 +20,15 @@ debug/walnut.o
 debug/zombiebase.o
 debug/qrc_image.o
 debug/moc_Client.o
+debug/moc_boomerang.o
 debug/moc_brain.o
+debug/moc_jalapieno.o
 debug/moc_mainwindow.o
 debug/moc_peashooter.o
 debug/moc_plantbase.o
 debug/moc_plantzombie.o
+debug/moc_plummine.o
 debug/moc_sun.o
+debug/moc_two_peashooter.o
+debug/moc_walnut.o
 debug/moc_zombiebase.o
