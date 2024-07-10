@@ -254,12 +254,15 @@ debug/qrc_image.cpp: ../../image.qrc \
 		../../sun.png \
 		../../Bucket\ head\ zombie.jpg \
 		../../two_peashooter.jpg \
+		../../tall\ zombie.jpg \
 		../../walnut_transparent.png \
 		../../regular\ zombie.jpg \
 		../../Bucket\ head\ zombie_trasparent.png \
+		../../tall\ zombie_transparent.png \
 		../../field.png \
 		../../purple\ hair\ zombie.jpg \
 		../../Annotation\ 2024-07-07\ 175523.png \
+		../../document_5784910129795177805+(1)\ (1).gif \
 		../../peashooter\ transparent.png \
 		../../jalapino.jpg \
 		../../leaf\ hair\ zombie_transparent.png \
@@ -531,6 +534,11 @@ debug/moc_Client.cpp: ../../Client.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -544,11 +552,6 @@ debug/moc_Client.cpp: ../../Client.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -1652,6 +1655,11 @@ debug/moc_mainwindow.cpp: ../../mainwindow.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -1665,11 +1673,6 @@ debug/moc_mainwindow.cpp: ../../mainwindow.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -1949,6 +1952,11 @@ debug/moc_mainwindow2.cpp: ../../mainwindow2.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -1962,11 +1970,6 @@ debug/moc_mainwindow2.cpp: ../../mainwindow2.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -2839,6 +2842,11 @@ debug/moc_plantzombie.cpp: ../../plantzombie.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -2852,11 +2860,6 @@ debug/moc_plantzombie.cpp: ../../plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -4752,6 +4755,11 @@ debug/Client.o: ../../Client.cpp ../../client.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -4765,11 +4773,6 @@ debug/Client.o: ../../Client.cpp ../../client.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -4935,7 +4938,58 @@ debug/astronautzombie.o: ../../astronautzombie.cpp ../../astronautzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qrgba64.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qimage.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qpixelformat.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject \
+		../../plantbase.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMovie \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qmovie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimagereader.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qiodevice.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qplugin.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpointer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/quuid.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qendian.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/q20algorithm.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfactoryinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qbrush.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qfont.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpen.h \
+		../../../../peashooter.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QThread \
+		../../two_peashooter.h \
+		../../boomerang.h \
+		../../plummine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\astronautzombie.o ..\..\astronautzombie.cpp
 
 debug/boomerang.o: ../../boomerang.cpp ../../boomerang.h \
@@ -5369,7 +5423,58 @@ debug/bucketheadzombie.o: ../../bucketheadzombie.cpp ../../bucketheadzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qrgba64.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qimage.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qpixelformat.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject \
+		../../plantbase.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMovie \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qmovie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimagereader.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qiodevice.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qplugin.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpointer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/quuid.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qendian.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/q20algorithm.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfactoryinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qbrush.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qfont.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpen.h \
+		../../../../peashooter.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QThread \
+		../../two_peashooter.h \
+		../../boomerang.h \
+		../../plummine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\bucketheadzombie.o ..\..\bucketheadzombie.cpp
 
 debug/forgetpass.o: ../../forgetpass.cpp ../../forgetpass.h \
@@ -5887,7 +5992,58 @@ debug/leafheadzombie.o: ../../leafheadzombie.cpp ../../leafheadzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qrgba64.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qimage.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qpixelformat.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject \
+		../../plantbase.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMovie \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qmovie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimagereader.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qiodevice.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qplugin.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpointer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/quuid.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qendian.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/q20algorithm.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfactoryinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qbrush.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qfont.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpen.h \
+		../../../../peashooter.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QThread \
+		../../two_peashooter.h \
+		../../boomerang.h \
+		../../plummine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\leafheadzombie.o ..\..\leafheadzombie.cpp
 
 debug/login.o: ../../login.cpp ../../login.h \
@@ -6349,6 +6505,11 @@ debug/main.o: ../../main.cpp ../../mainwindow2.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -6362,11 +6523,6 @@ debug/main.o: ../../main.cpp ../../mainwindow2.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -6646,6 +6802,11 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -6659,11 +6820,6 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -6951,6 +7107,11 @@ debug/mainwindow2.o: ../../mainwindow2.cpp ../../mainwindow2.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -6964,11 +7125,6 @@ debug/mainwindow2.o: ../../mainwindow2.cpp ../../mainwindow2.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -7739,6 +7895,11 @@ debug/plantzombie.o: ../../plantzombie.cpp ../../plantzombie.h \
 		../../bucketheadzombie.h \
 		../../leafheadzombie.h \
 		../../tallzombie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		../../astronautzombie.h \
 		../../purplehairzombie.h \
 		../../rects.h \
@@ -7752,11 +7913,6 @@ debug/plantzombie.o: ../../plantzombie.cpp ../../plantzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QMouseEvent \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QAtomicInt \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRandomGenerator \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qrandom.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QRectF \
@@ -8070,7 +8226,58 @@ debug/purplehairzombie.o: ../../purplehairzombie.cpp ../../purplehairzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qrgba64.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qimage.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qpixelformat.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject \
+		../../plantbase.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMovie \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qmovie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimagereader.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qiodevice.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qplugin.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpointer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/quuid.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qendian.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/q20algorithm.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfactoryinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qbrush.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qfont.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpen.h \
+		../../../../peashooter.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QThread \
+		../../two_peashooter.h \
+		../../boomerang.h \
+		../../plummine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\purplehairzombie.o ..\..\purplehairzombie.cpp
 
 debug/regularzambie.o: ../../regularzambie.cpp ../../regularzambie.h \
@@ -8263,7 +8470,8 @@ debug/regularzambie.o: ../../regularzambie.cpp ../../regularzambie.h \
 		../../../../peashooter.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QThread \
 		../../two_peashooter.h \
-		../../boomerang.h
+		../../boomerang.h \
+		../../plummine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\regularzambie.o ..\..\regularzambie.cpp
 
 debug/signup.o: ../../signup.cpp ../../signup.h \
@@ -8802,7 +9010,63 @@ debug/tallzombie.o: ../../tallzombie.cpp ../../tallzombie.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qrgba64.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qimage.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qpixelformat.h \
-		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QObject \
+		../../plantbase.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QMovie \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qmovie.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimagereader.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qnativeinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qiodevice.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qplugin.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpointer.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qurl.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/quuid.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qendian.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/q20algorithm.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qfactoryinterface.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QPropertyAnimation \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qpropertyanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qvariantanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qabstractanimation.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/qeasingcurve.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qbrush.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qfont.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpen.h \
+		../../../../peashooter.h \
+		C:/Qt/6.7.1/mingw_64/include/QtCore/QThread \
+		../../two_peashooter.h \
+		../../boomerang.h \
+		../../walnut.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\tallzombie.o ..\..\tallzombie.cpp
 
 debug/two_peashooter.o: ../../two_peashooter.cpp ../../two_peashooter.h \

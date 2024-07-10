@@ -141,20 +141,6 @@ private:
     bool isDrawingZE = false;
     bool isDrawingZF = false;
     //vector pair<class obj,number rect> rect = -1 default
-    //delete vector
-    QVector<QPair<Peashooter*,int>>PA;
-    QVector<QPair<Two_Peashooter*,int>>PB;
-    QVector<QPair<Walnut*,int>>PC;
-    QVector<QPair<PlumMine*,int>>PD;
-    QVector<QPair<Jalapieno*,int>>PE;
-    QVector<QPair<Boomerang*,int>>PF;
-
-    QVector<QPair<RegularZambie*,int>>ZA;
-    QVector<QPair<BucketHeadZombie*,int>>ZB;
-    QVector<QPair<LeafHeadZombie*,int>>ZC;
-    QVector<QPair<TallZombie*,int>>ZD;
-    QVector<QPair<AstronautZombie*,int>>ZE;
-    QVector<QPair<PurpleHairZombie*,int>>ZF;
     QTimer* moveTimer;
     bool isZombieInFront(int);
 protected:

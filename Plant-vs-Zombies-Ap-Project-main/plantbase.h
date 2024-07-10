@@ -7,7 +7,7 @@
 class PlantBase : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT;
 public:
-    PlantBase(int,int,int,int);
+    PlantBase(int,int);
     virtual ~PlantBase() = default;
     int getHealth();
     virtual void setHealth(int);
@@ -16,9 +16,7 @@ public:
     int getSun();
 protected:
     int Health;
-    const int FiringRate;
     const int AttackPower;
-    const int sun;
 };
 
 #endif // PLANTBASE_H

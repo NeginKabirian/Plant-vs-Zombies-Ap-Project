@@ -8,7 +8,7 @@ class ZombieBase : public QObject , public QGraphicsPixmapItem
     Q_OBJECT
 public:
     //explicit ZombieBase(QObject *parent = nullptr);
-    ZombieBase(int,double,int,double,int);
+    ZombieBase(int,int);
     virtual void setHealth(int);
     virtual int getHealth();
     virtual double getAttackPower();
@@ -16,12 +16,8 @@ public:
     QTimer *attackTimer;
 protected:
     int Health;
-    const double MovmentDelay;
     const int AttackPower;
-    const double TimeBetweenAttacks;
-    const int brain;
 
-signals:
 };
 
 #endif // ZOMBIEBASE_H

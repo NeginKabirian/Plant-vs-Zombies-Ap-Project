@@ -154,7 +154,6 @@ void plantzombie::insertfieldPA(int rect, QPointF point)
     plantMap[rect].first = point; //p
     pb->setPos(point);
     s->addItem(pb);
-    PA.push_back(pair);
     if (plant == true) {
         sunStorage -= 50;
         visibleButton();
@@ -180,7 +179,7 @@ void plantzombie::insertfieldPA(int rect, QPointF point)
             }
         }
     });
-    checkTimer->start(500);
+    checkTimer->start(1000);
 }
 
 void plantzombie::onShootPea(PlantBase* pa, QPointF point) {
@@ -248,7 +247,6 @@ void plantzombie::onShootPea(PlantBase* pa, QPointF point) {
     connect(moveTimer, &QTimer::timeout, this, [this, pa, pea, moveTimer, boomrang]() {
         pea->setPos(pea->pos() + QPointF(8.8, 0.2));
         if (pea->pos().x() > 1000) {
-            qDebug() << "ooh";
             s->removeItem(pea);
             delete pea;
             moveTimer->stop();
@@ -263,8 +261,28 @@ void plantzombie::onShootPea(PlantBase* pa, QPointF point) {
             }
         }
         if (isZombieInFront(rect) && boomrang) {
-            plantattack(pa, rect);
-            qDebug() << "yes";
+            if (rect != -1) {
+                for (int i = 1; i < 12 - rect % 12; ++i) {
+                    int targetRect = rect + i;
+                    if (zombieMap.contains(targetRect) && zombieMap[targetRect].second && dynamic_cast<ZombieBase*>(zombieMap[targetRect].second)) {
+                        if (ChangePosToRect(pea->pos()) == targetRect) {
+                            QPointF currentPos = pea->pos();
+                            QPointF zombiePos = zombieMap[targetRect].first;
+                            int end= (((rect/12)+1)*12)-1;
+                            if(gridRects[end].contains(pea->pos())){
+                                s->removeItem(pea);
+                                delete pea;
+                                moveTimer->stop();
+                                moveTimer->deleteLater();
+                                return;
+                            }
+                            if (currentPos.x() >= zombiePos.x() +100){
+                                plantattack(pa, rect);
+                            }
+                        }
+                    }
+                }
+            }
         }
         if (boomrang) {
             moveTimer->start(50);
@@ -304,7 +322,6 @@ void plantzombie::insertfieldPB(int rect , QPointF point)
     plantMap[rect].first = point; //p
     pb->setPos(point);
     s->addItem(pb);
-    PB.push_back(pair);
     if(plant==true){
         sunStorage -= 100;
         visibleButton();
@@ -335,7 +352,7 @@ void plantzombie::insertfieldPB(int rect , QPointF point)
 void plantzombie::insertfieldPC(int rect , QPointF point)
 {
     Walnut* pc = new Walnut;
-    pc->move(isZombieInFront(rect));
+    pc->move(point);
     QPair<Walnut*,int> pair(pc,rect);
     gridCentersMap[rect].second = "PC";
     gridCentersMap[rect].first = point;
@@ -343,7 +360,6 @@ void plantzombie::insertfieldPC(int rect , QPointF point)
     plantMap[rect].first = point; //p
     pc->setPos(point);
     s->addItem(pc);
-    PC.push_back(pair);
     if(plant==true){
         sunStorage -= 100;
         visibleButton();
@@ -363,7 +379,7 @@ void plantzombie::insertfieldPD(int rect , QPointF point)
     plantMap[rect].first = point; //p
     pd->setPos(point);
     s->addItem(pd);
-    PD.push_back(pair);
+
     if(plant==true){
         sunStorage -= 175;
         visibleButton();
@@ -414,16 +430,19 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
             }
         } else if (auto boomerang = dynamic_cast<Boomerang*>(p)) {
             try {
+
                 for (int i = 1; i < 12 - rect % 12; ++i) {
                     int targetRect = rect + i;
-                    if (zombieMap.contains(targetRect) && zombieMap[targetRect].second && zombieMap[targetRect].second->getHealth() > 0) {
-                        zombieMap[targetRect].second->setHealth(zombieMap[targetRect].second->getHealth() - p->getAttackPower());
+                    if (zombieMap.contains(targetRect) && zombieMap[targetRect].second && zombieMap[targetRect].second->getHealth() > 0 ) {
+                            qDebug()<<"i"<<i<<targetRect;
+                            zombieMap[targetRect].second->setHealth(zombieMap[targetRect].second->getHealth() - p->getAttackPower());
                     }
-                    if (zombieMap.contains(targetRect) && zombieMap[targetRect].second->getHealth() <= 0) {
+                    if (zombieMap.contains(targetRect)&& zombieMap[targetRect].second && zombieMap[targetRect].second->getHealth() <= 0) {
                         s->removeItem(zombieMap[targetRect].second);
                         gridCentersMap[targetRect].second = "";
                         zombieMap.remove(targetRect);
                     }
+                    break;
                 }
             } catch (const std::exception &e) {
                 qDebug() << "Exception in Boomerang: " << e.what();
@@ -495,7 +514,6 @@ void plantzombie::insertfieldPE(int rect, QPointF point)
     plantMap[rect].first = point; //p
     pe->setPos(point);
     s->addItem(pe);
-    PE.push_back(pair);
     if(plant==true){
         sunStorage -= 150;
         visibleButton();
@@ -526,7 +544,6 @@ void plantzombie::insertfieldPF(int rect, QPointF point)
     plantMap[rect].first = point; //p
     pf->setPos(point);
     s->addItem(pf);
-    PF.push_back(pair);
     if(plant==true){
         sunStorage -= 125;
         visibleButton();
@@ -563,7 +580,6 @@ void plantzombie::insertfieldZA(int rect, QPointF point)
     zombieMap[rect].first = point; //z
     za->setPos(point);
     s->addItem(za);
-    ZA.push_back(pair);
     if(Zombie==true){
         brainStorge -= 100;
         visibleButton();
@@ -584,7 +600,6 @@ void plantzombie::insertfieldZB(int rect, QPointF point)
     zombieMap[rect].first = point; //z
     zb->setPos(point);
     s->addItem(zb);
-    ZB.push_back(pair);
     if(Zombie==true){
         brainStorge -= 200;
         visibleButton();
@@ -596,7 +611,7 @@ void plantzombie::insertfieldZB(int rect, QPointF point)
 }
 void plantzombie::insertfieldZC(int rect, QPointF point)
 {
-    LeafHeadZombie* zc = new LeafHeadZombie;
+    LeafHeadZombie* zc = new LeafHeadZombie(s, plantMap, zombieMap,rect,gridRects,gridCentersMap);
     QPair<LeafHeadZombie*,int> pair(zc,rect);
     gridCentersMap[rect].second = "ZC";
     gridCentersMap[rect].first = point;
@@ -604,7 +619,6 @@ void plantzombie::insertfieldZC(int rect, QPointF point)
     zombieMap[rect].first = point; //z
     zc->setPos(point);
     s->addItem(zc);
-    ZC.push_back(pair);
     if(Zombie==true){
         brainStorge -= 150;
         visibleButton();
@@ -616,7 +630,7 @@ void plantzombie::insertfieldZC(int rect, QPointF point)
 }
 void plantzombie::insertfieldZD(int rect, QPointF point)
 {
-    TallZombie* zd = new TallZombie;
+    TallZombie* zd = new TallZombie(s, plantMap, zombieMap,rect,gridRects,gridCentersMap);
     QPair<TallZombie*,int> pair(zd,rect);
     gridCentersMap[rect].second = "ZD";
     gridCentersMap[rect].first = point;
@@ -624,7 +638,6 @@ void plantzombie::insertfieldZD(int rect, QPointF point)
     zombieMap[rect].first = point; //z
     zd->setPos(point);
     s->addItem(zd);
-    ZD.push_back(pair);
     if(Zombie==true){
         brainStorge -= 150;
         visibleButton();
@@ -636,7 +649,7 @@ void plantzombie::insertfieldZD(int rect, QPointF point)
 }
 void plantzombie::insertfieldZE(int rect, QPointF point)
 {
-    AstronautZombie* ze = new AstronautZombie;
+    AstronautZombie* ze = new AstronautZombie(s, plantMap, zombieMap,rect,gridRects,gridCentersMap);
     QPair<AstronautZombie*,int> pair(ze,rect);
     gridCentersMap[rect].second = "ZE";
     gridCentersMap[rect].first = point;
@@ -644,7 +657,6 @@ void plantzombie::insertfieldZE(int rect, QPointF point)
     zombieMap[rect].first = point; //z
     ze->setPos(point);
     s->addItem(ze);
-    ZE.push_back(pair);
     if(Zombie==true){
         brainStorge -= 200;
         visibleButton();
@@ -656,7 +668,7 @@ void plantzombie::insertfieldZE(int rect, QPointF point)
 }
 void plantzombie::insertfieldZF(int rect, QPointF point)
 {
-    PurpleHairZombie* zf = new PurpleHairZombie;
+    PurpleHairZombie* zf = new PurpleHairZombie(s, plantMap, zombieMap,rect,gridRects,gridCentersMap);
     QPair<PurpleHairZombie*,int> pair(zf,rect);
     gridCentersMap[rect].second = "ZF";
     gridCentersMap[rect].first = point;
@@ -664,7 +676,6 @@ void plantzombie::insertfieldZF(int rect, QPointF point)
     zombieMap[rect].first = point; //z
     zf->setPos(point);
     s->addItem(zf);
-    ZF.push_back(pair);
     if(Zombie==true){
         brainStorge -= 800;
         visibleButton();
@@ -750,108 +761,6 @@ QMap<int, QPair<QPointF,QString>> plantzombie::createGridCentersMap()
     }
     return centersMap;
 }
-
-/*void plantzombie::mousePressEvent(QMouseEvent *event)
-{
-    QPointF viewPos=event->pos();
-    //QPointF clickedPos =ui->graphicsView->mapToScene(viewPos.toPoint());
-    int a=viewPos.y();
-    viewPos.setY(a-150);
-    for (int i = 0; i < gridRects.size(); ++i) {
-        if (gridRects[i].contains(viewPos)) {
-            currentGridIndex = i;
-
-            break;
-        }
-    }
-    QPointF pointpixmap;
-    pointpixmap.setX(gridRects[currentGridIndex].topLeft().x()-1);
-    pointpixmap.setY(gridRects[currentGridIndex].topLeft().y()+1);
-    if (event->button() == Qt::LeftButton) {
-        QString str = gridCentersMap.find(currentGridIndex)->second;
-        if(isDrawingPA == true){
-            if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPA(currentGridIndex,pointpixmap);
-                isDrawingPA = false;
-                gridCentersMap.find(currentGridIndex)->second="PA";
-            }
-
-        }else if(isDrawingPB == true){
-            if((currentGridIndex+1)%12<7 && (currentGridIndex+1)%12!=0&&str == ""){
-                insertfieldPB(currentGridIndex,pointpixmap);
-                isDrawingPB = false;
-                gridCentersMap.find(currentGridIndex)->second="PB";
-            }
-
-        }else if(isDrawingPC == true){
-            if((currentGridIndex+1)%12<7 && (currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPC(currentGridIndex,pointpixmap);
-                isDrawingPC = false;
-                gridCentersMap.find(currentGridIndex)->second="PC";
-            }
-
-        }else if(isDrawingPD == true){
-            if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPD(currentGridIndex,pointpixmap);
-                isDrawingPD = false;
-                gridCentersMap.find(currentGridIndex)->second="PD";
-            }
-
-        }else if(isDrawingPE == true){
-            if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPE(currentGridIndex,pointpixmap);
-                isDrawingPE = false;
-                gridCentersMap.find(currentGridIndex)->second="PE";
-            }
-
-        }else if(isDrawingPF == true){
-            if((currentGridIndex+1)%12<7&&(currentGridIndex+1)%12!=0 && str == ""){
-                insertfieldPF(currentGridIndex,pointpixmap);
-                isDrawingPF = false;
-                gridCentersMap.find(currentGridIndex)->second="PF";
-            }
-
-        }else if(isDrawingZA == true){
-            if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZA(currentGridIndex,pointpixmap);
-                isDrawingZA = false;
-                gridCentersMap.find(currentGridIndex)->second="ZA";
-            }
-        }else if(isDrawingZB == true){
-            if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZB(currentGridIndex,pointpixmap);
-                isDrawingZB = false;
-                gridCentersMap.find(currentGridIndex)->second="ZB";
-            }
-        }else if(isDrawingZC == true){
-            if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZC(currentGridIndex,pointpixmap);
-                isDrawingZC = false;
-                gridCentersMap.find(currentGridIndex)->second="ZC";
-            }
-        }else if(isDrawingZD == true){
-            if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZD(currentGridIndex,pointpixmap);
-                isDrawingZD = false;
-                gridCentersMap.find(currentGridIndex)->second="ZD";
-            }
-        }else if(isDrawingZE == true){
-            if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZE(currentGridIndex,pointpixmap);
-                isDrawingZE = false;
-                gridCentersMap.find(currentGridIndex)->second="ZE";
-            }
-        }else if(isDrawingZF == true){
-            if((currentGridIndex+1)%12==0 && str == ""){
-                insertfieldZF(currentGridIndex,pointpixmap);
-                isDrawingZF = false;
-                gridCentersMap.find(currentGridIndex)->second="ZF";
-            }
-        }
-    } else if (event->button() == Qt::RightButton) {
-
-    }
-}*/
 void plantzombie::mousePressEvent(QMouseEvent *event)
 {
     QPointF viewPos = event->pos();

@@ -1,7 +1,7 @@
 #include "jalapieno.h"
 #include "qgraphicsscene.h"
 
-Jalapieno::Jalapieno(QGraphicsScene* scene) : PlantBase(0,0,300,150) , scene(scene){
+Jalapieno::Jalapieno(QGraphicsScene* scene) : PlantBase(0,300) , scene(scene){
     setPixmap(QPixmap(":/image/jalapino_transparent.png"));
     setScale(0.08);
 
