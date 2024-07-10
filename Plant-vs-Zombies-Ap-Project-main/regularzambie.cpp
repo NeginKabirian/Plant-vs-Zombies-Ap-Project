@@ -197,7 +197,7 @@ void RegularZambie::moveForward()
 
 
     // Printing plantMap
-    qDebug() << "Printing plantMap:";
+    //qDebug() << "Printing plantMap:";
     /*for (auto it = plantMap.constBegin(); it != plantMap.constEnd(); ++it) {
         int key = it.key();
         QPointF position = it.value().first;
@@ -205,7 +205,7 @@ void RegularZambie::moveForward()
     }*/
 
     // Printing zombieMap
-    qDebug() << "Printing zombieMap:";
+    //qDebug() << "Printing zombieMap:";
     /*for (auto it = zombieMap.constBegin(); it != zombieMap.constEnd(); ++it) {
         int key = it.key();
         QPointF position = it.value().first;

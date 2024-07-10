@@ -137,7 +137,6 @@ bool plantzombie::isZombieInFront(int rect)
     int rowEnd = rowStart + 12;
 
     for (int i = rect + 1; i < rowEnd; ++i) {
-        qDebug() << "i" << i;
         if (gridCentersMap[i].second == "ZA" && dynamic_cast<ZombieBase*>(zombieMap[i].second)) {
             return true;
         }
@@ -176,7 +175,6 @@ void plantzombie::insertfieldPA(int rect, QPointF point)
             }
         } else {
             if (pb->isShooting()) {
-                qDebug() << "ooof";
                 disconnect(pb, &Peashooter::shootPea, this, nullptr);
                 pb->stopShooting();
             }
@@ -186,15 +184,9 @@ void plantzombie::insertfieldPA(int rect, QPointF point)
 }
 
 void plantzombie::onShootPea(PlantBase* pa, QPointF point) {
-    QPropertyAnimation* animation = new QPropertyAnimation(pa, "pos");
-    bool boomrang = false;
-    animation->setDuration(1000);
-    animation->setStartValue(point);
-    animation->setKeyValueAt(0.7, point + QPointF(0, -2.2));
-    animation->setEndValue(point);
-    animation->setLoopCount(-1);
-    animation->start(QAbstractAnimation::DeleteWhenStopped);
+
     QGraphicsItem *pea(pa);
+    bool boomrang = false;
     if (dynamic_cast<Peashooter*>(pa)) {
         QGraphicsEllipseItem* ellipseItem = new QGraphicsEllipseItem(0, 0, 15, 10);
         ellipseItem->setBrush(Qt::green);
@@ -241,6 +233,13 @@ void plantzombie::onShootPea(PlantBase* pa, QPointF point) {
     }
 
     if (pea == nullptr) return;
+    QPropertyAnimation* animation = new QPropertyAnimation(pa, "pos");
+    animation->setDuration(1000);
+    animation->setStartValue(point);
+    animation->setKeyValueAt(0.7, point + QPointF(0, -2.2));
+    animation->setEndValue(point);
+    animation->setLoopCount(-1);
+    animation->start(QAbstractAnimation::DeleteWhenStopped);
 
     pea->setPos(pa->pos() + QPointF(62, 17));
 
@@ -577,7 +576,7 @@ void plantzombie::insertfieldZA(int rect, QPointF point)
 }
 void plantzombie::insertfieldZB(int rect, QPointF point)
 {
-    BucketHeadZombie* zb = new BucketHeadZombie;
+    BucketHeadZombie* zb = new BucketHeadZombie(s, plantMap, zombieMap,rect,gridRects,gridCentersMap);
     QPair<BucketHeadZombie*,int> pair(zb,rect);
     gridCentersMap[rect].second = "ZB";
     gridCentersMap[rect].first = point;
@@ -752,7 +751,7 @@ QMap<int, QPair<QPointF,QString>> plantzombie::createGridCentersMap()
     return centersMap;
 }
 
-void plantzombie::mousePressEvent(QMouseEvent *event)
+/*void plantzombie::mousePressEvent(QMouseEvent *event)
 {
     QPointF viewPos=event->pos();
     //QPointF clickedPos =ui->graphicsView->mapToScene(viewPos.toPoint());
@@ -852,7 +851,109 @@ void plantzombie::mousePressEvent(QMouseEvent *event)
     } else if (event->button() == Qt::RightButton) {
 
     }
+}*/
+void plantzombie::mousePressEvent(QMouseEvent *event)
+{
+    QPointF viewPos = event->pos();
+    int a = viewPos.y();
+    viewPos.setY(a - 150);
+
+    currentGridIndex = -1;
+    for (int i = 0; i < gridRects.size(); ++i) {
+        if (gridRects[i].contains(viewPos)) {
+            currentGridIndex = i;
+            break;
+        }
+    }
+
+    if (currentGridIndex == -1) {
+        return;
+    }
+
+    QPointF pointpixmap;
+    pointpixmap.setX(gridRects[currentGridIndex].topLeft().x() - 1);
+    pointpixmap.setY(gridRects[currentGridIndex].topLeft().y() + 1);
+
+    if (event->button() == Qt::LeftButton) {
+        QString str = gridCentersMap.find(currentGridIndex)->second;
+        if (isDrawingPA) {
+            if ((currentGridIndex + 1) % 12 < 7 && (currentGridIndex + 1) % 12 != 0 && str == "") {
+                insertfieldPA(currentGridIndex, pointpixmap);
+                isDrawingPA = false;
+                gridCentersMap.find(currentGridIndex)->second = "PA";
+            }
+        } else if (isDrawingPB) {
+            if ((currentGridIndex + 1) % 12 < 7 && (currentGridIndex + 1) % 12 != 0 && str == "") {
+                insertfieldPB(currentGridIndex, pointpixmap);
+                isDrawingPB = false;
+                gridCentersMap.find(currentGridIndex)->second = "PB";
+            }
+        } else if (isDrawingPC) {
+            if ((currentGridIndex + 1) % 12 < 7 && (currentGridIndex + 1) % 12 != 0 && str == "") {
+                insertfieldPC(currentGridIndex, pointpixmap);
+                isDrawingPC = false;
+                gridCentersMap.find(currentGridIndex)->second = "PC";
+            }
+        } else if (isDrawingPD) {
+            if ((currentGridIndex + 1) % 12 < 7 && (currentGridIndex + 1) % 12 != 0 && str == "") {
+                insertfieldPD(currentGridIndex, pointpixmap);
+                isDrawingPD = false;
+                gridCentersMap.find(currentGridIndex)->second = "PD";
+            }
+        } else if (isDrawingPE) {
+            if ((currentGridIndex + 1) % 12 < 7 && (currentGridIndex + 1) % 12 != 0 && str == "") {
+                insertfieldPE(currentGridIndex, pointpixmap);
+                isDrawingPE = false;
+                gridCentersMap.find(currentGridIndex)->second = "PE";
+            }
+        } else if (isDrawingPF) {
+            if ((currentGridIndex + 1) % 12 < 7 && (currentGridIndex + 1) % 12 != 0 && str == "") {
+                insertfieldPF(currentGridIndex, pointpixmap);
+                isDrawingPF = false;
+                gridCentersMap.find(currentGridIndex)->second = "PF";
+            }
+        } else if (isDrawingZA) {
+            if ((currentGridIndex + 1) % 12 == 0 && str == "") {
+                insertfieldZA(currentGridIndex, pointpixmap);
+                isDrawingZA = false;
+                gridCentersMap.find(currentGridIndex)->second = "ZA";
+            }
+        } else if (isDrawingZB) {
+            if ((currentGridIndex + 1) % 12 == 0 && str == "") {
+                insertfieldZB(currentGridIndex, pointpixmap);
+                isDrawingZB = false;
+                gridCentersMap.find(currentGridIndex)->second = "ZB";
+            }
+        } else if (isDrawingZC) {
+            if ((currentGridIndex + 1) % 12 == 0 && str == "") {
+                insertfieldZC(currentGridIndex, pointpixmap);
+                isDrawingZC = false;
+                gridCentersMap.find(currentGridIndex)->second = "ZC";
+            }
+        } else if (isDrawingZD) {
+            if ((currentGridIndex + 1) % 12 == 0 && str == "") {
+                insertfieldZD(currentGridIndex, pointpixmap);
+                isDrawingZD = false;
+                gridCentersMap.find(currentGridIndex)->second = "ZD";
+            }
+        } else if (isDrawingZE) {
+            if ((currentGridIndex + 1) % 12 == 0 && str == "") {
+                insertfieldZE(currentGridIndex, pointpixmap);
+                isDrawingZE = false;
+                gridCentersMap.find(currentGridIndex)->second = "ZE";
+            }
+        } else if (isDrawingZF) {
+            if ((currentGridIndex + 1) % 12 == 0 && str == "") {
+                insertfieldZF(currentGridIndex, pointpixmap);
+                isDrawingZF = false;
+                gridCentersMap.find(currentGridIndex)->second = "ZF";
+            }
+        }
+    } else if (event->button() == Qt::RightButton) {
+    }
 }
+
+
 
 
 
