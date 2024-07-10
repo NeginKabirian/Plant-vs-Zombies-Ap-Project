@@ -85,8 +85,7 @@ constexpr auto qt_meta_stringdata_CLASSplantzombieENDCLASS = QtMocHelpers::strin
     "PlantBase*",
     "burnRow",
     "plumminefunction",
-    "plantattack",
-    "onCheckHealth"
+    "plantattack"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -99,7 +98,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplantzombieENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      45,   14, // methods
+      44,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -107,53 +106,52 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplantzombieENDCLASS[] = {
       12,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,  284,    2, 0x06,    1 /* Public */,
-       6,    3,  291,    2, 0x06,    5 /* Public */,
-       7,    3,  298,    2, 0x06,    9 /* Public */,
-       8,    3,  305,    2, 0x06,   13 /* Public */,
-       9,    3,  312,    2, 0x06,   17 /* Public */,
-      10,    3,  319,    2, 0x06,   21 /* Public */,
-      11,    3,  326,    2, 0x06,   25 /* Public */,
-      12,    3,  333,    2, 0x06,   29 /* Public */,
-      13,    3,  340,    2, 0x06,   33 /* Public */,
-      14,    3,  347,    2, 0x06,   37 /* Public */,
-      15,    3,  354,    2, 0x06,   41 /* Public */,
-      16,    3,  361,    2, 0x06,   45 /* Public */,
+       1,    3,  278,    2, 0x06,    1 /* Public */,
+       6,    3,  285,    2, 0x06,    5 /* Public */,
+       7,    3,  292,    2, 0x06,    9 /* Public */,
+       8,    3,  299,    2, 0x06,   13 /* Public */,
+       9,    3,  306,    2, 0x06,   17 /* Public */,
+      10,    3,  313,    2, 0x06,   21 /* Public */,
+      11,    3,  320,    2, 0x06,   25 /* Public */,
+      12,    3,  327,    2, 0x06,   29 /* Public */,
+      13,    3,  334,    2, 0x06,   33 /* Public */,
+      14,    3,  341,    2, 0x06,   37 /* Public */,
+      15,    3,  348,    2, 0x06,   41 /* Public */,
+      16,    3,  355,    2, 0x06,   45 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      17,    0,  368,    2, 0x08,   49 /* Private */,
-      18,    0,  369,    2, 0x08,   50 /* Private */,
-      19,    0,  370,    2, 0x08,   51 /* Private */,
-      20,    0,  371,    2, 0x08,   52 /* Private */,
-      21,    0,  372,    2, 0x08,   53 /* Private */,
-      22,    0,  373,    2, 0x08,   54 /* Private */,
-      23,    0,  374,    2, 0x08,   55 /* Private */,
-      24,    0,  375,    2, 0x08,   56 /* Private */,
-      25,    0,  376,    2, 0x08,   57 /* Private */,
-      26,    0,  377,    2, 0x08,   58 /* Private */,
-      27,    0,  378,    2, 0x08,   59 /* Private */,
-      28,    0,  379,    2, 0x08,   60 /* Private */,
-      29,    0,  380,    2, 0x08,   61 /* Private */,
-      30,    0,  381,    2, 0x08,   62 /* Private */,
-      31,    0,  382,    2, 0x08,   63 /* Private */,
-      32,    0,  383,    2, 0x08,   64 /* Private */,
-      33,    0,  384,    2, 0x08,   65 /* Private */,
-      34,    0,  385,    2, 0x08,   66 /* Private */,
-      35,    0,  386,    2, 0x08,   67 /* Private */,
-      36,    0,  387,    2, 0x08,   68 /* Private */,
-      37,    0,  388,    2, 0x08,   69 /* Private */,
-      38,    0,  389,    2, 0x08,   70 /* Private */,
-      39,    0,  390,    2, 0x08,   71 /* Private */,
-      40,    0,  391,    2, 0x08,   72 /* Private */,
-      41,    0,  392,    2, 0x08,   73 /* Private */,
-      42,    0,  393,    2, 0x08,   74 /* Private */,
-      43,    0,  394,    2, 0x08,   75 /* Private */,
-      44,    0,  395,    2, 0x08,   76 /* Private */,
-      45,    2,  396,    2, 0x08,   77 /* Private */,
-      47,    2,  401,    2, 0x08,   80 /* Private */,
-      48,    2,  406,    2, 0x08,   83 /* Private */,
-      49,    2,  411,    2, 0x08,   86 /* Private */,
-      50,    0,  416,    2, 0x08,   89 /* Private */,
+      17,    0,  362,    2, 0x08,   49 /* Private */,
+      18,    0,  363,    2, 0x08,   50 /* Private */,
+      19,    0,  364,    2, 0x08,   51 /* Private */,
+      20,    0,  365,    2, 0x08,   52 /* Private */,
+      21,    0,  366,    2, 0x08,   53 /* Private */,
+      22,    0,  367,    2, 0x08,   54 /* Private */,
+      23,    0,  368,    2, 0x08,   55 /* Private */,
+      24,    0,  369,    2, 0x08,   56 /* Private */,
+      25,    0,  370,    2, 0x08,   57 /* Private */,
+      26,    0,  371,    2, 0x08,   58 /* Private */,
+      27,    0,  372,    2, 0x08,   59 /* Private */,
+      28,    0,  373,    2, 0x08,   60 /* Private */,
+      29,    0,  374,    2, 0x08,   61 /* Private */,
+      30,    0,  375,    2, 0x08,   62 /* Private */,
+      31,    0,  376,    2, 0x08,   63 /* Private */,
+      32,    0,  377,    2, 0x08,   64 /* Private */,
+      33,    0,  378,    2, 0x08,   65 /* Private */,
+      34,    0,  379,    2, 0x08,   66 /* Private */,
+      35,    0,  380,    2, 0x08,   67 /* Private */,
+      36,    0,  381,    2, 0x08,   68 /* Private */,
+      37,    0,  382,    2, 0x08,   69 /* Private */,
+      38,    0,  383,    2, 0x08,   70 /* Private */,
+      39,    0,  384,    2, 0x08,   71 /* Private */,
+      40,    0,  385,    2, 0x08,   72 /* Private */,
+      41,    0,  386,    2, 0x08,   73 /* Private */,
+      42,    0,  387,    2, 0x08,   74 /* Private */,
+      43,    0,  388,    2, 0x08,   75 /* Private */,
+      44,    0,  389,    2, 0x08,   76 /* Private */,
+      45,    2,  390,    2, 0x08,   77 /* Private */,
+      47,    2,  395,    2, 0x08,   80 /* Private */,
+      48,    2,  400,    2, 0x08,   83 /* Private */,
+      49,    2,  405,    2, 0x08,   86 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,    3,    4,    5,
@@ -202,7 +200,6 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSplantzombieENDCLASS[] = {
     QMetaType::Void, QMetaType::Int, 0x80000000 | 46,    3,    2,
     QMetaType::Void, QMetaType::Int, 0x80000000 | 46,    3,    2,
     QMetaType::Void, 0x80000000 | 46, QMetaType::Int,    2,    2,
-    QMetaType::Void,
 
        0        // eod
 };
@@ -347,9 +344,7 @@ Q_CONSTINIT const QMetaObject plantzombie::staticMetaObject = { {
         // method 'plantattack'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<PlantBase *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        // method 'onCheckHealth'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
 } };
@@ -404,7 +399,6 @@ void plantzombie::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 41: _t->burnRow((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<PlantBase*>>(_a[2]))); break;
         case 42: _t->plumminefunction((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<PlantBase*>>(_a[2]))); break;
         case 43: _t->plantattack((*reinterpret_cast< std::add_pointer_t<PlantBase*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 44: _t->onCheckHealth(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -547,13 +541,13 @@ int plantzombie::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 45)
+        if (_id < 44)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 45;
+        _id -= 44;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 45)
+        if (_id < 44)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 45;
+        _id -= 44;
     }
     return _id;
 }
