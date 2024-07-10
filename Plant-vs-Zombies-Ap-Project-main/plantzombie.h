@@ -111,7 +111,6 @@ private slots:
     void burnRow(int rect , PlantBase*);
     void plumminefunction(int rect , PlantBase*);
     void plantattack(PlantBase* , int);
-    void onCheckHealth();
 
 private:
     Ui::plantzombie *ui;
@@ -157,7 +156,6 @@ private:
     QVector<QPair<AstronautZombie*,int>>ZE;
     QVector<QPair<PurpleHairZombie*,int>>ZF;
     QTimer* moveTimer;
-    //QTimer* gameTimer;
     bool isZombieInFront(int);
 protected:
     void divideImageIntoGrid(int rows, int columns);
