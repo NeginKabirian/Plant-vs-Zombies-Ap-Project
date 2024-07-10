@@ -4,11 +4,6 @@
 #include <QObject>
 #include <QTcpSocket>
 #include "plantzombie.h"
-#include "signup.h"
-#include "login.h"
-#include "forgetpass.h"
-#include "waitstart.h"
-//#include "myexception.h"
 
 class Client : public QObject
 {
@@ -16,10 +11,7 @@ class Client : public QObject
 public:
     explicit Client(plantzombie *game, QObject *parent = nullptr);
     void connectToServer(const QString &address, quint16 port);
-    signup *Signup;
-    login *Login;
-    forgetpass *forget;
-    waitstart *waitt;
+
 public slots:
 
      void sendAddPAMessage(int rect,int x, int y);
@@ -34,21 +26,12 @@ public slots:
      void sendAddZDMessage(int rect,int x, int y);
      void sendAddZEMessage(int rect,int x, int y);
      void sendAddZFMessage(int rect,int x, int y);
-     void sendSignupMessage(QString message);
-     void sendloginMessage(QString message);
-     void sendforgetpassmessage(QString message);
-     void showuiforget();
-     void showuisignup();
 private slots:
     void onReadyRead();
 
 private:
     QTcpSocket *m_socket;
     plantzombie *m_game;
-
-
-signals:
-
 };
 
 #endif // CLIENT_H
