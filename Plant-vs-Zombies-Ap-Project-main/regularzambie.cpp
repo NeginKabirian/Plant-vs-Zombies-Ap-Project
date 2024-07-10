@@ -140,6 +140,7 @@ void RegularZambie::attackZombie()
 #include <peashooter.h>
 #include <two_peashooter.h>
 #include <boomerang.h>
+#include<plummine.h>
 
 int RegularZambie::ChangePosToRect(QPointF point)
 {
@@ -175,30 +176,24 @@ RegularZambie::RegularZambie(QGraphicsScene *scene, QMap<int, QPair<QPointF, Pla
 void RegularZambie::moveForward()
 {
     qDebug() << currentRect << "rect" << ChangePosToRect(this->pos());
-    QPointF check=this->pos();
-    check.setX(check.x()-41);
-    int checkrect=ChangePosToRect(check);
-    if(checkrect != currentRect && zombieMap.contains(checkrect)){
-
-    }else{
-
-    }
     int rect = ChangePosToRect(this->pos());
-
     setPos(x() - 41, y());
     if (currentRect != rect && rect != -1) {
-        zombieMap[rect].second = zombieMap[currentRect].second;
-        zombieMap.remove(currentRect);
-        gridcenterMap[currentRect].second = "";
-        gridcenterMap[rect].second = "ZA";
-        currentRect = rect;
-    }
+            zombieMap[rect].second = zombieMap[currentRect].second;
+            zombieMap.remove(currentRect);
+            gridcenterMap[currentRect].second = "";
+            gridcenterMap[rect].second = "ZA";
+            currentRect = rect;
+        }
 
     if ((rect != -1 && plantMap.contains(rect) && dynamic_cast<PlantBase*>(plantMap[rect].second)) ||
-        (rect - 1 != -1 && plantMap.contains(rect - 1) && dynamic_cast<PlantBase*>(plantMap[rect - 1].second))) {
-        moveTimer->stop();
-        attackTimer->start(1000);
-    }
+            (rect - 1 != -1 && plantMap.contains(rect - 1) && dynamic_cast<PlantBase*>(plantMap[rect - 1].second))) {
+            if(dynamic_cast<PlumMine*>(plantMap[rect - 1].second)){
+            qDebug()<<"oo";
+            }
+            moveTimer->stop();
+            attackTimer->start(1000);
+         }
 
     // Printing plantMap
     qDebug() << "Printing plantMap:";
@@ -209,8 +204,12 @@ void RegularZambie::moveForward()
     }
 
     // Printing zombieMap
-    qDebug() << "Printing zombieMap:";
-    for (auto it = zombieMap.constBegin(); it != zombieMap.constEnd(); ++it) {
+    //qDebug() << "Printing zombieMap:";
+
+    //for (auto it = zombieMap.constBegin(); it != zombieMap.constEnd(); ++it) {
+
+    /*for (auto it = zombieMap.constBegin(); it != zombieMap.constEnd(); ++it) {
+>>>>>>> 50c3e84b67d613b3a3995012e47775f1fc0ad04f
         int key = it.key();
         QPointF position = it.value().first;
         ZombieBase* zombie = it.value().second;
@@ -224,6 +223,9 @@ void RegularZambie::moveForward()
         QString description = it.value().second;
         qDebug() << "Key:" << key << "Description:" << description;
     }
+
+    }*/
+
 }
 
 void RegularZambie::attackZombie()

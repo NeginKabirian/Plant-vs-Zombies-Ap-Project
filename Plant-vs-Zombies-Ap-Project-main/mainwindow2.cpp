@@ -7,6 +7,7 @@ MainWindow2::MainWindow2(QWidget *parent) :
 {
     ui->setupUi(this);
     plantzombie *game = new plantzombie();
+   // ui->setupUi(game);
     client = new Client(game);
     client->connectToServer("127.0.0.1", 12345);
 }

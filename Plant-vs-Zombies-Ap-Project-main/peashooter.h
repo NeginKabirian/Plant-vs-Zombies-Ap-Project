@@ -17,7 +17,6 @@ public:
     bool remove = false;
 signals:
     void shootPea();
-
 private:
     bool shooting;
 };

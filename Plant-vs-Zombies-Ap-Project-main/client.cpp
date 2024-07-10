@@ -26,7 +26,7 @@ Client::Client(plantzombie *game, QObject *parent)
     connect(m_game, &plantzombie::SInsertZE, this, &Client::sendAddZEMessage);
     connect(m_game, &plantzombie::SInsertZF, this, &Client::sendAddZFMessage);
     //Signup->show();
-    //m_game->show();
+     m_game->show();
     //waitt->show();
 }
 
@@ -147,12 +147,14 @@ void Client::onReadyRead()
        m_game->Zombie=true;
        m_game->visibleButton();
 
+
     }else if(message=="plant"){
         //waitt->close();
        //Login->close();
         //m_game->show();
        m_game->plant=true;
        m_game->visibleButton();
+
 
     }else{
     QStringList parts = message.split(',');

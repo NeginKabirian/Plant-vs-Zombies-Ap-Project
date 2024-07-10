@@ -13,6 +13,8 @@ public:
     virtual void setHealth(int);
     virtual int getHealth();
     virtual double getAttackPower();
+    QTimer *moveTimer;
+    QTimer *attackTimer;
 protected:
     int Health;
     const double MovmentDelay;

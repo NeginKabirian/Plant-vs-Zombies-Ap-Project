@@ -12,12 +12,9 @@ void PlumMine::explode()
     smoke->setPos(pos() + QPointF(-200, -200));
     scene->addItem(smoke);
 
-    QTimer::singleShot(2000, [smoke]() {
+    QTimer::singleShot(2000, [smoke,this]() {
         smoke->scene()->removeItem(smoke);
+         emit plumminefunction();
     });
-
     scene->removeItem(this);
-    this->deleteLater();
-
-    emit plumminefunction();
 }

@@ -34,11 +34,11 @@ private:
     QMap<int, QPair<QPointF, PlantBase*>> &plantMap;
     QMap<int, QPair<QPointF, ZombieBase*>> &zombieMap;
     QMovie *zombieMovie;
-    QTimer *moveTimer;
-    QTimer *attackTimer;
     int currentRect;
     QList<QRectF> gridRects;
     QMap<int,QPair<QPointF, QString>>& gridcenterMap;
+signals:
+    void removepea();
 };
 
 #endif // REGULARZAMBIE_H

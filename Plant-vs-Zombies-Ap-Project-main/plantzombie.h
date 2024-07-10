@@ -1,4 +1,4 @@
-  #ifndef PLANTZOMBIE_H
+#ifndef PLANTZOMBIE_H
 #define PLANTZOMBIE_H
 
 #include <QMainWindow>
