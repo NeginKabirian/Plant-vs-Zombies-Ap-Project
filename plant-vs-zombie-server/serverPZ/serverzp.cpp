@@ -2,6 +2,7 @@
 #include "ui_serverzp.h"
 // #include <cstime>
 #include <cstdlib>
+#define fj "F:/userssss.json"
 
 serverzp::serverzp(QWidget *parent)
 :  m_server(new QTcpServer())
@@ -34,53 +35,67 @@ bool serverzp::uniqusername(QString u)
 
 void serverzp::readfileadduser()
 {
-        QString jsonFilePath = "F:/userss.json";
-        QFile file(jsonFilePath);
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-                qDebug() << "Cannot open file for reading:" << file.errorString();
-                return;
-            }
+    QString jsonFilePath = fj;
 
-            QByteArray jsonData = file.readAll();
+            QFile file(jsonFilePath);
+            QJsonObject jsonhelpy;
+            jsonhelpy["name"]="";
+            jsonhelpy["username"]="";
+            jsonhelpy["phone"]="";
+            jsonhelpy["address"]="";
+            jsonhelpy["password"]="";
+            QJsonDocument jsonDochelpy(jsonhelpy);
+            if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                    qDebug() << "Cannot open file for start:" << file.errorString();
+                    return;
+                }
+            file.write(jsonDochelpy.toJson());
             file.close();
+            if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                    qDebug() << "Cannot open file for reading:" << file.errorString();
+                    return;
+                }
 
-            QJsonParseError parseError;
-            QJsonDocument doc = QJsonDocument::fromJson(jsonData, &parseError);
+                QByteArray jsonData = file.readAll();
+                file.close();
 
-            if (parseError.error != QJsonParseError::NoError) {
-                qDebug() << "Failed to parse JSON:" << parseError.errorString();
-                return;
-            }
+                QJsonParseError parseError;
+                QJsonDocument doc = QJsonDocument::fromJson(jsonData, &parseError);
 
-            if (!doc.isArray()) {
-                qDebug() << "JSON file does not contain an array.";
-                return;
-            }
+                if (parseError.error != QJsonParseError::NoError) {
+                    qDebug() << "Failed to parse JSON:" << parseError.errorString();
+                    return;
+                }
 
-            QJsonArray jsonArray = doc.array();
-            qDebug() << "Number of entries in JSON file:" << jsonArray.size();
+                //if (!doc.isArray()) {
+                   // qDebug() << "JSON file does not contain an array.";
+                   // return;
+               // }
 
-            for (int i = 0; i < jsonArray.size(); ++i) {
-                QJsonObject obj = jsonArray.at(i).toObject();
-                QString usern = obj["username"].toString();
+                QJsonArray jsonArray = doc.array();
+                qDebug() << "Number of entries in JSON file:" << jsonArray.size();
+
+                for (int i = 0; i < jsonArray.size(); ++i) {
+                    QJsonObject obj = jsonArray.at(i).toObject();
+                    QString usern = obj["username"].toString();
 
 
-                qDebug() << "Entry" << i+1 << ":";
-                qDebug() << "  Username:" << usern;
-                username.push_back(usern);
-            }
-            for(int j=0;j<username.size();++j){
-                qDebug() << "  User:" << username[j];
-            }
+                    qDebug() << "Entry" << i+1 << ":";
+                    qDebug() << "  Username:" << usern;
+                    username.push_back(usern);
+                }
+                for(int j=0;j<username.size();++j){
+                    qDebug() << "  User:" << username[j];
+                }
 }
 
-void serverzp::writefileaddgamer(QString name, QString usern, QString phone, QString address, QString password)
+void serverzp::writefileaddgamer(QString usern, QString name, QString phone, QString address, QString password)
 {
      qDebug()<<"write";
 
      QByteArray hash = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
      QString hashedPassword = QString(hash.toHex());
-     QString jsonFilePath = "F:/userss.json";
+     QString jsonFilePath = fj;
      QFile file(jsonFilePath);
      if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
            qDebug() << "Cannot open file for reading and writing:" << file.errorString();
@@ -119,7 +134,7 @@ int serverzp::matchUsernamePassword(QString user, QString passw)
 {
     QByteArray hash = QCryptographicHash::hash(passw.toUtf8(), QCryptographicHash::Sha256);
     QString hashedPassword = QString(hash.toHex());
-    QString jsonFilePath = "F:/userss.json";
+    QString jsonFilePath = fj;
     QFile file(jsonFilePath);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             qDebug() << "Cannot open file for reading:" << file.errorString();
@@ -167,11 +182,11 @@ bool serverzp::writeNewPassword(QString username, QString phone, QString newpass
     QByteArray hash = QCryptographicHash::hash(newpassword.toUtf8(), QCryptographicHash::Sha256);
     QString hashedPassword = QString(hash.toHex());
     bool f=false;
-    QString jsonFilePath = "F:/userss.json";
+    QString jsonFilePath = fj;
     QFile file(jsonFilePath);
-    if (!file.open(QIODevice::ReadWrite | QIODevice::Text))
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        qDebug() << "Failed to open file for reading and writing.";
+        qDebug() << "Failed to open file for reading .";
         return false ;
      }
 
@@ -203,6 +218,12 @@ bool serverzp::writeNewPassword(QString username, QString phone, QString newpass
            }
         }
 
+        file.close();
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        {
+            qDebug() << "Failed to open file for writing.";
+            return false ;
+         }
         file.resize(0);
         QJsonDocument updatedDoc(jsonArray);
         file.write(updatedDoc.toJson());

@@ -2,7 +2,8 @@
 #define ZOMBIEBASE_H
 #include<QGraphicsPixmapItem>
 #include <QObject>
-
+#include "plantbase.h"
+#include<QMovie>
 class ZombieBase : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT

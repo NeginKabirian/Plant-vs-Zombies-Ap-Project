@@ -7,11 +7,12 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow2 w;
-    //plantzombie z;
-    //z.show();
+    //MainWindow2 w;
+    plantzombie z;
+    z.show();
 
     //signup ss;
-    w.show();
+
+    //w.show();
     return a.exec();
 }

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/FILe">
+        <file>userss.json</file>
+    </qresource>
+    <qresource prefix="/FJ"/>
+</RCC>

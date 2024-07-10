@@ -23,6 +23,7 @@ class RegularZambie : public ZombieBase
 public:
     //explicit RegularZambie(QObject *parent = nullptr);
     RegularZambie(QGraphicsScene *scene, QMap<int, QPair<QPointF, PlantBase*>> &plantMap,QMap<int, QPair<QPointF, ZombieBase*>> &zombieMap,int rect,QList<QRectF> gridRects,QMap<int,QPair<QPointF, QString>>& gridcenterMap);
+    int preRect;
 public slots:
     void moveForward();
     void attackZombie();

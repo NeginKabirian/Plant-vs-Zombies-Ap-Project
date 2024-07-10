@@ -5,7 +5,7 @@ Walnut::Walnut() : PlantBase(400,0,0,100){
     setScale(0.08);
 }
 void Walnut::move(bool check){
-    if(check){
+    /*if(check){
         QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
         animation->setDuration(1000);
         animation->setStartValue(pos());
@@ -13,5 +13,5 @@ void Walnut::move(bool check){
         animation->setEndValue(pos());
         animation->setLoopCount(-1);
         animation->start(QAbstractAnimation::DeleteWhenStopped);
-    }
+    }*/
 }

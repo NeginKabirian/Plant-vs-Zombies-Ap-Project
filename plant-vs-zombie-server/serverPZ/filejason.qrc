@@ -1,0 +1,4 @@
+<RCC>
+    <qresource prefix="/FILE"/>
+    <qresource prefix="/FILEJ"/>
+</RCC>
