@@ -22,15 +22,16 @@ class RegularZambie : public ZombieBase
 {
 public:
     //explicit RegularZambie(QObject *parent = nullptr);
-    RegularZambie(QGraphicsScene *scene, QMap<int, QPair<QPointF, PlantBase*>> &plantMap,QMap<int, QPair<QPointF, ZombieBase*>> &zombieMap,int rect,QList<QRectF> gridRects,QMap<int,QPair<QPointF, QString>>& gridcenterMap);
-    int preRect;
+
+    RegularZambie(QGraphicsScene *&scene, QMap<int, QPair<QPointF, PlantBase*>> &plantMap,QMap<int, QPair<QPointF, ZombieBase*>> &zombieMap,int rect,QList<QRectF> gridRects,QMap<int,QPair<QPointF, QString>>& gridcenterMap);
+
 public slots:
     void moveForward();
     void attackZombie();
     int ChangePosToRect(QPointF point);
 
 private:
-    QGraphicsScene *scene;
+    QGraphicsScene *&scene;
     QMap<int, QPair<QPointF, PlantBase*>> &plantMap;
     QMap<int, QPair<QPointF, ZombieBase*>> &zombieMap;
     QMovie *zombieMovie;

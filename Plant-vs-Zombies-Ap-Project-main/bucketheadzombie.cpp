@@ -17,8 +17,8 @@ int BucketHeadZombie::ChangePosToRect(QPointF point)
     }
     return current;
 }
-BucketHeadZombie::BucketHeadZombie(QGraphicsScene *scene, QMap<int, QPair<QPointF, PlantBase *>> &plantMap, QMap<int, QPair<QPointF, ZombieBase *>> &zombieMap, int rect, QList<QRectF> gridRects, QMap<int, QPair<QPointF, QString>> &gridcenterMap)
-    : ZombieBase(1950, 2, 50, 1, 200), scene(scene), plantMap(plantMap), zombieMap(zombieMap), currentRect(rect), gridRects(gridRects), gridcenterMap(gridcenterMap)
+BucketHeadZombie::BucketHeadZombie(QGraphicsScene *&scene, QMap<int, QPair<QPointF, PlantBase *>> &plantMap, QMap<int, QPair<QPointF, ZombieBase *>> &zombieMap, int rect, QList<QRectF> gridRects, QMap<int, QPair<QPointF, QString>> &gridcenterMap)
+    : ZombieBase(1950,50), scene(scene), plantMap(plantMap), zombieMap(zombieMap), currentRect(rect), gridRects(gridRects), gridcenterMap(gridcenterMap)
 {
     zombieMovie = new QMovie(":/image/Bucket head zombie_trasparent.png");
     setPixmap(zombieMovie->currentPixmap());

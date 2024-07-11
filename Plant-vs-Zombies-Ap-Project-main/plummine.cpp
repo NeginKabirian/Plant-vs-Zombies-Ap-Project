@@ -1,6 +1,6 @@
 #include "plummine.h"
 
-PlumMine::PlumMine(QGraphicsScene* scene): PlantBase(0,0,500,175) , scene(scene) {
+PlumMine::PlumMine(QGraphicsScene*& scene): PlantBase(0,500) , scene(scene) {
     setPixmap(QPixmap(":/image/plum mine_transparent.png"));
     setScale(0.08);
 }

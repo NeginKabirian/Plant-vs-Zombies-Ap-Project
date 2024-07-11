@@ -9,7 +9,7 @@ class Walnut : public PlantBase
     Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 public:
     Walnut();
-    void move(bool check);
+    void move(QPointF);
 };
 
 #endif // WALNUT_H

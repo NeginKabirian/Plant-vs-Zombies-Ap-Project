@@ -1,6 +1,6 @@
 #include "peashooter.h"
 
-Peashooter::Peashooter() : PlantBase(200,1,15,50){
+Peashooter::Peashooter() : PlantBase(200,15){
     setPixmap(QPixmap(":/image/peashooter transparent.png"));
     setScale(0.08);
     shooting = false;

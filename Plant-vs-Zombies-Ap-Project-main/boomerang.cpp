@@ -1,6 +1,6 @@
 #include "boomerang.h"
 
-Boomerang::Boomerang() : PlantBase(200,1,30,125) {
+Boomerang::Boomerang() : PlantBase(200,30) {
     setPixmap(QPixmap(":/image/boomrang_transparent.png"));
     setScale(0.23);
     shootingTimer = new QTimer(this);

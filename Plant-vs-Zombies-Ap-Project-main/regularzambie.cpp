@@ -154,12 +154,12 @@ int RegularZambie::ChangePosToRect(QPointF point)
     return current;
 }
 
-RegularZambie::RegularZambie(QGraphicsScene *scene, QMap<int, QPair<QPointF, PlantBase*>> &plantMap, QMap<int, QPair<QPointF, ZombieBase*>> &zombieMap, int rect, QList<QRectF> gridRects, QMap<int, QPair<QPointF, QString>> &gridcenterMap)
-    : ZombieBase(500, 1, 25, 1, 100), scene(scene), plantMap(plantMap), zombieMap(zombieMap), currentRect(rect), gridRects(gridRects), gridcenterMap(gridcenterMap)
+RegularZambie::RegularZambie(QGraphicsScene *&scene, QMap<int, QPair<QPointF, PlantBase*>> &plantMap, QMap<int, QPair<QPointF, ZombieBase*>> &zombieMap, int rect, QList<QRectF> gridRects, QMap<int, QPair<QPointF, QString>> &gridcenterMap)
+    : ZombieBase(500, 25), scene(scene), plantMap(plantMap), zombieMap(zombieMap), currentRect(rect), gridRects(gridRects), gridcenterMap(gridcenterMap)
 {
-    zombieMovie = new QMovie(":/image/regular zombie_transparent.png");
+    zombieMovie = new QMovie(":/image/document_5784910129795177805+(1) (1).gif");
     setPixmap(zombieMovie->currentPixmap());
-    setScale(0.08);
+    setScale(0.17);
     connect(zombieMovie, &QMovie::frameChanged, this, [=]() {
         setPixmap(zombieMovie->currentPixmap());
     });
@@ -229,8 +229,13 @@ void RegularZambie::moveForward()
 void RegularZambie::attackZombie()
 {
     if (this->getHealth() <= 0) {
+        int targetRect = ChangePosToRect(this->pos());
         attackTimer->stop();
-        moveTimer->start(1000);
+        scene->removeItem(this);
+        //moveTimer->start(1000);
+        if(zombieMap.contains(targetRect) && zombieMap[targetRect].second)
+            gridcenterMap[targetRect].second = "";
+        zombieMap.remove(targetRect);
         return;
     }
 

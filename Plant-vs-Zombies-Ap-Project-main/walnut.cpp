@@ -1,17 +1,17 @@
 #include "walnut.h"
 #include<QPropertyAnimation>
-Walnut::Walnut() : PlantBase(400,0,0,100){
+Walnut::Walnut() : PlantBase(400,0){
     setPixmap(QPixmap(":/image/walnut_transparent.png"));
     setScale(0.08);
 }
-void Walnut::move(bool check){
-    /*if(check){
+void Walnut::move(QPointF point){
+
         QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
         animation->setDuration(1000);
-        animation->setStartValue(pos());
-        animation->setKeyValueAt(0.7, pos() + QPointF(0, -2.2));
-        animation->setEndValue(pos());
+        animation->setStartValue(point);
+        animation->setKeyValueAt(0.7, point + QPointF(0, -3.1));
+        animation->setEndValue(point);
         animation->setLoopCount(-1);
         animation->start(QAbstractAnimation::DeleteWhenStopped);
-    }*/
+
 }

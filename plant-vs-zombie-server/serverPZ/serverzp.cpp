@@ -231,6 +231,11 @@ bool serverzp::writeNewPassword(QString username, QString phone, QString newpass
         return f;
 }
 
+QString serverzp::getwifiip()
+{
+
+}
+
 
 
 void serverzp::onNewConnection()
