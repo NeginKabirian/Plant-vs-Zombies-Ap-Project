@@ -14,7 +14,7 @@ class login : public QMainWindow
 public:
     explicit login(QWidget *parent = nullptr);
     ~login();
-
+    QString usernamee;
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();

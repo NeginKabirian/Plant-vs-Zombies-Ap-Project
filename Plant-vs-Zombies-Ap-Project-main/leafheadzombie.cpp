@@ -44,13 +44,24 @@ void LeafHeadZombie::moveForward()
     qDebug() << currentRect << "rect" << ChangePosToRect(this->pos());
     int rect = ChangePosToRect(this->pos());
     setPos(x() - 41, y());
-    if (currentRect != rect && rect != -1) {
-        zombieMap[rect].second = zombieMap[currentRect].second;
-        zombieMap.remove(currentRect);
-        gridcenterMap[currentRect].second = "";
-        gridcenterMap[rect].second = "ZA";
-        currentRect = rect;
-    }
+    if (currentRect != rect && zombieMap.contains(currentRect)) {
+        if(zombieMap.contains(currentRect)&&rect ==-1){
+            qDebug()<<"-5 myrect";
+            zombieMap[-5].second = zombieMap[currentRect].second;
+            zombieMap.remove(currentRect);
+            gridcenterMap[currentRect].second = "";
+            gridcenterMap[-5].second = "ZA";
+            currentRect = -5;
+            moveTimer->stop();
+        }else if( rect!=-1 && rect>=0){
+
+            zombieMap[rect].second = zombieMap[currentRect].second;
+            zombieMap.remove(currentRect);
+            gridcenterMap[currentRect].second = "";
+            gridcenterMap[rect].second = "ZA";
+            currentRect = rect;
+          }
+        }
 
     if ((rect != -1 && plantMap.contains(rect) && dynamic_cast<PlantBase*>(plantMap[rect].second)) ||
         (rect - 1 != -1 && plantMap.contains(rect - 1) && dynamic_cast<PlantBase*>(plantMap[rect - 1].second))) {

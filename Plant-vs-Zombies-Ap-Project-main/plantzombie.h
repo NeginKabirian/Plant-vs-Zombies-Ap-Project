@@ -36,6 +36,7 @@
 #include<QRandomGenerator>
 #include <QGraphicsView>
 #include <QRectF>
+#include <QMessageBox>
 namespace Ui {
 class plantzombie;
 }
@@ -45,8 +46,9 @@ class plantzombie : public QMainWindow
     Q_OBJECT
 
 public:
-    bool Zombie=true;
-    bool plant=true;
+    bool Zombie=false;
+    bool plant=false;
+    bool checkremove=true;
     explicit plantzombie(QWidget *parent = nullptr);
     ~plantzombie();
     void insertfieldPA(int rect = -1 ,QPointF point = QPointF(0,0)); //12
@@ -64,6 +66,7 @@ public:
     void visibleButton();
     //void visibleButton();
     int ChangePosToRect(QPointF);
+    QTimer *time;
 private slots:
     void spawnSun();
     void handleSunClick();
@@ -111,11 +114,13 @@ private slots:
     void burnRow(int rect , PlantBase*);
     void plumminefunction(int rect , PlantBase*);
     void plantattack(PlantBase* , int);
-
+    void updateTimer();
+    void checkmap();
 private:
     Ui::plantzombie *ui;
     QTimer *sunspawnTimer;
     QTimer *brainspawnTimer;
+    QTimer *checkmaptime;
     QGraphicsScene *s;
     //int sunStorage;
     QGraphicsPixmapItem *f ;
@@ -160,6 +165,8 @@ signals:
     void SInsertZD(int rect,int x,int y);
     void SInsertZE(int rect,int x,int y);
     void SInsertZF(int rect,int x,int y);
+    void checkedMapEnd(QString message);
+    void checkTimeEnd(QString message);
 };
 
 #endif // PLANTZOMBIE_H

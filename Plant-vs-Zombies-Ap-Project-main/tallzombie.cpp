@@ -52,7 +52,7 @@ void TallZombie::moveForward()
         gridcenterMap[rect].second = "ZA";
         currentRect = rect;
     }
-    else{
+    else if(rect!=-1 &&rect>=0){
         rect = ChangePosToRect(this->pos());
         setPos(x() - 41, y());
         if (currentRect != rect && rect != -1) {
@@ -61,42 +61,50 @@ void TallZombie::moveForward()
             gridcenterMap[currentRect].second = "";
             gridcenterMap[rect].second = "ZA";
             currentRect = rect;
-        }
-
+      }
         if ((rect != -1 && plantMap.contains(rect) && dynamic_cast<PlantBase*>(plantMap[rect].second)) ||
             (rect - 1 != -1 && plantMap.contains(rect - 1) && dynamic_cast<PlantBase*>(plantMap[rect - 1].second))) {
             moveTimer->stop();
             attackTimer->start(1000);
         }
     }
+    if(rect ==-1){
+                qDebug()<<"-5 myrect";
+                zombieMap[-5].second = zombieMap[currentRect].second;
+                zombieMap.remove(currentRect);
+                gridcenterMap[currentRect].second = "";
+                gridcenterMap[-5].second = "ZA";
+                currentRect = -5;
+                moveTimer->stop();
+            }
 
 
 
 
     // Printing plantMap
     //qDebug() << "Printing plantMap:";
-    /*for (auto it = plantMap.constBegin(); it != plantMap.constEnd(); ++it) {
-        int key = it.key();
-        QPointF position = it.value().first;
-        qDebug() << "Key:" << key << "Position:" << position << "Plant:";
-    }
+   // for (auto it = plantMap.constBegin(); it != plantMap.constEnd(); ++it) {
+        //int key = it.key();
+//        QPointF position = it.value().first;
+       // qDebug() << "Key:" << key << "Position:" << position << "Plant:";
+   // }
 
     // Printing zombieMap
     //qDebug() << "Printing zombieMap:";
     for (auto it = zombieMap.constBegin(); it != zombieMap.constEnd(); ++it) {
-        int key = it.key();
-        QPointF position = it.value().first;
+       int key = it.key();
+       QPointF position = it.value().first;
         ZombieBase* zombie = it.value().second;
-        qDebug() << "Key:" << key << "Position:" << position;
+       qDebug() << "Key:" << key << "Position:" << position;
     }
 
     // Printing gridcenterMap
-    qDebug() << "Printing gridcenterMap:";
-    for (auto it = gridcenterMap.constBegin(); it != gridcenterMap.constEnd(); ++it) {
-        int key = it.key();
-        QString description = it.value().second;
-        qDebug() << "Key:" << key << "Description:" << description;
-    }*/
+   // qDebug() << "Printing gridcenterMap:";
+    // (auto it = gridcenterMap.constBegin(); it != gridcenterMap.constEnd(); ++it) {
+       // int key = it.key();
+        //QString description = it.value().second;
+        //qDebug() << "Key:" << key << "Description:" << description;
+   // }
 }
 
 void TallZombie::attackZombie()

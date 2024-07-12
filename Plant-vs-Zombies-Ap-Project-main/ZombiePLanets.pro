@@ -16,6 +16,7 @@ SOURCES += \
     brain.cpp \
     bucketheadzombie.cpp \
     forgetpass.cpp \
+    historygameshowww.cpp \
     jalapieno.cpp \
     leafheadzombie.cpp \
     login.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
     sun.cpp \
     tallzombie.cpp \
     two_peashooter.cpp \
+    voroodi2.cpp \
     waitstart.cpp \
     walnut.cpp \
     zombiebase.cpp
@@ -44,6 +46,7 @@ HEADERS += \
     brain.h \
     bucketheadzombie.h \
     forgetpass.h \
+    historygameshowww.h \
     jalapieno.h \
     leafheadzombie.h \
     login.h \
@@ -60,6 +63,7 @@ HEADERS += \
     sun.h \
     tallzombie.h \
     two_peashooter.h \
+    voroodi2.h \
     waitstart.h \
     walnut.h \
     zombiebase.h \
@@ -68,11 +72,14 @@ HEADERS += \
 
 FORMS += \
     forgetpass.ui \
+    historygameshowww.ui \
     login.ui \
     mainwindow.ui \
     mainwindow2.ui \
     plantzombie.ui \
     signup.ui \
+    vorood.ui \
+    voroodi2.ui \
     waitstart.ui
 
 # Default rules for deployment.

@@ -3,16 +3,18 @@
 #include <QApplication>
 #include "plantzombie.h"
 #include "signup.h"
+#include "historygameshowww.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    //MainWindow2 w;
-    plantzombie z;
-    z.show();
+    MainWindow2 w;
+    //historyGameshowww *h;
+    //plantzombie z;
+    //z.show();
 
     //signup ss;
 
-    //w.show();
+    w.show();
     return a.exec();
 }

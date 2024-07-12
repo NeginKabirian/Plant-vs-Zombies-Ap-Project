@@ -884,7 +884,22 @@ release/serverzp.o: ../serverPZ/serverzp.cpp ../serverPZ/serverzp.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/QTransform \
 		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.2.4/mingw_64/include/QtGui/qicon.h \
-		ui_serverzp.h
+		ui_serverzp.h \
+		C:/Qt/6.2.4/mingw_64/include/QtCore/QVariant \
+		C:/Qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
+		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Qt/6.2.4/mingw_64/include/QtGui/qguiapplication.h \
+		C:/Qt/6.2.4/mingw_64/include/QtGui/qinputmethod.h \
+		C:/Qt/6.2.4/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.2.4/mingw_64/include/QtWidgets/QMenuBar \
+		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qmenu.h \
+		C:/Qt/6.2.4/mingw_64/include/QtGui/qaction.h \
+		C:/Qt/6.2.4/mingw_64/include/QtWidgets/QStatusBar \
+		C:/Qt/6.2.4/mingw_64/include/QtWidgets/qstatusbar.h \
+		C:/Qt/6.2.4/mingw_64/include/QtWidgets/QWidget \
+		C:/Qt/6.2.4/mingw_64/include/QtNetwork/QNetworkInterface \
+		C:/Qt/6.2.4/mingw_64/include/QtNetwork/qnetworkinterface.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\serverzp.o ..\serverPZ\serverzp.cpp
 
 release/qrc_filejason.o: release/qrc_filejason.cpp 

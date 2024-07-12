@@ -6,10 +6,10 @@ MainWindow2::MainWindow2(QWidget *parent) :
     ui(new Ui::MainWindow2)
 {
     ui->setupUi(this);
-    plantzombie *game = new plantzombie();
+    //plantzombie *game = new plantzombie();
    // ui->setupUi(game);
-    client = new Client(game);
-    client->connectToServer("127.0.0.1", 12345);
+    //client = new Client(game);
+   // client->connectToServer("127.0.0.1", 12345);
 }
 
 MainWindow2::~MainWindow2()
@@ -28,5 +28,15 @@ void MainWindow2::on_pushButton_clicked()
 {
     this->close();
     client->Signup->show();
+}
+
+
+void MainWindow2::on_pushButton_3_clicked()
+{
+    QString ip=ui->lineEdit->text();
+    plantzombie *game = new plantzombie();
+   // ui->setupUi(game);
+    client = new Client(game);
+    client->connectToServer(ip, 12345);
 }
 

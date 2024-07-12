@@ -41,13 +41,41 @@ void BucketHeadZombie::moveForward()
     qDebug() << currentRect << "rect" << ChangePosToRect(this->pos());
     int rect = ChangePosToRect(this->pos());
     setPos(x() - 41, y());
-    if (currentRect != rect && rect != -1) {
-        zombieMap[rect].second = zombieMap[currentRect].second;
-        zombieMap.remove(currentRect);
-        gridcenterMap[currentRect].second = "";
-        gridcenterMap[rect].second = "ZA";
-        currentRect = rect;
-    }
+    /*if (currentRect != rect && zombieMap.contains(currentRect)) {
+        if(rect==-1){
+            qDebug()<<"-5 myrect";
+            zombieMap[-5].second = zombieMap[currentRect].second;
+            zombieMap.remove(currentRect);
+            gridcenterMap[currentRect].second = "";
+            gridcenterMap[-5].second = "ZB";
+            currentRect = -5;
+            moveTimer->stop();
+        }if(rect==0 || rect >0){
+
+            zombieMap[rect].second = zombieMap[currentRect].second;
+            zombieMap.remove(currentRect);
+            gridcenterMap[currentRect].second = "";
+            gridcenterMap[rect].second = "ZB";
+            currentRect = rect;
+          }
+        }*/
+    if (currentRect != rect ) {
+        if(rect != -1 && rect >=0){
+            zombieMap[rect].second = zombieMap[currentRect].second;
+            zombieMap.remove(currentRect);
+            gridcenterMap[currentRect].second = "";
+            gridcenterMap[rect].second = "ZA";
+            currentRect = rect;
+        }else if(zombieMap.contains(currentRect)&&rect ==-1){
+            qDebug()<<"-5 myrect";
+            zombieMap[-5].second = zombieMap[currentRect].second;
+            zombieMap.remove(currentRect);
+            gridcenterMap[currentRect].second = "";
+            gridcenterMap[-5].second = "ZA";
+            currentRect = -5;
+            moveTimer->stop();
+        }
+     }
 
     if ((rect != -1 && plantMap.contains(rect) && dynamic_cast<PlantBase*>(plantMap[rect].second)) ||
         (rect - 1 != -1 && plantMap.contains(rect - 1) && dynamic_cast<PlantBase*>(plantMap[rect - 1].second))) {
@@ -59,11 +87,11 @@ void BucketHeadZombie::moveForward()
 
     // Printing plantMap
     //qDebug() << "Printing plantMap:";
-    for (auto it = plantMap.constBegin(); it != plantMap.constEnd(); ++it) {
-        int key = it.key();
-        QPointF position = it.value().first;
-        qDebug() << "Key:" << key << "Position:" << position << "Plant:";
-    }
+    //for (auto it = plantMap.constBegin(); it != plantMap.constEnd(); ++it) {
+        //int key = it.key();
+        //QPointF position = it.value().first;
+        //qDebug() << "Key:" << key << "Position:" << position << "Plant:";
+    //}
 
     // Printing zombieMap
     //qDebug() << "Printing zombieMap:";
@@ -75,12 +103,12 @@ void BucketHeadZombie::moveForward()
     }
 
     // Printing gridcenterMap
-    qDebug() << "Printing gridcenterMap:";
-    for (auto it = gridcenterMap.constBegin(); it != gridcenterMap.constEnd(); ++it) {
-        int key = it.key();
-        QString description = it.value().second;
-        qDebug() << "Key:" << key << "Description:" << description;
-    }
+    //qDebug() << "Printing gridcenterMap:";
+    // (auto it = gridcenterMap.constBegin(); it != gridcenterMap.constEnd(); ++it) {
+        //int key = it.key();
+        //QString description = it.value().second;
+        //qDebug() << "Key:" << key << "Description:" << description;
+//    }
 }
 void BucketHeadZombie::attackZombie()
 {

@@ -177,13 +177,30 @@ void RegularZambie::moveForward()
 {
     qDebug() << currentRect << "rect" << ChangePosToRect(this->pos());
     int rect = ChangePosToRect(this->pos());
+    if(rect-1 != -1 && zombieMap.contains(rect-1) && dynamic_cast<ZombieBase*>(zombieMap[rect -1].second)){
+        ZombieBase *next=dynamic_cast<ZombieBase*>(zombieMap[rect-1].second);
+        if(this->x() -next->x() <100){
+            return;
+        }
+    }
     setPos(x() - 41, y());
-    if (currentRect != rect && rect != -1) {
+    if (currentRect != rect && zombieMap.contains(currentRect)) {
+        if(zombieMap.contains(currentRect)&&rect ==-1){
+            qDebug()<<"-5 myrect";
+            zombieMap[-5].second = zombieMap[currentRect].second;
+            zombieMap.remove(currentRect);
+            gridcenterMap[currentRect].second = "";
+            gridcenterMap[-5].second = "ZA";
+            currentRect = -5;
+            moveTimer->stop();
+        }else if(rect!=-1 &&rect>=0){
+
             zombieMap[rect].second = zombieMap[currentRect].second;
             zombieMap.remove(currentRect);
             gridcenterMap[currentRect].second = "";
             gridcenterMap[rect].second = "ZA";
             currentRect = rect;
+          }
         }
 
     if ((rect != -1 && plantMap.contains(rect) && dynamic_cast<PlantBase*>(plantMap[rect].second)) ||
@@ -195,6 +212,14 @@ void RegularZambie::moveForward()
             attackTimer->start(1000);
          }
 
+     //if (rect==-1 && plantMap.contains(rect)){
+         //zombieMap[-5].second = zombieMap[currentRect].second;
+         //zombieMap.remove(currentRect);
+        // gridcenterMap[currentRect].second = "";
+        // gridcenterMap[rect].second = "ZA";
+         //currentRect = rect;
+         //moveTimer->stop();
+     //}
     // Printing plantMap
     //qDebug() << "Printing plantMap:";
     /*for (auto it = plantMap.constBegin(); it != plantMap.constEnd(); ++it) {

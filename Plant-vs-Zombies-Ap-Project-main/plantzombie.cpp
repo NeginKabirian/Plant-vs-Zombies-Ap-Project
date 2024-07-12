@@ -29,8 +29,18 @@ plantzombie::plantzombie(QWidget *parent) :
     connect(brainspawnTimer, &QTimer::timeout, this, &plantzombie::spawnBrain);
     brainspawnTimer->start(5000); // spawn a sun every 5 secon
 
+    time = new QTimer(this);
+    connect(time, SIGNAL(timeout()), this, SLOT(updateTimer()));
+    // Calculate total seconds for 3 minutes and 30 seconds
+    int totalSeconds = 3 * 60 + 30;
+    int minutes = totalSeconds / 60;
+    int seconds = totalSeconds % 60;
+    QString timeString = QString("%1:%2").arg(minutes, 2, 10, QChar('0')).arg(seconds, 2, 10, QChar('0'));
 
-
+    //ui->label_3->setText(timeString);
+    checkmaptime =new QTimer(this);
+    connect(checkmaptime,SIGNAL(timeout()),this,SLOT(checkmap()));
+    checkmaptime->start(500);
     visibleButton();
     /*if(Zombie==true){
         ui->labe->setText("zombie");
@@ -87,7 +97,7 @@ void plantzombie::visibleButton(){
             ui->pushButtonPF->setVisible(false);
         }
     }
-    /*else*/ if(Zombie==true){
+   else if(Zombie==true){
         ui->Brainlabel->setVisible(true);
         ui->brainlabel->setVisible(true);
         if(brainStorge >= 100){
@@ -149,7 +159,7 @@ void plantzombie::insertfieldPA(int rect, QPointF point)
 {
     Peashooter* pb = new Peashooter;
     QPair<Peashooter*, int> pair(pb, rect);
-    gridCentersMap[rect].second = "PB";
+    gridCentersMap[rect].second = "PA";
     gridCentersMap[rect].first = point;
     plantMap[rect].second = pb;    //p
     plantMap[rect].first = point; //p
@@ -161,7 +171,7 @@ void plantzombie::insertfieldPA(int rect, QPointF point)
         ui->label_2->setText(QString::number(sunStorage));
         int x = point.x();
         int y = point.y();
-        emit SInsertPB(rect, x, y);
+        emit SInsertPA(rect, x, y);
     }
     connect(pb, &Peashooter::shootPea, this, [=]() { onShootPea(pb, point); });
     pb->startShooting();
@@ -411,6 +421,7 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
                 } else if (zombieMap.contains(rect) && zombieMap[rect].second->getHealth() <= 0) {
                     s->removeItem(zombieMap[rect].second);
                     gridCentersMap[rect].second = "";
+                    zombieMap[-8].second=zombieMap[rect].second;
                     zombieMap.remove(rect);
                 }
             } catch (const std::exception &e) {
@@ -423,6 +434,7 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
                 } else if (zombieMap.contains(rect) && zombieMap[rect].second->getHealth() <= 0) {
                     s->removeItem(zombieMap[rect].second);
                     gridCentersMap[rect].second = "";
+                    zombieMap[-8].second=zombieMap[rect].second;
                     zombieMap.remove(rect);
                 }
             } catch (const std::exception &e) {
@@ -440,6 +452,7 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
                     if (zombieMap.contains(targetRect)&& zombieMap[targetRect].second && zombieMap[targetRect].second->getHealth() <= 0) {
                         s->removeItem(zombieMap[targetRect].second);
                         gridCentersMap[targetRect].second = "";
+                        zombieMap[-8].second=zombieMap[targetRect].second;
                         zombieMap.remove(targetRect);
                     }
                     break;
@@ -466,7 +479,9 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
                             } else if( zombieMap[key].second && zombieMap[key].second->getHealth()<=0){
                                 s->removeItem(zombieMap[key].second);
                                 gridCentersMap[key].second = "";
+                                zombieMap[-8].second=zombieMap[key].second;
                                 zombieMap.remove(key);
+
                                 qDebug() << "plum";
                             }
                         }
@@ -490,6 +505,8 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
                         if (zombieMap[i].second && zombieMap[i].second->getHealth() <= 0) {
                             s->removeItem(zombieMap[i].second);
                             gridCentersMap[i].second = "";
+                            zombieMap[-8].second=zombieMap[i].second;
+                            //zombieMap[i].second=nullptr;
                             zombieMap.remove(i);
                         }
                     }
@@ -504,6 +521,58 @@ void plantzombie::plantattack(PlantBase *p , int rect) //server
     } catch (...) {
         qDebug() << "Unknown general exception";
 
+    }
+}
+
+void plantzombie::updateTimer()
+{
+    static int remainingSeconds = 3 * 60 + 30; // Initial remaining time
+
+        if (remainingSeconds > 0) {
+            remainingSeconds--;
+            int minutes = remainingSeconds / 60;
+            int seconds = remainingSeconds % 60;
+            QString timeString = QString("%1:%2").arg(minutes, 2, 10, QChar('0')).arg(seconds, 2, 10, QChar('0'));
+            //ui->label_3->setText(timeString);
+        } else {
+            time->stop(); // Stop the timer when it reaches zero
+            QString message;
+           if(Zombie==true){
+               message="l";
+               //QMessageBox::information(nullptr,"lose","you lose.");
+            }else{
+               message="w";
+              // QMessageBox::information(nullptr,"win","you win.");
+           }
+            emit checkTimeEnd(message);
+            //this->close();
+            //close();       // Close the main window
+        }
+}
+
+void plantzombie::checkmap()
+{
+    if(zombieMap.contains(-5) && checkremove ){
+
+        checkremove=false;
+        qDebug()<<"bashed111";
+        //emit checkedMapEnd();
+        QString message;
+       if(Zombie==true){
+           message="w";
+           QMessageBox::information(nullptr,"win","you win.");
+           qDebug()<<"bashed";
+           emit checkedMapEnd(message);
+           return;
+        }else{
+           message="l";
+           QMessageBox::information(nullptr,"lose","you lose.");
+           emit checkedMapEnd(message);
+           return;
+       }
+
+
+        //this->close();
     }
 }
 

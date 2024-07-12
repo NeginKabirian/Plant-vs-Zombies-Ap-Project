@@ -16,6 +16,7 @@ login::~login()
 void login::on_pushButton_clicked()
 {
     QString username=ui->Username_lineEdit->text();
+    usernamee=username;
     QString password=ui->Password_lineEdit->text();
     QString message = QString("login,%1,%2").arg(username).arg(password);
     emit sendmessagelogin(message);

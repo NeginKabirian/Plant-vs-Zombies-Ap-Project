@@ -2,14 +2,37 @@
 #include "ui_serverzp.h"
 // #include <cstime>
 #include <cstdlib>
-#define fj "F:/userssss.json"
+#include <QNetworkInterface>
+#define fj "F:/uuuserssss.json"
 
 serverzp::serverzp(QWidget *parent)
-:  m_server(new QTcpServer())
+:  m_server(new QTcpServer()),
+   ui(new Ui::serverzp)
 {
+    ui->setupUi(this);
     readfileadduser();
     connect(m_server, &QTcpServer::newConnection, this, &serverzp::onNewConnection);
+    Timergame1 = new QTimer(this);
+    connect(Timergame1, SIGNAL(timeout()), this, SLOT(updateTimer()));
 
+        // Calculate total seconds for 3 minutes and 30 seconds
+     int totalSeconds = 3 * 60 + 30;
+        // Update initial timer label
+     int minutes = totalSeconds / 60;
+     int seconds = totalSeconds % 60;
+     QString timeString = QString("%1:%2").arg(minutes, 2, 10, QChar('0')).arg(seconds, 2, 10, QChar('0'));
+     ui->label_3->setText(timeString);
+
+     Timergame2 = new QTimer(this);
+     connect(Timergame2, SIGNAL(timeout()), this, SLOT(updateTimer2()));
+
+         // Calculate total seconds for 3 minutes and 30 seconds
+      int totalSeconds2 = 3 * 60 + 30;
+         // Update initial timer label
+      int minutes2 = totalSeconds2 / 60;
+      int seconds2 = totalSeconds2 % 60;
+      QString timeString2 = QString("%1:%2").arg(minutes2, 2, 10, QChar('0')).arg(seconds2, 2, 10, QChar('0'));
+      ui->label_4->setText(timeString2);
 
 }
 
@@ -17,6 +40,8 @@ void serverzp::start(quint16 port)
 {
     if (m_server->listen(QHostAddress::Any, port)) {
         qDebug() << "Server started on port" << port;
+        QString ip=getwifiip();
+        ui->label->setText(ip);
     } else {
         qDebug() << "Server failed to start";
     }
@@ -45,11 +70,16 @@ void serverzp::readfileadduser()
             jsonhelpy["address"]="";
             jsonhelpy["password"]="";
             QJsonDocument jsonDochelpy(jsonhelpy);
-            if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-                    qDebug() << "Cannot open file for start:" << file.errorString();
-                    return;
+
+            if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                    qDebug() << "Cannot open file for reading:" << file.errorString();
+                    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                            qDebug() << "Cannot open file for start:" << file.errorString();
+                            return;
+                        }
+                    file.write(jsonDochelpy.toJson());
+                    file.close();
                 }
-            file.write(jsonDochelpy.toJson());
             file.close();
             if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
                     qDebug() << "Cannot open file for reading:" << file.errorString();
@@ -233,7 +263,154 @@ bool serverzp::writeNewPassword(QString username, QString phone, QString newpass
 
 QString serverzp::getwifiip()
 {
+    QString wifiIPv4;
+    QList<QNetworkInterface> interfaces = QNetworkInterface::allInterfaces();
+        foreach (const QNetworkInterface& iface, interfaces) {
+            if (iface.flags().testFlag(QNetworkInterface::IsUp) &&
+                iface.flags().testFlag(QNetworkInterface::IsRunning) &&
+                iface.flags().testFlag(QNetworkInterface::IsLoopBack) == false) {
 
+                QList<QNetworkAddressEntry> entries = iface.addressEntries();
+                foreach (const QNetworkAddressEntry& entry, entries) {
+                    if (entry.ip().protocol() == QAbstractSocket::IPv4Protocol) {
+                        wifiIPv4 = entry.ip().toString();
+                        if (iface.humanReadableName().contains("wlan", Qt::CaseInsensitive) ||
+                            iface.humanReadableName().contains("wi-fi", Qt::CaseInsensitive) ||
+                            iface.humanReadableName().contains("wireless", Qt::CaseInsensitive)) {
+                            return wifiIPv4;
+                        }
+                    }
+                }
+            }
+        }
+        return QString();
+}
+
+void serverzp::addGameToJson(const QString &username, const QJsonObject &newGame)
+{
+    QString fileName = fj;
+        QJsonArray players = readJsonFromFile(fileName);
+
+        // Find the player by username
+        bool found = false;
+        for (auto &&player : players) {
+            QJsonObject playerObj = player.toObject();
+            if (playerObj["username"].toString() == username) {
+                // Add the new game to the "games" array of this player
+                QJsonArray gamesArray = playerObj["games"].toArray();
+                gamesArray.append(newGame);
+                playerObj["games"] = gamesArray;
+
+                player = playerObj;  // Update the player object in the array
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            qDebug() << "Player not found.";
+            return;
+        }
+
+        // Write updated JSON back to file
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            qDebug() << "Cannot open file for writing:" << fileName;
+            return;
+        }
+
+        QJsonDocument jsonDoc(players);
+        file.write(jsonDoc.toJson());
+        file.close();
+}
+
+QJsonArray serverzp::readJsonFromFile(const QString &fileName)
+{
+    QFile file(fileName);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qDebug() << "Cannot open file for reading:" << fileName;
+            return QJsonArray();
+        }
+
+        QByteArray jsonData = file.readAll();
+        file.close();
+
+        QJsonParseError parseError;
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData, &parseError);
+        if (parseError.error != QJsonParseError::NoError) {
+            qDebug() << "Parse error:" << parseError.errorString();
+            return QJsonArray();
+        }
+
+        if (!jsonDoc.isArray()) {
+            qDebug() << "JSON document is not an array.";
+            return QJsonArray();
+        }
+
+        return jsonDoc.array();
+}
+
+QByteArray serverzp::sendGameHistory(QString username)
+{
+    QString fileName = fj;
+        QJsonArray players = readJsonFromFile(fileName);
+        QJsonArray gamesArray;
+        // Find the player by username
+        bool found = false;
+        for (auto &&player : players) {
+            QJsonObject playerObj = player.toObject();
+            if (playerObj["username"].toString() == username) {
+                // Add the new game to the "games" array of this player
+                gamesArray = playerObj["games"].toArray();
+                player = playerObj;  // Update the player object in the array
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            qDebug() << "Player not found.";
+            //return;
+        }
+        QJsonDocument doc(gamesArray);
+        QByteArray jsonData=doc.toJson();
+        return jsonData;
+}
+
+void serverzp::updateTimer()
+{
+    static int remainingSeconds = 3 * 60 + 30; // Initial remaining time
+
+        if (remainingSeconds > 0) {
+            remainingSeconds--;
+            int minutes = remainingSeconds / 60;
+            int seconds = remainingSeconds % 60;
+            QString timeString = QString("%1:%2").arg(minutes, 2, 10, QChar('0')).arg(seconds, 2, 10, QChar('0'));
+            ui->label_3->setText(timeString);
+        } else {
+            Timergame1->stop(); // Stop the timer when it reaches zero
+            QString endt="endtimer1";
+            m_clients[0]->write(endt.toUtf8());
+            m_clients[1]->write(endt.toUtf8());
+        }
+}
+
+void serverzp::updateTimer2()
+{
+    static int remainingSeconds = 3 * 60 + 30; // Initial remaining time
+
+        if (remainingSeconds > 0) {
+            remainingSeconds--;
+            int minutes = remainingSeconds / 60;
+            int seconds = remainingSeconds % 60;
+            QString timeString = QString("%1:%2").arg(minutes, 2, 10, QChar('0')).arg(seconds, 2, 10, QChar('0'));
+            ui->label_4->setText(timeString);
+        } else {
+            Timergame2->stop(); // Stop the timer when it reaches zero
+            QString endt="endtimer2";
+            m_clients[0]->write(endt.toUtf8());
+            m_clients[1]->write(endt.toUtf8());
+        }
 }
 
 
@@ -262,6 +439,11 @@ void serverzp::onReadyRead()
     QByteArray data = senderSocket->readAll();
     QString message = QString::fromUtf8(data);
     QStringList parts = message.split(',');
+    if(message=="startgaming"){
+            qDebug()<<"timerrr";
+           Timergame1->start(1000);
+
+        }
     if(message=="gameStartOrNo"){
         if(number==2 && flagg==false){
             flagg=true;
@@ -271,6 +453,20 @@ void serverzp::onReadyRead()
                     c->write(me.toUtf8());
                 }
             }
+        }
+    }else if(message=="clickstart"){
+        qDebug()<<"yesssss";
+        for(int i=0;i<m_clients.size();++i){
+            if (m_clients[i] != senderSocket){
+                m_clients[i]->write(message.toUtf8());
+           }
+        }
+    }else if(message=="1" || message=="0"){
+        qDebug()<<"zorp";
+        for(int i=0;i<m_clients.size();++i){
+            if (m_clients[i] != senderSocket){
+                m_clients[i]->write(message.toUtf8());
+           }
         }
     }
     else if(parts.size() == 6 && parts[0] == "signup"){
@@ -303,6 +499,14 @@ void serverzp::onReadyRead()
         QString passw=parts[2];
         if(matchUsernamePassword(usern,passw)==3){
             ++number;
+            if(number==1){
+                username1=usern;
+                qDebug()<<username1;
+            }
+            if(number==2){
+                username2=usern;
+                qDebug()<<username2;
+            }
             qDebug()<<"num"<<number;
             int r=-1;
             if(number==2){
@@ -349,7 +553,68 @@ void serverzp::onReadyRead()
                 m_clients[1]->write(message.toUtf8());
             }
         }
+    }else if(parts.size() == 5 && parts[0] == "END"){
 
+        if(parts[4]=="1"){
+            QJsonObject newGame;
+            newGame["game"]="first";
+            if(username1==parts[2]){
+              newGame["opponent username"] = username2;
+              if(parts[3]=="w"){
+                  newGame["winer"]=parts[2];
+              }else{
+                  newGame["winer"]=username2;
+              }
+            }else{
+              newGame["opponent username"] = username1;
+              if(parts[3]=="w"){
+                  newGame["winer"]=parts[2];
+              }else{
+                  newGame["winer"]=username1;
+              }
+            }
+            newGame["Role"] = parts[1];
+            QDateTime date=QDateTime::currentDateTime();
+            QString datetime=date.toString("dd/MM/yyyy hh:mm:ss");
+            newGame["Date"] = datetime;
+
+            addGameToJson(parts[2],newGame);
+            Timergame1->stop();
+            Timergame2->start(1000);
+        }else if(parts[4]=="2"){
+            QJsonObject newGame;
+            newGame["game"]="secend";
+            if(username1==parts[2]){
+              newGame["opponent username"] = username2;
+              if(parts[3]=="w"){
+                  newGame["winer"]=parts[2];
+              }else{
+                  newGame["winer"]=username2;
+              }
+            }else{
+              newGame["opponent username"] = username1;
+              if(parts[3]=="w"){
+                  newGame["winer"]=parts[2];
+              }else{
+                  newGame["winer"]=username1;
+              }
+            }
+            newGame["Role"] = parts[1];
+            QDateTime date=QDateTime::currentDateTime();
+            QString datetime=date.toString("dd/MM/yyyy hh:mm:ss");
+            newGame["Date"] = datetime;
+
+            addGameToJson(parts[2],newGame);
+            Timergame2->stop();
+        }
+    }else if(parts.size()==2 && parts[0]=="history"){
+        QByteArray sendM=sendGameHistory(parts[1]);
+        qDebug()<<"ooooooo";
+        if (m_clients[0] == senderSocket){
+            m_clients[0]->write(sendM);
+        }else if(m_clients[1] == senderSocket){
+            m_clients[1]->write(sendM);
+        }
     }else{
         if (m_clients[0] != senderSocket){
             m_clients[0]->write(data);

@@ -366,8 +366,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>1100</x>
-      <y>150</y>
+      <x>1110</x>
+      <y>440</y>
       <width>63</width>
       <height>41</height>
      </rect>
@@ -394,9 +394,9 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>1190</x>
-      <y>160</y>
-      <width>71</width>
+      <x>1200</x>
+      <y>430</y>
+      <width>111</width>
       <height>41</height>
      </rect>
     </property>
@@ -475,6 +475,19 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>170</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>time</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -482,7 +495,7 @@
      <x>0</x>
      <y>0</y>
      <width>2000</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

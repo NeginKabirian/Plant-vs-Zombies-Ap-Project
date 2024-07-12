@@ -63,7 +63,7 @@ bool signup::isValidEmail(const QString &email)
 
 bool signup::isValidPhoneNumber(const QString &phoneNumber)
 {
-    QString phonePattern = "^\\+(?:[0-9] ?){6,14}[0-9]$";
+    QString phonePattern = "^\\+98\\d{10}$";
     QRegularExpression regex(phonePattern);
     QRegularExpressionMatch match = regex.match(phoneNumber);
     return match.hasMatch();
